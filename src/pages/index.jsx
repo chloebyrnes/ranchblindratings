@@ -413,6 +413,19 @@ export function Head() {
       <title>Ranch Blind Ratings</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
       <meta name="description" content="The blind ranking game for game night" />
+
+      {/* Favicon */}
+      <link rel="icon" type="image/png" href="/ranch_water3.png" />
+      <link rel="apple-touch-icon" href="/ranch_water3.png" />
+
+      {/* Open Graph — controls link preview in iMessage, etc */}
+      <meta property="og:title" content="Ranch Blind Ratings" />
+      <meta property="og:description" content="The blind ranking game for game night 🤠" />
+      <meta property="og:image" content="https://ranchblindratings.netlify.app/ranch2.jpg" />
+      <meta property="og:url" content="https://ranchblindratings.netlify.app" />
+      <meta property="og:type" content="website" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image" content="https://ranchblindratings.netlify.app/ranch2.jpg" />
     </>
   )
 }
