@@ -157,13 +157,18 @@ function playPop() {
 }
 function playWhoosh() {
   try {
-    const ctx = makeCtx(); const osc = ctx.createOscillator(); const gain = ctx.createGain()
-    osc.connect(gain); gain.connect(ctx.destination); osc.type = "sawtooth"
-    osc.frequency.setValueAtTime(150, ctx.currentTime)
-    osc.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.2)
-    gain.gain.setValueAtTime(0.15, ctx.currentTime)
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25)
-    osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.25)
+    const ctx = makeCtx()
+    // bubbly ascending chime — three quick happy notes
+    ;[523, 659, 784].forEach((freq, idx) => {
+      const osc = ctx.createOscillator(); const gain = ctx.createGain()
+      osc.connect(gain); gain.connect(ctx.destination); osc.type = "sine"
+      const t = ctx.currentTime + idx * 0.08
+      osc.frequency.setValueAtTime(freq, t)
+      gain.gain.setValueAtTime(0, t)
+      gain.gain.linearRampToValueAtTime(0.18, t + 0.02)
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.18)
+      osc.start(t); osc.stop(t + 0.18)
+    })
   } catch (e) {}
 }
 function playYes() {
@@ -308,17 +313,19 @@ function MenuScreen({ onRandom, onCustom, onTenBut }) {
     playPop()
   }
 
-  const openWeather = () => {
-    playWhoosh()
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-    if (isMobile) {
-      // Try to open native weather app, fall back to weather.com
-      window.location.href = "weather://"
-      setTimeout(() => { window.open("https://weather.com", "_blank") }, 500)
-    } else {
-      window.open("https://weather.com", "_blank")
-    }
+const openWeather = () => {
+  playWhoosh()
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+  if (isMobile) {
+    // Try native weather app first, fall back to Clearwater forecast
+    window.location.href = "weather://"
+    setTimeout(() => {
+      window.open("https://forecast.weather.gov/MapClick.php?CityName=Clearwater&state=FL&site=TBW&textField1=27.9659&textField2=-82.8001", "_blank")
+    }, 500)
+  } else {
+    window.open("https://forecast.weather.gov/MapClick.php?CityName=Clearwater&state=FL&site=TBW&textField1=27.9659&textField2=-82.8001", "_blank")
   }
+}
 
   return (
     <div>
@@ -328,7 +335,7 @@ function MenuScreen({ onRandom, onCustom, onTenBut }) {
       </div>
 
       <div className="card">
-        <div className="cardLabel">★ Ranch Blind Ratings ★</div>
+        <div className="cardLabel">★ Blind Ratings ★</div>
         <p className="modeIntro">How do you want to play tonight, partner?</p>
         <div className="modeButtons">
           <button className="modeBtn" onClick={() => { playPop(); onCustom() }}>
@@ -345,7 +352,7 @@ function MenuScreen({ onRandom, onCustom, onTenBut }) {
       <div className="card tenButMenuCard">
         <div className="cardLabel">★ They're A 10 But... ★</div>
         <p className="modeIntro">Make your judgement!</p>
-        <p className="comingSoonDesc">They're gorgeous. But do their red flags cancel it out? You be the judge.</p>
+        <p className="comingSoonDesc">They're a 10. But do their red flags cancel it out? You be the judge.</p>
         <button className="startBtn" onClick={() => { playWhoosh(); onTenBut() }}>Play Now</button>
       </div>
 
@@ -395,7 +402,7 @@ function CustomScreen({ onBack, onStart }) {
   )
 }
 
-function GameScreen({ prompts, slots, currentIndex, onPick }) {
+function GameScreen({ prompts, slots, currentIndex, onPick, onBack }) {
   const filled = slots.filter(s => s !== null).length
   const prompt = prompts[currentIndex]
   return (
@@ -429,6 +436,7 @@ function GameScreen({ prompts, slots, currentIndex, onPick }) {
           ))}
         </div>
       </div>
+      <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back to Menu</button>
     </div>
   )
 }
@@ -503,14 +511,14 @@ export default function IndexPage() {
             <img className="decorLuca" src={luca} alt="" aria-hidden="true" />
             <div className="headerInner">
               <div className="starRow">★ ★ ★ ★ ★</div>
-              <img className="logoImg" src={ranchLogo} alt="Ranch Blind Ratings" />
+              <img className="logoImg" src={ranchLogo} alt="Blind Ratings" />
               <div className="starRow">★ ★ ★ ★ ★</div>
             </div>
           </header>
         )}
         {phase === "menu" && <MenuScreen onRandom={startRandom} onCustom={startCustomEntry} onTenBut={() => setPhase("tenBut")} />}
         {phase === "custom" && <CustomScreen onBack={goMenu} onStart={launchCustom} />}
-        {phase === "playing" && <GameScreen prompts={prompts} slots={slots} currentIndex={currentIndex} onPick={pickSlot} />}
+        {phase === "playing" && <GameScreen prompts={prompts} slots={slots} currentIndex={currentIndex} onPick={pickSlot} onBack={goMenu} />}
         {phase === "results" && <ResultsScreen slots={slots} onPlayAgain={playAgain} onChangeMode={goMenu} />}
         {phase === "tenBut" && <TenButGame onBack={goMenu} />}
       </div>
@@ -521,12 +529,12 @@ export default function IndexPage() {
 export function Head() {
   return (
     <>
-      <title>Ranch Blind Ratings</title>
+      <title>Ranch Games</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
       <meta name="description" content="The blind ranking game for game night" />
       <link rel="icon" type="image/png" href="/ranch_water3.png" />
       <link rel="apple-touch-icon" href="/ranch_water3.png" />
-      <meta property="og:title" content="Ranch Blind Ratings" />
+      <meta property="og:title" content="Ranch Games" />
       <meta property="og:description" content="The blind ranking game for game night 🤠" />
       <meta property="og:image" content="https://ranchblindratings.netlify.app/ranchgames.png" />
       <meta property="og:url" content="https://ranchblindratings.netlify.app" />
