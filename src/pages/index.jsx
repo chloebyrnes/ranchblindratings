@@ -399,7 +399,7 @@ function MenuScreen({ onRandom, onCustom, onTenBut }) {
 
       <div className="card tenButMenuCard">
         <div className="cardLabel">★ They're A 10 But... ★</div>
-       <p className="intro">Make your judgement!</p>
+   <p className="modeIntro">Make your judgement!</p>
         <p className="comingSoonDesc">
           They're gorgeous. But do their red flags cancel it out? You be the judge.
         </p>
