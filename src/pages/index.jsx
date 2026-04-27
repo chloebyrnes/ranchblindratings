@@ -5,10 +5,12 @@ import cigarette from "../../static/cigarette2.png"
 import alpCan from "../../static/alp2.png"
 import luca from "../../static/luca.png"
 
+
+
 const ALL_PROMPTS = [
-  "Stubbing your toe","Getting a day off work","Finding $20 in your pocket",
-  "Missing your alarm","A perfect slice of pizza","Sitting in traffic for an hour",
-  "Getting a surprise hug","Stepping on a LEGO","A hot shower after a long day",
+    "Getting a day off work","Finding $20 in your pocket",
+  "Missing your alarm","Sitting in traffic for an hour",
+  "Getting a surprise hug","A hot shower after a long day",
   "Winning a board game","Running out of phone battery","Watching a great sunset",
   "Spilling coffee on yourself while you're wearing white","Getting a compliment from a stranger",
   "Forgetting someone's name mid-conversation","Finishing a really good book",
@@ -28,10 +30,6 @@ const ALL_PROMPTS = [
   "When the vending machine drops two snacks instead of one",
   "When your mom likes a thirst comment you left on an instagram model's photo",
   "When you pull down your pants to poop and the seat is already warm from the last person",
-  
-]
-
-const TEN_BUT_PROMPTS = [
   "They laugh at their own jokes before the punchline",
   "They call every movie they don't understand 'boring'",
   "They reply to group texts with 'k'",
