@@ -8,7 +8,7 @@ import luca from "../../static/luca.png"
 const ALL_PROMPTS = [
   "Stubbing your toe","Getting a day off work","Finding $20 in your pocket",
   "Missing your alarm","Sitting in traffic for an hour and you have to pee",
-"A hot shower after a long day",
+  "A hot shower after a long day",
   "Winning a board game","Running out of phone battery","Watching a great sunset",
   "Spilling coffee on yourself while you're wearing white","Getting a compliment from a stranger",
   "Forgetting someone's name mid-conversation","Finishing a really good book",
@@ -16,8 +16,7 @@ const ALL_PROMPTS = [
   "Dropping your food on the floor","Waking up before your alarm naturally",
   "Slow internet when you need it most","A dog greeting you at the door",
   "Having your card declined in public","Getting the window seat on a flight",
-  "A song stuck in your head all day","First bite of Thanksgiving dinner",
-  "Accidentally liking an old photo while snooping","Fresh bedsheets after a shower",
+  "Accidentally liking an old photo while stalking someone on IG","Fresh bedsheets after a shower",
   "Replying 'you too' when the waiter says enjoy your meal",
   "Finding out your favorite show has a new season","Burning your tongue on hot food",
   "Fracturing your cock",
@@ -28,69 +27,68 @@ const ALL_PROMPTS = [
   "When the vending machine drops two snacks instead of one",
   "When your mom likes a thirst comment you left on an instagram model's photo",
   "When you pull down your pants to poop and the seat is already warm from the last person",
-  "Having 10/10 buffalo wings, using the bathroom and getting buffalo sauce in your Weiner hole",
-"Slamming your cock in a toilet bowl",
-"Landing a backflip at the rodeo only to get plowed by a horse",
-"Backing your truck into the golf sim",
-"Accidentally ordering your Uber Eats to the ranch on a work day",
-"Getting pantsed in public - full dong falls out",
-"Accidentally order 3's instead of 6's",
-"Sneezing so hard at a urinal that you pee on your own shoe",
-"Doing a confident lean against a wall that turns out to be a door, which opens and fracturing you're cock",
-"Fully committing to a fist bump when the other guy was going for a handshake and then both of you just kind of hover there",
-"Loudly saying 'you too' when the waiter tells you to enjoy your meal",
-"Calling your coach 'mom' in front of the whole team",
-"Giving a big confident handshake to your new boss who just had hand surgery",
-"Doing a slow confident walk toward a push door and having to pull it in front of a full restaurant",
-"Accidentally dropping a hard R at the cookout. It does not go over well",
-"You're song comes on during a workout, you absolutely send it on the first set, and pulling something out in your back",
-"Accidentally sending a paragraph-long venting text about someone to that exact person",
-"Watching your sunglasses fall off the boat in slow motion and making eye contact with them as they sink",
-"Showing up to a costume party as Jesus only to find out it was not a costume party",
-"Zipping up your cock something about Mary style",
-"Watching your debit card get declined for a $7 purchase in a small, very quiet coffee shop",
-"Ordering a drink on a plane only for the flight attendant to spill it on your head",
-"Seeing Casey Tibbs hog at football practice",
-"Getting close lined playing red rover on the yard",
-"Holding Brady for the first time and he shits on you",
-"A horrible nights sleep only to be woken up to the sound of your dog barfing on your new jeans",
-"You buy a nifty new piece of art at the thrift store and go to hang It up and smoke your thumb with the hammer",
-"When you got the red lobster for the first time in 7 years for endless shrimp. They're all out of shrimp",
-"Peeing at urinal in socks and Birkenstocks and the dude next to you pisses all over your foot",
-"Coming up with the perfect prompt at a ranch",
-"Guessing the illumination perfectly",
-"A good smoothie on a summer day",
-"When your layover has a sick pizza joint and you become buddies with the pizza chef",
-"A rodeo with the ranch gang",
-"Eating a soufflé from Jeffrey",
-"A crisp dap",
-"Lazy Rivers",
-"Ghost wipes",
-"When a southern black woman calls you 'honey'",
-"Wedding Cigar",
-"When you butter a reverse job into a parking space",
-"Magicians",
-"When the girl at Publix calls you out of a long line to start a new checkout line",
-"Falling asleep on the couch and waking up to find someone put a blanket on you",
-"When you're dreading a thing all week and it gets cancelled the morning of",
-"Hearing your song come on at a gas station and realizing the person pumping next to you is also nodding",
-"Telling a joke and your buddy laughs so hard he snorts",
-"A ripping fire pit with the gang",
-"When you're driving back late and everyone else in the car falls asleep and you've got the music to yourself",
-"Getting the whole aisle to yourself on a plane",
-"Nailing a perfect medium rare on a steak",
-"When a dog does a big stretch",
-"Getting a reservation for Rocca on the day of",
-"A rainy Sunday with nothing to do",
-"A sick ass tree house",
-"When the bill comes out way cheaper than you expected",
-"An ice cold beer",
-"When Argi Breaks another chair at the ranch",
-"Ranching in Italy with the whole Ranch",
-"Thrifting a sick band tee shirt",
-"Ripping a dart",
-"When you go to a boring work meeting but your boss who you just met offers you an alp",
-  
+  "Having 10/10 buffalo wings, using the bathroom and getting buffalo sauce in your weiner hole",
+  "Slamming your cock in a toilet bowl",
+  "Cutting off your nipple while trying to make a salad",
+  "Landing a backflip at the rodeo only to get plowed by a horse",
+  "Backing your truck into the golf sim",
+  "Accidentally ordering your Uber Eats to the ranch on a work day",
+  "Getting pantsed in public - full dong falls out",
+  "Accidentally order 3's instead of 6's",
+  "Sneezing so hard at a urinal that you pee on your own shoe",
+  "Doing a confident lean against a wall that turns out to be a door, which opens and fracturing you're cock",
+  "Fully committing to a fist bump when the other guy was going for a handshake and then both of you just kind of hover there",
+  "Calling your coach 'mom' in front of the whole team",
+  "Giving a big confident handshake to your new boss who just had hand surgery",
+  "Doing a slow confident walk toward a push door and having to pull it in front of a full restaurant",
+  "Accidentally dropping a hard R at the cookout. It does not go over well",
+  "You're song comes on during a workout, you absolutely send it on the first set, and pulling something out in your back",
+  "Accidentally sending a paragraph-long venting text about someone to that exact person",
+  "Watching your sunglasses fall off the boat in slow motion and making eye contact with them as they sink",
+  "Showing up to a costume party as Jesus only to find out it was not a costume party",
+  "Zipping up your cock something about Mary style",
+  "Watching your debit card get declined for a $7 purchase in a small, very quiet coffee shop",
+  "Ordering a drink on a plane only for the flight attendant to spill it on your head",
+  "Seeing Casey Tibbs hog at football practice",
+  "Getting close lined playing red rover on the yard",
+  "Holding Brady for the first time and he shits on you",
+  "A horrible nights sleep only to be woken up to the sound of your dog barfing on your new jeans",
+  "You buy a nifty new piece of art at the thrift store and go to hang It up and smoke your thumb with the hammer",
+  "When you got the red lobster for the first time in 7 years for endless shrimp. They're all out of shrimp",
+  "Peeing at urinal in socks and Birkenstocks and the dude next to you pisses all over your foot",
+  "Coming up with the perfect prompt at a ranch",
+  "Guessing the illumination perfectly",
+  "A good smoothie on a summer day",
+  "When your layover has a sick pizza joint and you become buddies with the pizza chef",
+  "A rodeo with the ranch gang",
+  "Eating a soufflé from Jeffrey",
+  "A crisp dap",
+  "Lazy Rivers",
+  "Ghost wipes",
+  "When a southern black woman calls you 'honey'",
+  "Wedding Cigar",
+  "When you butter a reverse job into a parking space",
+  "Magicians",
+  "When the girl at Publix calls you out of a long line to start a new checkout line",
+  "Falling asleep on the couch and waking up to find someone put a blanket on you",
+  "When you're dreading a thing all week and it gets cancelled the morning of",
+  "Hearing your song come on at a gas station and realizing the person pumping next to you is also nodding",
+  "Telling a joke and your buddy laughs so hard he snorts",
+  "A ripping fire pit with the gang",
+  "When you're driving back late and everyone else in the car falls asleep and you've got the music to yourself",
+  "Getting the whole aisle to yourself on a plane",
+  "Nailing a perfect medium rare on a steak",
+  "When a dog does a big stretch",
+  "Getting a reservation for Rocca on the day of",
+  "A rainy Sunday with nothing to do",
+  "A sick ass tree house",
+  "When the bill comes out way cheaper than you expected",
+  "An ice cold beer",
+  "When Argi Breaks another chair at the ranch",
+  "Ranching in Italy with the whole Ranch",
+  "Thrifting a sick band tee shirt",
+  "Ripping a dart",
+  "When you go to a boring work meeting but your boss who you just met offers you an alp",
 ]
 
 const TEN_BUT_PROMPTS = [
@@ -143,6 +141,109 @@ const TEN_BUT_PROMPTS = [
   "They've been permanently banned from one specific Dave and Buster's",
   "They leave reviews for parking lots",
   "They whistle constantly and have no idea they are doing it",
+]
+
+const TRIVIA_QUESTIONS = [
+  { q: "What is the capital of Australia?", a: "Canberra" },
+  { q: "How many bones are in the adult human body?", a: "206" },
+  { q: "What is the smallest country in the world?", a: "Vatican City" },
+  { q: "Which animal has the longest lifespan?", a: "Greenland shark" },
+  { q: "What is the most spoken language in the world?", a: "Mandarin Chinese" },
+  { q: "How many hearts does an octopus have?", a: "3" },
+  { q: "What is the chemical symbol for gold?", a: "Au" },
+  { q: "Which country has the most natural lakes?", a: "Canada" },
+  { q: "What is the fastest land animal?", a: "Cheetah" },
+  { q: "How many sides does a heptagon have?", a: "7" },
+  { q: "What is the capital of Canada?", a: "Ottawa" },
+  { q: "Which planet has the most moons?", a: "Saturn" },
+  { q: "What is the largest ocean on Earth?", a: "Pacific Ocean" },
+  { q: "What country invented pizza?", a: "Italy" },
+  { q: "How many teeth does an adult human have?", a: "32" },
+  { q: "What is the longest river in the world?", a: "The Nile" },
+  { q: "Which animal cannot jump?", a: "Elephant" },
+  { q: "What is the hardest natural substance on Earth?", a: "Diamond" },
+  { q: "How many stars are on the American flag?", a: "50" },
+  { q: "What is the capital of Japan?", a: "Tokyo" },
+  { q: "Which fruit has its seeds on the outside?", a: "Strawberry" },
+  { q: "How many legs does a spider have?", a: "8" },
+  { q: "What is the largest continent?", a: "Asia" },
+  { q: "What gas do plants absorb from the atmosphere?", a: "Carbon dioxide" },
+  { q: "How many players are on a soccer team on the field?", a: "11" },
+  { q: "What is the smallest planet in our solar system?", a: "Mercury" },
+  { q: "Which country is home to the kangaroo?", a: "Australia" },
+  { q: "What is the most consumed meat in the world?", a: "Pork" },
+  { q: "How many colors are in a rainbow?", a: "7" },
+  { q: "What is the capital of Brazil?", a: "Brasilia" },
+  { q: "Which ocean is the saltiest?", a: "Atlantic Ocean" },
+  { q: "What is a group of crows called?", a: "A murder" },
+  { q: "How many eyes does a bee have?", a: "5" },
+  { q: "What country has the most pyramids?", a: "Sudan" },
+  { q: "What is the most expensive spice in the world?", a: "Saffron" },
+  { q: "Which mammal can fly?", a: "Bat" },
+  { q: "How long does it take light to travel from the sun to Earth?", a: "About 8 minutes" },
+  { q: "What is the capital of Egypt?", a: "Cairo" },
+  { q: "Which country drinks the most coffee per capita?", a: "Finland" },
+  { q: "What is the largest internal organ in the human body?", a: "Liver" },
+  { q: "How many time zones does Russia span?", a: "11" },
+  { q: "Which bird lays the largest eggs?", a: "Ostrich" },
+  { q: "What is the capital of Argentina?", a: "Buenos Aires" },
+  { q: "How many chambers does a human heart have?", a: "4" },
+  { q: "What is the longest bone in the human body?", a: "Femur (thigh bone)" },
+  { q: "Which country is the largest by land area?", a: "Russia" },
+  { q: "What is the national animal of Scotland?", a: "Unicorn" },
+  { q: "How many official languages does Switzerland have?", a: "4" },
+  { q: "What is the most venomous animal in the world?", a: "Box jellyfish" },
+  { q: "Which country invented paper?", a: "China" },
+  { q: "What is the capital of Kenya?", a: "Nairobi" },
+  { q: "How many tentacles does a squid have?", a: "10" },
+  { q: "Which element has the atomic number 1?", a: "Hydrogen" },
+  { q: "What is the largest desert in the world?", a: "Antarctica" },
+  { q: "Which planet is known as the Red Planet?", a: "Mars" },
+  { q: "How many strings does a standard guitar have?", a: "6" },
+  { q: "What country has the most UNESCO World Heritage Sites?", a: "Italy" },
+  { q: "What is the capital of South Korea?", a: "Seoul" },
+  { q: "How many legs does a lobster have?", a: "10" },
+  { q: "What is the only sea without a land boundary?", a: "Sargasso Sea" },
+  { q: "Which country is known as the Land of the Rising Sun?", a: "Japan" },
+  { q: "How many valves does a trumpet have?", a: "3" },
+  { q: "What is the capital of Morocco?", a: "Rabat" },
+  { q: "Which country has the most volcanoes?", a: "Indonesia" },
+  { q: "How many stomachs does a cow have?", a: "4" },
+  { q: "What is the smallest bone in the human body?", a: "Stirrup (in the ear)" },
+  { q: "Which country is the world's largest producer of coffee?", a: "Brazil" },
+  { q: "What is the capital of Nigeria?", a: "Abuja" },
+  { q: "How fast can a hummingbird flap its wings per second?", a: "About 80 times" },
+  { q: "Which country has the most islands?", a: "Sweden" },
+  { q: "What is the rarest blood type?", a: "AB negative" },
+  { q: "How many bones does a shark have?", a: "Zero — they have cartilage" },
+  { q: "What is the capital of Portugal?", a: "Lisbon" },
+  { q: "Which vegetable was once considered poisonous in Europe?", a: "Tomato" },
+  { q: "How many moons does Mars have?", a: "2" },
+  { q: "Which insect has the shortest lifespan?", a: "Mayfly (about 24 hours)" },
+  { q: "What is the capital of Thailand?", a: "Bangkok" },
+  { q: "How many keys does a standard piano have?", a: "88" },
+  { q: "Which country invented the printing press?", a: "Germany" },
+  { q: "What percentage of the Earth is covered by water?", a: "About 71%" },
+  { q: "How many eyes does a horseshoe crab have?", a: "10" },
+  { q: "What is the capital of Colombia?", a: "Bogota" },
+  { q: "Which food is known as the king of fruits?", a: "Durian" },
+  { q: "What is the longest wall in the world?", a: "Great Wall of China" },
+  { q: "Which animal sleeps standing up?", a: "Horse" },
+  { q: "What is the capital of New Zealand?", a: "Wellington" },
+  { q: "How many bones does a baby have at birth?", a: "About 270" },
+  { q: "What is the world's oldest religion?", a: "Hinduism" },
+  { q: "How many teeth does a snail have?", a: "Thousands (up to 14,000)" },
+  { q: "What is the capital of Saudi Arabia?", a: "Riyadh" },
+  { q: "Which planet rotates on its side?", a: "Uranus" },
+  { q: "What is the only fruit that grows its seed on the outside?", a: "Strawberry" },
+  { q: "How many muscles does the human body have?", a: "Over 600" },
+  { q: "Which country has the longest coastline in the world?", a: "Canada" },
+  { q: "What is the capital of Vietnam?", a: "Hanoi" },
+  { q: "How many hours are in a week?", a: "168" },
+  { q: "Which animal has the biggest eyes of any land creature?", a: "Ostrich" },
+  { q: "What is the capital of Ghana?", a: "Accra" },
+  { q: "How many liters are in a gallon?", a: "About 3.785" },
+  { q: "Which country is both an island and a continent?", a: "Australia" },
 ]
 
 function shuffle(arr) {
@@ -222,7 +323,6 @@ function playPop() {
 function playWhoosh() {
   try {
     const ctx = makeCtx()
-    // bubbly ascending chime — three quick happy notes
     ;[523, 659, 784].forEach((freq, idx) => {
       const osc = ctx.createOscillator(); const gain = ctx.createGain()
       osc.connect(gain); gain.connect(ctx.destination); osc.type = "sine"
@@ -246,7 +346,6 @@ function playYes() {
     osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.2)
   } catch (e) {}
 }
-// New No sound — soft thud, not harsh
 function playNo() {
   try {
     const ctx = makeCtx()
@@ -271,6 +370,116 @@ function playRideAgain() {
       osc.start(ctx.currentTime + idx * 0.07); osc.stop(ctx.currentTime + idx * 0.07 + 0.15)
     })
   } catch (e) {}
+}
+
+// ── TRIVIA GAME ───────────────────────────────────────────────────────────────
+function TriviaGame({ onBack }) {
+  const [questions] = useState(() => shuffle(TRIVIA_QUESTIONS))
+  const [index, setIndex] = useState(0)
+  const [revealed, setRevealed] = useState(false)
+  const [score, setScore] = useState({ correct: 0, wrong: 0 })
+  const [history, setHistory] = useState([])
+  const [phase, setPhase] = useState("playing")
+
+  const current = questions[index]
+
+  const markAnswer = (correct) => {
+    const newScore = { ...score, [correct ? "correct" : "wrong"]: score[correct ? "correct" : "wrong"] + 1 }
+    const newHistory = [...history, { q: current.q, a: current.a, correct }]
+    setScore(newScore)
+    setHistory(newHistory)
+    if (index + 1 >= questions.length) {
+      playFinal(); setPhase("results")
+    } else {
+      correct ? playYes() : playNo()
+      setIndex(index + 1)
+      setRevealed(false)
+    }
+  }
+
+  if (phase === "results") {
+    return (
+      <div className="gameWrapper">
+        <div className="card">
+          <div className="resultsTitle">Trivia Results</div>
+          <div className="resultsSubtitle">★ How smart are ya, partner? ★</div>
+          <div className="tenButScore">
+            <div className="tenButScoreBox tenButYesBox">
+              <div className="tenButScoreNum">{score.correct}</div>
+              <div className="tenButScoreLabel">Correct</div>
+            </div>
+            <div className="tenButScoreBox tenButNoBox">
+              <div className="tenButScoreNum">{score.wrong}</div>
+              <div className="tenButScoreLabel">Wrong</div>
+            </div>
+          </div>
+          {history.map((h, i) => (
+            <div key={i} className={`tenButResultRow ${h.correct ? "tenButResultYes" : "tenButResultNo"}`}>
+              <span className="tenButResultIcon">{h.correct ? "✓" : "✗"}</span>
+              <span className="tenButResultText"><strong>{h.q}</strong><br />{h.a}</span>
+            </div>
+          ))}
+          <div className="bottomButtons">
+            <button className="replayBtn" onClick={() => { playRideAgain(); window.location.reload() }}>Play Again</button>
+            <button className="replayBtn replayBtnSecondary" onClick={() => { playPop(); onBack() }}>Back</button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="gameWrapper">
+      <div className="progressBar">
+        <div className="progressFill" style={{ width: `${(index / questions.length) * 100}%` }} />
+      </div>
+      <p className="howto">Read the question out loud — then reveal the answer!</p>
+      <div className="card tenButCard">
+        <div className="cardLabel">★ Trivia ★</div>
+        <div className="promptNumber">Question {index + 1} of {questions.length}</div>
+        <div className="tenButPrompt" style={{ fontSize: "clamp(16px, 4.5vw, 26px)" }}>{current.q}</div>
+      </div>
+
+      {!revealed ? (
+        <button className="startBtn" onClick={() => { playClick(); setRevealed(true) }}>
+          Reveal Answer
+        </button>
+      ) : (
+        <>
+          <div className="card" style={{ textAlign: "center", marginBottom: "14px" }}>
+            <div className="cardLabel">★ Answer ★</div>
+            <div className="tenButPrompt" style={{ fontSize: "clamp(18px, 5vw, 30px)", color: "var(--rosewood)" }}>
+              {current.a}
+            </div>
+          </div>
+          <div className="tenButButtons">
+            <button className="tenButNo" onClick={() => markAnswer(false)}>✗ Got it Wrong</button>
+            <button className="tenButYes" onClick={() => markAnswer(true)}>✓ Got it Right</button>
+          </div>
+        </>
+      )}
+
+      <div className="tenButTally" style={{ marginTop: "12px" }}>
+        <span className="tenButTallyYes">✓ {score.correct} correct</span>
+        <span className="tenButTallyNo">✗ {score.wrong} wrong</span>
+      </div>
+
+      {history.length > 0 && (
+        <div style={{ marginBottom: "20px" }}>
+          <div className="divider">✦ previous answers ✦</div>
+          <div className="rankedList">
+            {[...history].reverse().map((h, i) => (
+              <div key={i} className={`tenButResultRow ${h.correct ? "tenButResultYes" : "tenButResultNo"}`}>
+                <span className="tenButResultIcon">{h.correct ? "✓" : "✗"}</span>
+                <span className="tenButResultText"><strong>{h.q}</strong> — {h.a}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back to Menu</button>
+    </div>
+  )
 }
 
 // ── THEY'RE A 10 BUT GAME ─────────────────────────────────────────────────────
@@ -331,25 +540,20 @@ function TenButGame({ onBack }) {
         <div className="progressFill" style={{ width: `${(index / prompts.length) * 100}%` }} />
       </div>
       <p className="howto">Would you still date them?</p>
-
       <div className="card tenButCard">
         <div className="cardLabel">★ They're A 10 But... ★</div>
         <div className="promptNumber">Card {index + 1} of {prompts.length}</div>
         <div className="tenButSetup">They're a 10 but</div>
         <div className="tenButPrompt">{prompts[index]}</div>
       </div>
-
       <div className="tenButButtons">
         <button className="tenButNo" onClick={() => answer("no")}>✗ Hard No</button>
         <button className="tenButYes" onClick={() => answer("yes")}>✓ Still a Yes</button>
       </div>
-
       <div className="tenButTally">
         <span className="tenButTallyYes">✓ {yesCount} yes</span>
         <span className="tenButTallyNo">✗ {noCount} no</span>
       </div>
-
-      {/* Live running list of answered cards */}
       {answers.length > 0 && (
         <div style={{ marginBottom: "20px" }}>
           <div className="divider">✦ your answers so far ✦</div>
@@ -363,41 +567,39 @@ function TenButGame({ onBack }) {
           </div>
         </div>
       )}
-
       <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back to Menu</button>
     </div>
   )
 }
 
 // ── SCREENS ──────────────────────────────────────────────────────────────────
-function MenuScreen({ onRandom, onCustom, onTenBut }) {
+function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia }) {
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) { document.documentElement.requestFullscreen?.() }
     else { document.exitFullscreen?.() }
     playPop()
   }
 
-const openWeather = () => {
-  playWhoosh()
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-  if (isMobile) {
-    // Try native weather app first, fall back to Clearwater forecast
-    window.location.href = "weather://"
-    setTimeout(() => {
+  const openWeather = () => {
+    playWhoosh()
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+    if (isMobile) {
+      window.location.href = "weather://"
+      setTimeout(() => {
+        window.open("https://forecast.weather.gov/MapClick.php?CityName=Clearwater&state=FL&site=TBW&textField1=27.9659&textField2=-82.8001", "_blank")
+      }, 500)
+    } else {
       window.open("https://forecast.weather.gov/MapClick.php?CityName=Clearwater&state=FL&site=TBW&textField1=27.9659&textField2=-82.8001", "_blank")
-    }, 500)
-  } else {
-    window.open("https://forecast.weather.gov/MapClick.php?CityName=Clearwater&state=FL&site=TBW&textField1=27.9659&textField2=-82.8001", "_blank")
+    }
   }
-}
 
   return (
     <div>
-<div className="quoteOfDay">
-  <div className="quoteOfDayLabel">★ Quote of the Day ★</div>
-  <span className="quoteOfDayText">"{quote.text}"</span>
-  <div className="quoteOfDayAuthor">— {quote.author}</div>
-</div>
+      <div className="quoteOfDay">
+        <div className="quoteOfDayLabel">★ Quote of the Day ★</div>
+        <span className="quoteOfDayText">"{quote.text}"</span>
+        <div className="quoteOfDayAuthor">— {quote.author}</div>
+      </div>
 
       <div className="card">
         <div className="cardLabel">★ Blind Ratings ★</div>
@@ -426,6 +628,13 @@ const openWeather = () => {
         <p className="modeIntro">Check the forecast!</p>
         <p className="comingSoonDesc">Open your weather app and see if your gut matches the forecast.</p>
         <button className="startBtn" onClick={openWeather}>Open Weather App</button>
+      </div>
+
+      <div className="card">
+        <div className="cardLabel">★ Trivia ★</div>
+        <p className="modeIntro">How smart are ya, partner?</p>
+        <p className="comingSoonDesc">100 questions on animals, history, food, countries and more. Read it out loud and mark it yourself.</p>
+        <button className="startBtn" onClick={() => { playWhoosh(); onTrivia() }}>Let's Go</button>
       </div>
     </div>
   )
@@ -581,11 +790,12 @@ export default function IndexPage() {
             </div>
           </header>
         )}
-        {phase === "menu" && <MenuScreen onRandom={startRandom} onCustom={startCustomEntry} onTenBut={() => setPhase("tenBut")} />}
+        {phase === "menu" && <MenuScreen onRandom={startRandom} onCustom={startCustomEntry} onTenBut={() => setPhase("tenBut")} onTrivia={() => setPhase("trivia")} />}
         {phase === "custom" && <CustomScreen onBack={goMenu} onStart={launchCustom} />}
         {phase === "playing" && <GameScreen prompts={prompts} slots={slots} currentIndex={currentIndex} onPick={pickSlot} onBack={goMenu} />}
         {phase === "results" && <ResultsScreen slots={slots} onPlayAgain={playAgain} onChangeMode={goMenu} />}
         {phase === "tenBut" && <TenButGame onBack={goMenu} />}
+        {phase === "trivia" && <TriviaGame onBack={goMenu} />}
       </div>
     </>
   )
