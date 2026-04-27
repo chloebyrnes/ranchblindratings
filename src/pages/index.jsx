@@ -612,7 +612,7 @@ const SPY_CATEGORIES = {
 // ── SPY GAME ──────────────────────────────────────────────────────────────────
 function SpyGame({ onBack }) {
   const [phase, setPhase] = useState("setup") // setup | reveal | playing | spyGuess | results
-  const [playerNames, setPlayerNames] = useState(["", "", "", ""])
+  const [playerNames, setPlayerNames] = useState(["", "", "", "", ""])
   const [category, setCategory] = useState("")
   const [item, setItem] = useState("")
   const [spyIndex, setSpyIndex] = useState(null)

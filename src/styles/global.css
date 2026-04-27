@@ -1266,3 +1266,35 @@ body::before {
   text-transform: uppercase;
   color: var(--terra-dark);
 }
+
+/* ── QUOTE OF THE DAY ── */
+.quoteOfDay {
+  text-align: center;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  font-family: var(--font);
+  color: var(--terra-dark);
+  border-bottom: 1px solid var(--terracotta);
+}
+.quoteOfDayLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--rosewood);
+  margin-bottom: 6px;
+  text-align: center;
+}
+.quoteOfDayText {
+  font-size: clamp(12px, 3vw, 14px);
+  font-style: italic;
+  display: block;
+  margin-bottom: 4px;
+  text-align: center;
+}
+.quoteOfDayAuthor {
+  font-size: 11px;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  text-align: center;
+}
