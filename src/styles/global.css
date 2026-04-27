@@ -47,22 +47,9 @@ body::before {
   max-width: 640px;
   margin: 0 auto;
   padding: 0 16px 60px;
-  padding-top: 52px;
   min-height: 100vh;
   position: relative;
   z-index: 1;
-}
-
-.quoteOfDay {
-  text-align: center;
-  padding: 12px 16px;
-  margin-bottom: 16px;
-  font-family: var(--font);
-  font-size: clamp(12px, 3vw, 14px);
-  font-style: italic;
-  color: var(--terra-dark);
-  border-bottom: 1px solid var(--terracotta);
-  opacity: 0.85;
 }
 
 /* ── HEADER ── */
@@ -1132,4 +1119,150 @@ body::before {
   font-size: clamp(12px, 3vw, 14px);
   color: var(--ink);
   line-height: 1.4;
+}
+
+/* ── SPY GAME ── */
+.spyRevealBox {
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+  margin: 8px 0;
+}
+
+.spyRevealSpy {
+  background: var(--rosewood-dark);
+  color: #ffffff;
+  border: 2px solid var(--rosewood);
+}
+
+.spyRevealPlayer {
+  background: var(--cream);
+  color: var(--ink);
+  border: 2px solid var(--terracotta);
+}
+
+.spyRevealLabel {
+  font-family: var(--font);
+  font-size: clamp(14px, 4vw, 20px);
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.spyRevealCategory {
+  font-family: var(--font);
+  font-size: clamp(12px, 3vw, 15px);
+  margin-bottom: 10px;
+  opacity: 0.85;
+}
+
+.spyRevealItem {
+  font-family: var(--font);
+  font-size: clamp(22px, 6vw, 36px);
+  font-weight: 700;
+  color: var(--rosewood);
+  margin-top: 6px;
+}
+
+.spyRevealHint {
+  font-family: var(--font);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-top: 8px;
+}
+
+.spyPlayingCategory {
+  font-family: var(--font);
+  font-size: clamp(16px, 4vw, 22px);
+  font-weight: 700;
+  color: var(--rosewood);
+  text-align: center;
+  margin-bottom: 4px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.spyPlayerList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.spyPlayerChip {
+  background: var(--cream);
+  border: 1.5px solid var(--terracotta);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.spyVoteButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spyVoteBtn {
+  width: 100%;
+  padding: 14px;
+  background: var(--cream);
+  color: var(--ink);
+  border: 2px solid var(--rosewood);
+  border-radius: 3px;
+  font-family: var(--font);
+  font-size: clamp(14px, 3.5vw, 17px);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.13s ease;
+  box-shadow: 3px 3px 0 var(--rosewood-dark);
+  text-align: center;
+  min-height: 52px;
+  -webkit-appearance: none;
+}
+
+.spyVoteBtn:hover, .spyVoteBtn:active {
+  background: var(--rosewood);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.spyResultDetails {
+  background: var(--cream);
+  border-radius: 4px;
+  padding: 16px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.spyResultRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font);
+  font-size: clamp(13px, 3vw, 15px);
+  color: var(--ink);
+  border-bottom: 1px solid var(--tan-dark, #ccc);
+  padding-bottom: 8px;
+}
+
+.spyResultRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.spyResultRow span {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--terra-dark);
 }

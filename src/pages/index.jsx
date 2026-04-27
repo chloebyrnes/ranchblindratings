@@ -586,8 +586,302 @@ function TenButGame({ onBack }) {
   )
 }
 
+
+// ── SPY GAME DATA ─────────────────────────────────────────────────────────────
+const SPY_CATEGORIES = {
+  "Christmas": ["Santa Claus", "Christmas Tree", "Candy Cane", "Rudolph", "Mistletoe", "Eggnog", "Christmas Stocking", "Ugly Sweater", "Wreath", "Gingerbread Man"],
+  "Dessert": ["Tiramisu", "Crème Brûlée", "Chocolate Lava Cake", "Cheesecake", "Macarons", "Banana Split", "Churros", "Bread Pudding", "Panna Cotta", "Cannoli"],
+  "Jobs": ["Surgeon", "Air Traffic Controller", "Bomb Disposal Expert", "Submarine Captain", "Astronaut", "Rodeo Clown", "Ventriloquist", "Mattress Tester", "Professional Bridesmaid", "Chicken Sexer"],
+  "At the Beach": ["Lifeguard", "Sunscreen", "Sandcastle", "Seagull", "Beach Umbrella", "Boogie Board", "Jellyfish", "Crab", "Surf Instructor", "Ice Cream Truck"],
+  "At a Wedding": ["Best Man", "Flower Girl", "Open Bar", "Bouquet Toss", "Father-Daughter Dance", "Wedding Cake", "Ring Bearer", "Crying Guest", "Photobooth", "DJ"],
+  "Wild West": ["Sheriff", "Saloon", "Tumbleweed", "Gold Nugget", "Stagecoach", "Wanted Poster", "Lasso", "Spittoon", "Canteen", "Campfire"],
+  "Halloween": ["Vampire", "Witch", "Jack-o-Lantern", "Candy Corn", "Haunted House", "Zombie", "Black Cat", "Cauldron", "Skeleton", "Full Moon"],
+  "Airport": ["TSA Agent", "Carry-On Bag", "Boarding Pass", "Overpriced Sandwich", "Middle Seat", "Duty Free Shop", "Delayed Flight", "Lost Luggage", "Customs", "Sky Bridge"],
+  "Thanksgiving": ["Turkey", "Gravy Boat", "Cranberry Sauce", "Stuffing", "Pumpkin Pie", "Green Bean Casserole", "Drunk Uncle", "Folding Table", "Nap", "Leftovers"],
+  "At a Bar": ["Bartender", "Happy Hour", "Jukebox", "Pool Table", "Last Call", "Tab", "Bouncer", "Trivia Night", "Bar Fight", "Karaoke"],
+  "Space": ["Black Hole", "Space Shuttle", "Astronaut Ice Cream", "Meteorite", "Space Suit", "Moon Rover", "Nebula", "Satellite", "Gravity Boot", "Tang"],
+  "The Ranch": ["Ranch Water", "ALP Can", "Golf Sim", "Soufflé", "Fire Pit", "Luca", "Boot", "Argi's Chair", "The Rodeo", "Ranch Gang"],
+  "Hospital": ["Surgeon", "IV Drip", "Hospital Gown", "Bedpan", "Defibrillator", "Stethoscope", "Waiting Room", "Orderly", "MRI Machine", "Jello"],
+  "Gym": ["Personal Trainer", "Protein Shake", "Bench Press", "Foam Roller", "Locker Room", "Treadmill", "Squat Rack", "Spotter", "Mirror Selfie", "Sauna"],
+  "Movie Theater": ["Popcorn", "Trailers", "Back Row", "Usher", "Recliner Seat", "Junior Mints", "Talker", "Projector", "Sneak-In Snacks", "End Credits"],
+  "Camping": ["Tent", "S'mores", "Bear Spray", "Sleeping Bag", "Campfire", "Headlamp", "Trail Mix", "Bug Spray", "Canoe", "Outhouse"],
+  "New Year's Eve": ["Champagne", "Countdown", "Ball Drop", "Party Hat", "Midnight Kiss", "Fireworks", "Dick Clark", "Designated Driver", "Noisemaker", "Resolution"],
+  "Fast Food": ["Drive-Thru", "Happy Meal", "Secret Menu", "Dipping Sauce", "Meal Deal", "Soft Serve", "Order Kiosk", "Dollar Menu", "Grease Trap", "Free Refills"],
+}
+
+// ── SPY GAME ──────────────────────────────────────────────────────────────────
+function SpyGame({ onBack }) {
+  const [phase, setPhase] = useState("setup") // setup | reveal | playing | spyGuess | results
+  const [playerNames, setPlayerNames] = useState(["", "", "", ""])
+  const [category, setCategory] = useState("")
+  const [item, setItem] = useState("")
+  const [spyIndex, setSpyIndex] = useState(null)
+  const [revealIndex, setRevealIndex] = useState(0)
+  const [currentReveal, setCurrentReveal] = useState(null) // null | "spy" | "player"
+  const [spyGuess, setSpyGuess] = useState("")
+  const [gameResult, setGameResult] = useState(null) // "spyCaught" | "spyGuessedRight" | "spyEscaped"
+  const [votedSpy, setVotedSpy] = useState(null)
+
+  const validPlayers = playerNames.filter(n => n.trim().length > 0)
+
+  const startGame = () => {
+    if (validPlayers.length < 3) return
+    const cats = Object.keys(SPY_CATEGORIES)
+    const chosenCat = cats[Math.floor(Math.random() * cats.length)]
+    const items = SPY_CATEGORIES[chosenCat]
+    const chosenItem = items[Math.floor(Math.random() * items.length)]
+    const spy = Math.floor(Math.random() * validPlayers.length)
+    setCategory(chosenCat)
+    setItem(chosenItem)
+    setSpyIndex(spy)
+    setRevealIndex(0)
+    setCurrentReveal(null)
+    setPhase("reveal")
+    playWhoosh()
+  }
+
+  const handleRevealTap = () => {
+    if (currentReveal === null) {
+      // Show the role
+      setCurrentReveal(revealIndex === spyIndex ? "spy" : "player")
+      playClick()
+    } else {
+      // Hide and move to next player
+      setCurrentReveal(null)
+      if (revealIndex + 1 >= validPlayers.length) {
+        setPhase("playing")
+        playFinal()
+      } else {
+        setRevealIndex(revealIndex + 1)
+      }
+    }
+  }
+
+  const handleVote = (idx) => {
+    setVotedSpy(idx)
+    if (idx === spyIndex) {
+      // Spy was caught — now spy gets to guess
+      setPhase("spyGuess")
+      playYes()
+    } else {
+      // Wrong person — spy wins
+      setGameResult("spyEscaped")
+      setPhase("results")
+      playNo()
+    }
+  }
+
+  const handleSpyGuess = () => {
+    const guess = spyGuess.trim().toLowerCase()
+    const correct = item.toLowerCase()
+    if (guess === correct || correct.includes(guess) || guess.includes(correct.split(" ")[0].toLowerCase())) {
+      setGameResult("spyGuessedRight")
+    } else {
+      setGameResult("spyCaught")
+    }
+    setPhase("results")
+    playFinal()
+  }
+
+  const resetGame = () => {
+    setPhase("setup")
+    setPlayerNames(["", "", "", ""])
+    setCategory("")
+    setItem("")
+    setSpyIndex(null)
+    setRevealIndex(0)
+    setCurrentReveal(null)
+    setSpyGuess("")
+    setGameResult(null)
+    setVotedSpy(null)
+  }
+
+  // ── SETUP ──
+  if (phase === "setup") {
+    return (
+      <div className="gameWrapper">
+        <div className="card">
+          <div className="cardLabel">★ Spy — Enter Players ★</div>
+          <p className="howto" style={{marginBottom:"16px"}}>Add the names of everyone playing (3–10 players). Pass the phone around to reveal roles.</p>
+          <div className="promptInputs">
+            {playerNames.map((name, i) => (
+              <div className="promptInputRow" key={i}>
+                <span className="promptNumLabel">{i + 1}</span>
+                <input
+                  className="promptInput"
+                  type="text"
+                  maxLength={20}
+                  placeholder={`Player ${i + 1}...`}
+                  value={name}
+                  onChange={e => {
+                    const next = [...playerNames]
+                    next[i] = e.target.value
+                    setPlayerNames(next)
+                  }}
+                />
+                {playerNames.length > 3 && (
+                  <button
+                    onClick={() => setPlayerNames(playerNames.filter((_, j) => j !== i))}
+                    style={{background:"none",border:"none",color:"var(--rosewood)",fontSize:"18px",cursor:"pointer",padding:"0 4px"}}
+                  >✕</button>
+                )}
+              </div>
+            ))}
+          </div>
+          {playerNames.length < 10 && (
+            <button
+              className="backBtnBottom"
+              style={{marginBottom:"12px"}}
+              onClick={() => setPlayerNames([...playerNames, ""])}
+            >+ Add Player</button>
+          )}
+          <button
+            className="startBtn"
+            disabled={validPlayers.length < 3}
+            onClick={startGame}
+          >
+            Deal Roles
+          </button>
+        </div>
+        <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back to Menu</button>
+      </div>
+    )
+  }
+
+  // ── REVEAL ──
+  if (phase === "reveal") {
+    const playerName = validPlayers[revealIndex]
+    return (
+      <div className="gameWrapper">
+        <div className="card tenButCard">
+          <div className="cardLabel">★ Spy ★</div>
+          <div className="promptNumber">{revealIndex + 1} of {validPlayers.length}</div>
+          <div className="tenButSetup" style={{fontSize:"clamp(18px,5vw,28px)",marginBottom:"6px"}}>{playerName}</div>
+          <p className="howto" style={{marginBottom:"16px"}}>
+            {currentReveal === null
+              ? "Tap below to see your role — don't show anyone else!"
+              : currentReveal === "spy"
+                ? "Memorize it, then tap to hide"
+                : "Memorize it, then tap to hide"}
+          </p>
+
+          {currentReveal === null ? (
+            <button className="startBtn" onClick={handleRevealTap}>👁 Reveal My Role</button>
+          ) : (
+            <div>
+              {currentReveal === "spy" ? (
+                <div className="spyRevealBox spyRevealSpy">
+                  <div className="spyRevealLabel">YOU ARE THE SPY</div>
+                  <div className="spyRevealCategory">Category: <strong>{category}</strong></div>
+                  <div className="spyRevealHint">You don't know the item — blend in!</div>
+                </div>
+              ) : (
+                <div className="spyRevealBox spyRevealPlayer">
+                  <div className="spyRevealLabel">YOU ARE NOT THE SPY</div>
+                  <div className="spyRevealCategory">Category: <strong>{category}</strong></div>
+                  <div className="spyRevealItem">{item}</div>
+                </div>
+              )}
+              <button className="startBtn" style={{marginTop:"14px"}} onClick={handleRevealTap}>
+                {revealIndex + 1 < validPlayers.length ? "Hide & Pass to Next Player →" : "Hide & Start Game"}
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    )
+  }
+
+  // ── PLAYING ──
+  if (phase === "playing") {
+    return (
+      <div className="gameWrapper">
+        <div className="card">
+          <div className="cardLabel">★ Spy — In Progress ★</div>
+          <div className="spyPlayingCategory">Category: <strong>{category}</strong></div>
+          <p className="howto" style={{margin:"14px 0"}}>
+            Go around asking each other questions about the item. Try to spot the spy — they only know the category!
+          </p>
+          <div className="spyPlayerList">
+            {validPlayers.map((name, i) => (
+              <div key={i} className="spyPlayerChip">{name}</div>
+            ))}
+          </div>
+          <div className="divider" style={{margin:"18px 0"}}>✦ ready to vote? ✦</div>
+          <p className="howto" style={{marginBottom:"12px"}}>Who do you think is the spy?</p>
+          <div className="spyVoteButtons">
+            {validPlayers.map((name, i) => (
+              <button key={i} className="spyVoteBtn" onClick={() => handleVote(i)}>{name}</button>
+            ))}
+          </div>
+        </div>
+        <button className="backBtnBottom" onClick={() => { playPop(); resetGame() }}>← Start Over</button>
+      </div>
+    )
+  }
+
+  // ── SPY GUESS ──
+  if (phase === "spyGuess") {
+    return (
+      <div className="gameWrapper">
+        <div className="card tenButCard">
+          <div className="cardLabel">★ Spy Caught! ★</div>
+          <div className="tenButSetup">The group voted for</div>
+          <div className="tenButPrompt" style={{color:"var(--rosewood)"}}>{validPlayers[votedSpy]}</div>
+          <p className="howto" style={{margin:"14px 0"}}>
+            {validPlayers[spyIndex]}, you were caught! But you get one chance — guess the item to steal the win.
+          </p>
+          <p className="slotsLabel" style={{marginBottom:"8px"}}>Category: <strong>{category}</strong></p>
+          <input
+            className="promptInput"
+            type="text"
+            placeholder="Your guess..."
+            value={spyGuess}
+            onChange={e => setSpyGuess(e.target.value)}
+            style={{marginBottom:"14px", width:"100%"}}
+          />
+          <button className="startBtn" disabled={!spyGuess.trim()} onClick={handleSpyGuess}>
+            Submit Guess
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  // ── RESULTS ──
+  if (phase === "results") {
+    const messages = {
+      spyCaught: { title: "Spy Caught!", sub: "The group wins!", color: "var(--rosewood)" },
+      spyGuessedRight: { title: "Spy Wins!", sub: `${validPlayers[spyIndex]} guessed it!`, color: "var(--terra-dark)" },
+      spyEscaped: { title: "Spy Escapes!", sub: `${validPlayers[spyIndex]} was the spy all along!`, color: "var(--terra-dark)" },
+    }
+    const msg = messages[gameResult]
+    return (
+      <div className="gameWrapper">
+        <div className="card tenButCard">
+          <div className="resultsTitle" style={{color: msg.color}}>{msg.title}</div>
+          <div className="resultsSubtitle">{msg.sub}</div>
+          <div className="spyResultDetails">
+            <div className="spyResultRow"><span>Category</span><strong>{category}</strong></div>
+            <div className="spyResultRow"><span>The Item</span><strong>{item}</strong></div>
+            <div className="spyResultRow"><span>The Spy</span><strong>{validPlayers[spyIndex]}</strong></div>
+            {spyGuess && <div className="spyResultRow"><span>Spy's Guess</span><strong>{spyGuess}</strong></div>}
+          </div>
+          <div className="bottomButtons">
+            <button className="replayBtn" onClick={() => { playWhoosh(); startGame() }}>Play Again</button>
+            <button className="replayBtn replayBtnSecondary" onClick={() => { playPop(); resetGame() }}>New Players</button>
+          </div>
+        </div>
+        <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back to Menu</button>
+      </div>
+    )
+  }
+
+  return null
+}
+
 // ── SCREENS ──────────────────────────────────────────────────────────────────
-function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia }) {
+function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia, onSpy }) {
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) { document.documentElement.requestFullscreen?.() }
     else { document.exitFullscreen?.() }
@@ -649,6 +943,13 @@ function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia }) {
         <p className="modeIntro">How smart are ya, partner?</p>
         <p className="comingSoonDesc">100 questions on animals, history, food, countries and more. Read it out loud and mark it yourself.</p>
         <button className="startBtn" onClick={() => { playWhoosh(); onTrivia() }}>Let's Go</button>
+      </div>
+
+      <div className="card">
+        <div className="cardLabel">★ Spy ★</div>
+        <p className="modeIntro">One of you is the spy.</p>
+        <p className="comingSoonDesc">Everyone gets a secret role from a category — except the spy who only knows the category. Ask questions, find the spy, or be the spy and guess the item.</p>
+        <button className="startBtn" onClick={() => { playWhoosh(); onSpy() }}>Find the Spy</button>
       </div>
     </div>
   )
@@ -810,12 +1111,13 @@ export default function IndexPage() {
             </div>
           </header>
         )}
-        {phase === "menu" && <MenuScreen onRandom={startRandom} onCustom={startCustomEntry} onTenBut={() => setPhase("tenBut")} onTrivia={() => setPhase("trivia")} />}
+        {phase === "menu" && <MenuScreen onRandom={startRandom} onCustom={startCustomEntry} onTenBut={() => setPhase("tenBut")} onTrivia={() => setPhase("trivia")} onSpy={() => setPhase("spy")} />}
         {phase === "custom" && <CustomScreen onBack={goMenu} onStart={launchCustom} />}
         {phase === "playing" && <GameScreen prompts={prompts} slots={slots} currentIndex={currentIndex} onPick={pickSlot} onBack={goMenu} />}
         {phase === "results" && <ResultsScreen slots={slots} onPlayAgain={playAgain} onChangeMode={goMenu} />}
         {phase === "tenBut" && <TenButGame onBack={goMenu} />}
         {phase === "trivia" && <TriviaGame onBack={goMenu} />}
+        {phase === "spy" && <SpyGame onBack={goMenu} />}
       </div>
     </>
   )
