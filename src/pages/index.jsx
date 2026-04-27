@@ -5,26 +5,72 @@ import cigarette from "../../static/cigarette2.png"
 import alpCan from "../../static/alp2.png"
 import luca from "../../static/luca.png"
 
-const ALL_PROMPTS = [
-  "Stubbing your toe","Getting a day off work","Finding $20 in your pocket",
-  "Missing your alarm","Sitting in traffic for an hour and you have to pee",
+const GOOD_PROMPTS = [
+  "Getting a day off work",
   "A hot shower after a long day",
-  "Winning a board game","Running out of phone battery","Watching a great sunset",
-  "Spilling coffee on yourself while you're wearing white","Getting a compliment from a stranger",
-  "Forgetting someone's name mid-conversation","Finishing a really good book",
-  "A mosquito bite on your ankle","Finding the perfect parking spot",
-  "Dropping your food on the floor","Waking up before your alarm naturally",
-  "Slow internet when you need it most","A dog greeting you at the door",
-  "Having your card declined in public","Getting the window seat on a flight",
-  "Accidentally liking an old photo while stalking someone on IG","Fresh bedsheets after a shower",
-  "Replying 'you too' when the waiter says enjoy your meal",
-  "Finding out your favorite show has a new season","Burning your tongue on hot food",
-  "Fracturing your cock",
-  "When you try to quietly fart in a meeting but it comes out as a long wet trumpet solo",
-  "Accidentally playing porn through the bluetooth speaker at a family gathering",
+  "Winning a board game",
+  "Watching a great sunset",
+  "Getting a compliment from a stranger",
+  "Finishing a really good book",
+  "Finding the perfect parking spot",
+  "Waking up before your alarm naturally",
+  "A dog greeting you at the door",
+  "Getting the window seat on a flight",
+  "Fresh bedsheets after a shower",
+  "Finding out your favorite show has a new season",
   "Somebody bringing you coffee exactly how you like it without you asking",
   "When your team pulls off a miracle comeback in the last seconds of the game",
   "When the vending machine drops two snacks instead of one",
+  "Coming up with the perfect prompt at a ranch",
+  "Guessing the moon illumination perfectly",
+  "A good smoothie on a summer day",
+  "When your layover has a sick pizza joint and you become buddies with the pizza chef",
+  "A rodeo with the ranch gang",
+  "Eating a soufflé from Jeffrey",
+  "A crisp dap",
+  "Lazy Rivers",
+  "Ghost wipes",
+  "When a southern black woman calls you 'honey'",
+  "Wedding Cigar",
+  "When you butter a reverse job into a parking space",
+  "Magicians",
+  "When the girl at Publix calls you out of a long line to start a new checkout line",
+  "Falling asleep on the couch and waking up to find someone put a blanket on you",
+  "When you're dreading a thing all week and it gets cancelled the morning of",
+  "Hearing your song come on at a gas station and realizing the person pumping next to you is also nodding",
+  "Telling a joke and your buddy laughs so hard he snorts",
+  "A ripping fire pit with the gang",
+  "When you're driving back late and everyone else in the car falls asleep and you've got the music to yourself",
+  "Getting the whole aisle to yourself on a plane",
+  "Nailing a perfect medium rare on a steak",
+  "When a dog does a big stretch",
+  "Getting a reservation for Rocca on the day of",
+  "A rainy Sunday with nothing to do",
+  "A sick ass tree house",
+  "When the bill comes out way cheaper than you expected",
+  "An ice cold beer",
+  "Ranching in Italy with the whole Ranch",
+  "Thrifting a sick band tee shirt",
+  "Ripping a dart",
+  "When you go to a boring work meeting but your boss who you just met offers you an alp",
+]
+
+const BAD_PROMPTS = [
+  "Stubbing your toe",
+  "Finding $20 in your pocket",
+  "Missing your alarm",
+  "Sitting in traffic for an hour and you have to pee",
+  "Spilling coffee on yourself while you're wearing white",
+  "Forgetting someone's name mid-conversation",
+  "A mosquito bite on your ankle",
+  "Dropping your food on the floor",
+  "Having your card declined in public",
+  "Accidentally liking an old photo while stalking someone on IG",
+  "Replying 'you too' when the waiter says enjoy your meal",
+  "Burning your tongue on hot food",
+  "Fracturing your cock",
+  "When you try to quietly fart in a meeting but it comes out as a long wet trumpet solo",
+  "Accidentally playing porn through the bluetooth speaker at a family gathering",
   "When your mom likes a thirst comment you left on an instagram model's photo",
   "When you pull down your pants to poop and the seat is already warm from the last person",
   "Having 10/10 buffalo wings, using the bathroom and getting buffalo sauce in your weiner hole",
@@ -53,42 +99,10 @@ const ALL_PROMPTS = [
   "Getting close lined playing red rover on the yard",
   "Holding Brady for the first time and he shits on you",
   "A horrible nights sleep only to be woken up to the sound of your dog barfing on your new jeans",
-  "You buy a nifty new piece of art at the thrift store and go to hang It up and smoke your thumb with the hammer",
+  "You buy a nifty new piece of art at the thrift store and go to hang it up and smoke your thumb with the hammer",
   "When you got the red lobster for the first time in 7 years for endless shrimp. They're all out of shrimp",
   "Peeing at urinal in socks and Birkenstocks and the dude next to you pisses all over your foot",
-  "Coming up with the perfect prompt at a ranch",
-  "Guessing the illumination perfectly",
-  "A good smoothie on a summer day",
-  "When your layover has a sick pizza joint and you become buddies with the pizza chef",
-  "A rodeo with the ranch gang",
-  "Eating a soufflé from Jeffrey",
-  "A crisp dap",
-  "Lazy Rivers",
-  "Ghost wipes",
-  "When a southern black woman calls you 'honey'",
-  "Wedding Cigar",
-  "When you butter a reverse job into a parking space",
-  "Magicians",
-  "When the girl at Publix calls you out of a long line to start a new checkout line",
-  "Falling asleep on the couch and waking up to find someone put a blanket on you",
-  "When you're dreading a thing all week and it gets cancelled the morning of",
-  "Hearing your song come on at a gas station and realizing the person pumping next to you is also nodding",
-  "Telling a joke and your buddy laughs so hard he snorts",
-  "A ripping fire pit with the gang",
-  "When you're driving back late and everyone else in the car falls asleep and you've got the music to yourself",
-  "Getting the whole aisle to yourself on a plane",
-  "Nailing a perfect medium rare on a steak",
-  "When a dog does a big stretch",
-  "Getting a reservation for Rocca on the day of",
-  "A rainy Sunday with nothing to do",
-  "A sick ass tree house",
-  "When the bill comes out way cheaper than you expected",
-  "An ice cold beer",
-  "When Argi Breaks another chair at the ranch",
-  "Ranching in Italy with the whole Ranch",
-  "Thrifting a sick band tee shirt",
-  "Ripping a dart",
-  "When you go to a boring work meeting but your boss who you just met offers you an alp",
+  "When Argi breaks another chair at the ranch",
 ]
 
 const TEN_BUT_PROMPTS = [
@@ -688,7 +702,7 @@ function GameScreen({ prompts, slots, currentIndex, onPick, onBack }) {
       <div className="card">
         <div className="cardLabel">★ Current Prompt ★</div>
         <div className="promptNumber">Prompt {currentIndex + 1} of 10</div>
-        <div className="promptText">"{prompt}"</div>
+        <div className="promptText">{prompt}</div>
         <div className="promptInstruction">— Where does this land? —</div>
       </div>
       <div className="card">
@@ -747,7 +761,9 @@ export default function IndexPage() {
   const [fsLabel, setFsLabel] = useState("⛶ TV Mode")
 
   const startRandom = useCallback(() => {
-    setPrompts(shuffle(ALL_PROMPTS).slice(0, 10))
+    const good = shuffle(GOOD_PROMPTS).slice(0, 5)
+    const bad = shuffle(BAD_PROMPTS).slice(0, 5)
+    setPrompts(shuffle([...good, ...bad]))
     setSlots(Array(10).fill(null)); setCurrentIndex(0); setMode("random"); setPhase("playing")
   }, [])
   const startCustomEntry = useCallback(() => { setPhase("custom") }, [])
@@ -764,7 +780,11 @@ export default function IndexPage() {
   }, [slots, prompts, currentIndex])
   const playAgain = useCallback(() => {
     if (mode === "custom" && customPrompts.length > 0) { setPrompts(shuffle(customPrompts)) }
-    else { setPrompts(shuffle(ALL_PROMPTS).slice(0, 10)) }
+    else {
+      const good = shuffle(GOOD_PROMPTS).slice(0, 5)
+      const bad = shuffle(BAD_PROMPTS).slice(0, 5)
+      setPrompts(shuffle([...good, ...bad]))
+    }
     setSlots(Array(10).fill(null)); setCurrentIndex(0); setPhase("playing")
   }, [mode, customPrompts])
   const goMenu = useCallback(() => { setPhase("menu") }, [])
