@@ -116,27 +116,29 @@ function shuffle(arr) {
 }
 
 const quotes = [
-  "If it ain't broke, hit it harder.",
-  "I've been rich and I've been poor. Rich is better, but either way I need a nap.",
-  "Not my horse, not my rodeo, not my problem.",
-  "I don't trust stairs. They're always up to something.",
-  "Lord give me patience, because if you give me strength I'm gonna need bail money.",
-  "I'm not lazy, I'm on energy-saving mode.",
-  "The road to success is always under construction.",
-  "Some days you're the bull. Most days you're the fence.",
-  "If common sense was lard, some folks couldn't grease a skillet.",
-  "I've got the body of a god. Unfortunately it's Buddha.",
-  "Age is just a number. Mine is unlisted.",
-  "I don't need Google, my wife knows everything.",
-  "Behind every great man is a woman rolling her eyes.",
-  "I put the 'pro' in procrastination.",
-  "My people skills are just fine. It's my tolerance for idiots that needs work.",
-  "I'm not arguing, I'm just explaining why I'm right.",
-  "I run on coffee, sarcasm, and inappropriate thoughts.",
-  "Life is short. Buy the boots.",
-  "I was born ready. I just wasn't born on time.",
-  "If you think adventure is dangerous, try routine — it's lethal.",
+  { text: "If it ain't broke, hit it harder.", author: "Every cowboy ever" },
+  { text: "Not my horse, not my rodeo, not my problem.", author: "Unknown rancher" },
+  { text: "I don't trust stairs. They're always up to something.", author: "Suspicious farmhand" },
+  { text: "Lord give me patience, because if you give me strength I'm gonna need bail money.", author: "Grandma, probably" },
+  { text: "Some days you're the bull. Most days you're the fence.", author: "Old rodeo wisdom" },
+  { text: "If common sense was lard, some folks couldn't grease a skillet.", author: "Southern proverb" },
+  { text: "Life is short. Buy the boots.", author: "Every Texan" },
+  { text: "I was born ready. I just wasn't born on time.", author: "Late cowboy" },
+  { text: "I'm not lazy, I'm on energy-saving mode.", author: "Ranch hand, 3pm" },
+  { text: "I put the 'pro' in procrastination.", author: "Anonymous outlaw" },
+  { text: "My people skills are just fine. It's my tolerance for idiots that needs work.", author: "Sheriff, unquoted" },
+  { text: "I'm not arguing, I'm just explaining why I'm right.", author: "Every spouse at game night" },
+  { text: "I run on coffee, sarcasm, and inappropriate thoughts.", author: "Night shift wrangler" },
+  { text: "I don't need Google, my wife knows everything.", author: "Smart husband" },
+  { text: "Age is just a number. Mine is unlisted.", author: "Unnamed elder" },
+  { text: "Behind every great man is a woman rolling her eyes.", author: "Historical fact" },
+  { text: "If you think adventure is dangerous, try routine — it's lethal.", author: "Paulo Coelho" },
+  { text: "The road to success is always under construction.", author: "Lily Tomlin" },
+  { text: "I've got the body of a god. Unfortunately it's Buddha.", author: "Billy Connolly" },
+  { text: "I was not designed to wake up before the chickens.", author: "City folk, lost" },
 ]
+
+const quote = quotes[Math.floor(Math.random() * quotes.length)]
 
 // ── SOUNDS ───────────────────────────────────────────────────────────────────
 function makeCtx() {
@@ -353,7 +355,9 @@ const openWeather = () => {
   return (
     <div>
 <div className="quoteOfDay">
-  <span className="quoteOfDayText">"{quotes[Math.floor(Math.random() * quotes.length)]}"</span>
+  <div className="quoteOfDayLabel">★ Quote of the Day ★</div>
+  <span className="quoteOfDayText">"{quote.text}"</span>
+  <div className="quoteOfDayAuthor">— {quote.author}</div>
 </div>
 
       <div className="card">
