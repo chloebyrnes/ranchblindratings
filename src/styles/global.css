@@ -53,6 +53,18 @@ body::before {
   z-index: 1;
 }
 
+.quoteOfDay {
+  text-align: center;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  font-family: var(--font);
+  font-size: clamp(12px, 3vw, 14px);
+  font-style: italic;
+  color: var(--terra-dark);
+  border-bottom: 1px solid var(--terracotta);
+  opacity: 0.85;
+}
+
 /* ── HEADER ── */
 .header {
   text-align: center;

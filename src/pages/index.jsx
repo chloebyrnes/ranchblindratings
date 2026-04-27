@@ -115,6 +115,29 @@ function shuffle(arr) {
   return a
 }
 
+const quotes = [
+  "If it ain't broke, hit it harder.",
+  "I've been rich and I've been poor. Rich is better, but either way I need a nap.",
+  "Not my horse, not my rodeo, not my problem.",
+  "I don't trust stairs. They're always up to something.",
+  "Lord give me patience, because if you give me strength I'm gonna need bail money.",
+  "I'm not lazy, I'm on energy-saving mode.",
+  "The road to success is always under construction.",
+  "Some days you're the bull. Most days you're the fence.",
+  "If common sense was lard, some folks couldn't grease a skillet.",
+  "I've got the body of a god. Unfortunately it's Buddha.",
+  "Age is just a number. Mine is unlisted.",
+  "I don't need Google, my wife knows everything.",
+  "Behind every great man is a woman rolling her eyes.",
+  "I put the 'pro' in procrastination.",
+  "My people skills are just fine. It's my tolerance for idiots that needs work.",
+  "I'm not arguing, I'm just explaining why I'm right.",
+  "I run on coffee, sarcasm, and inappropriate thoughts.",
+  "Life is short. Buy the boots.",
+  "I was born ready. I just wasn't born on time.",
+  "If you think adventure is dangerous, try routine — it's lethal.",
+]
+
 // ── SOUNDS ───────────────────────────────────────────────────────────────────
 function makeCtx() {
   return new (window.AudioContext || window.webkitAudioContext)()
@@ -329,10 +352,9 @@ const openWeather = () => {
 
   return (
     <div>
-      <div className="shareplayBanner">
-        <span>Mirror your screen to a TV for group play</span>
-        <button className="shareplayBtn" onClick={toggleFullscreen}>TV Mode</button>
-      </div>
+<div className="quoteOfDay">
+  <span className="quoteOfDayText">"{quotes[Math.floor(Math.random() * quotes.length)]}"</span>
+</div>
 
       <div className="card">
         <div className="cardLabel">★ Blind Ratings ★</div>
