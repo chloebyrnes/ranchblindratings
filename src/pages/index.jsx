@@ -5,6 +5,7 @@ import cigarette from "../../static/cigarette2.png"
 import alpCan from "../../static/alp2.png"
 import luca from "../../static/luca.png"
 
+// ── RANCH BLIND RATINGS PROMPTS ───────────────────────────────────────────────
 const ALL_PROMPTS = [
   "Stubbing your toe",
   "Getting a day off work",
@@ -47,6 +48,60 @@ const ALL_PROMPTS = [
   "When you pull down your pants to poop and the seat is already warm from the last person",
 ]
 
+// ── THEY'RE A 10 BUT... PROMPTS ───────────────────────────────────────────────
+const TEN_BUT_PROMPTS = [
+  "they still use Internet Explorer",
+  "they laugh at their own jokes before the punchline",
+  "they call every movie they don't understand 'boring'",
+  "they reply to group texts with 'k'",
+  "they've never left their home state",
+  "they pronounce it 'expresso'",
+  "they clap when the plane lands",
+  "they still have a Hotmail address",
+  "they put their phone face down when you're talking",
+  "they describe their personality as 'I don't like drama'",
+  "they're always 15 minutes late to everything",
+  "they've never read a book for fun",
+  "they ask to split the bill down to the cent",
+  "they have a photo of themselves as their phone wallpaper",
+  "they use speakerphone in public",
+  "they think sushi is gross without trying it",
+  "they still forward chain emails",
+  "they can't keep a plant alive",
+  "they narrate everything they're doing while cooking",
+  "they leave voicemails instead of texting",
+  "they say 'I'm not racist, but...'",
+  "they've never been in a real argument",
+  "they chew with their mouth open",
+  "they think The Office UK is better than The Office US",
+  "they call their pet their 'fur baby' constantly",
+  "they screenshot everything you say",
+  "they still wear Axe body spray",
+  "they have 47 unread emails",
+  "they order their steak well done",
+  "they think astrology runs their life",
+  "they use Comic Sans unironically",
+  "they've never had a cavity",
+  "they still quote Borat in 2025",
+  "they tip exactly 15% every time, calculated on their phone",
+  "they don't laugh at anything at the movies",
+  "they've blocked their ex 7 times and unblocked them 8",
+  "they always have a 'actually...' ready",
+  "they ask to try your food and take a bigger bite than expected",
+  "they think they can fix anyone",
+  "they cry at commercials",
+  "they won't eat leftovers",
+  "they're weirdly competitive at mini golf",
+  "they screenshot their Wordle score every day",
+  "they still owe you $12 from 6 months ago",
+  "they refuse to wear sunscreen",
+  "they make everything a teachable moment",
+  "they've never apologized first in their life",
+  "they think every song from their teen years is a banger",
+  "they have strong opinions about fonts",
+  "they've watched The Last of Us but won't play the game",
+]
+
 function shuffle(arr) {
   const a = [...arr]
   for (let i = a.length - 1; i > 0; i--) {
@@ -56,6 +111,7 @@ function shuffle(arr) {
   return a
 }
 
+// ── SOUNDS ───────────────────────────────────────────────────────────────────
 function makeCtx() {
   return new (window.AudioContext || window.webkitAudioContext)()
 }
@@ -124,6 +180,36 @@ function playWhoosh() {
   } catch (e) {}
 }
 
+function playYes() {
+  try {
+    const ctx = makeCtx()
+    const osc = ctx.createOscillator()
+    const gain = ctx.createGain()
+    osc.connect(gain); gain.connect(ctx.destination)
+    osc.type = "sine"
+    osc.frequency.setValueAtTime(440, ctx.currentTime)
+    osc.frequency.exponentialRampToValueAtTime(660, ctx.currentTime + 0.1)
+    gain.gain.setValueAtTime(0.25, ctx.currentTime)
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2)
+    osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.2)
+  } catch (e) {}
+}
+
+function playNo() {
+  try {
+    const ctx = makeCtx()
+    const osc = ctx.createOscillator()
+    const gain = ctx.createGain()
+    osc.connect(gain); gain.connect(ctx.destination)
+    osc.type = "sawtooth"
+    osc.frequency.setValueAtTime(300, ctx.currentTime)
+    osc.frequency.exponentialRampToValueAtTime(150, ctx.currentTime + 0.15)
+    gain.gain.setValueAtTime(0.2, ctx.currentTime)
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2)
+    osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.2)
+  } catch (e) {}
+}
+
 function playRideAgain() {
   try {
     const ctx = makeCtx()
@@ -142,9 +228,95 @@ function playRideAgain() {
   } catch (e) {}
 }
 
-// ── SCREENS ──────────────────────────────────────────────────────────────────
+// ── THEY'RE A 10 BUT GAME ─────────────────────────────────────────────────────
+function TenButGame({ onBack }) {
+  const [prompts] = useState(() => shuffle(TEN_BUT_PROMPTS))
+  const [index, setIndex] = useState(0)
+  const [answers, setAnswers] = useState([]) // { prompt, answer }
+  const [phase, setPhase] = useState("playing") // playing | results
 
-function MenuScreen({ onRandom, onCustom }) {
+  const answer = (choice) => {
+    const newAnswers = [...answers, { prompt: prompts[index], answer: choice }]
+    setAnswers(newAnswers)
+    if (index + 1 >= prompts.length) {
+      playFinal()
+      setPhase("results")
+    } else {
+      choice === "yes" ? playYes() : playNo()
+      setIndex(index + 1)
+    }
+  }
+
+  const yesCount = answers.filter(a => a.answer === "yes").length
+  const noCount = answers.filter(a => a.answer === "no").length
+
+  if (phase === "results") {
+    return (
+      <div className="gameWrapper">
+        <div className="card">
+          <div className="resultsTitle">Your Verdict</div>
+          <div className="resultsSubtitle">★ Still a yes or a hard no? ★</div>
+
+          <div className="tenButScore">
+            <div className="tenButScoreBox tenButYesBox">
+              <div className="tenButScoreNum">{yesCount}</div>
+              <div className="tenButScoreLabel">Still a Yes</div>
+            </div>
+            <div className="tenButScoreBox tenButNoBox">
+              <div className="tenButScoreNum">{noCount}</div>
+              <div className="tenButScoreLabel">Hard No</div>
+            </div>
+          </div>
+
+          {answers.map((a, i) => (
+            <div key={i} className={`tenButResultRow ${a.answer === "yes" ? "tenButResultYes" : "tenButResultNo"}`}>
+              <span className="tenButResultIcon">{a.answer === "yes" ? "✓" : "✗"}</span>
+              <span className="tenButResultText">They're a 10 but {a.prompt}</span>
+            </div>
+          ))}
+
+          <div className="bottomButtons">
+            <button className="replayBtn" onClick={() => { playRideAgain(); window.location.reload() }}>Play Again</button>
+            <button className="replayBtn replayBtnSecondary" onClick={() => { playPop(); onBack() }}>Back</button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="gameWrapper">
+      <div className="progressBar">
+        <div className="progressFill" style={{ width: `${(index / prompts.length) * 100}%` }} />
+      </div>
+      <p className="howto">Would you still date them?</p>
+
+      <div className="card tenButCard">
+        <div className="cardLabel">★ They're A 10 But... ★</div>
+        <div className="promptNumber">Card {index + 1} of {prompts.length}</div>
+        <div className="tenButSetup">They're a 10 but</div>
+        <div className="tenButPrompt">{prompts[index]}</div>
+      </div>
+
+      <div className="tenButButtons">
+        <button className="tenButNo" onClick={() => answer("no")}>
+          ✗ Hard No
+        </button>
+        <button className="tenButYes" onClick={() => answer("yes")}>
+          ✓ Still a Yes
+        </button>
+      </div>
+
+      <div className="tenButTally">
+        <span className="tenButTallyYes">✓ {answers.filter(a => a.answer === "yes").length} yes</span>
+        <span className="tenButTallyNo">✗ {answers.filter(a => a.answer === "no").length} no</span>
+      </div>
+    </div>
+  )
+}
+
+// ── RANCH BLIND RATINGS SCREENS ───────────────────────────────────────────────
+function MenuScreen({ onRandom, onCustom, onTenBut }) {
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen?.()
@@ -160,7 +332,6 @@ function MenuScreen({ onRandom, onCustom }) {
         <button className="shareplayBtn" onClick={toggleFullscreen}>TV Mode</button>
       </div>
 
-      {/* ── GAME 1: Ranch Blind Ratings ── */}
       <div className="card">
         <div className="cardLabel">★ Ranch Blind Ratings ★</div>
         <p className="modeIntro">How do you want to play tonight, partner?</p>
@@ -176,15 +347,14 @@ function MenuScreen({ onRandom, onCustom }) {
         </div>
       </div>
 
-      {/* ── GAME 2: They're A 10 But... — coming soon ── */}
-      <div className="card comingSoonCard">
-        <div className="cardLabel">★ Coming Soon ★</div>
+      <div className="card tenButMenuCard">
+        <div className="cardLabel">★ They're A 10 But... ★</div>
         <div className="comingSoonTitle">They're A 10 But...</div>
         <p className="comingSoonDesc">
-          They're a 10 but they still use Internet Explorer. Still a yes or a hard no?
+          They're gorgeous. But do their red flags cancel it out? You be the judge.
         </p>
-        <button className="comingSoonBtn" disabled>
-          Ride Over Soon — Stay Tuned
+        <button className="startBtn" onClick={() => { playWhoosh(); onTenBut() }}>
+          Make Your Judgment
         </button>
       </div>
     </div>
@@ -235,41 +405,29 @@ function CustomScreen({ onBack, onStart }) {
 function GameScreen({ prompts, slots, currentIndex, onPick }) {
   const filled = slots.filter(s => s !== null).length
   const prompt = prompts[currentIndex]
-
   return (
     <div className="gameWrapper">
       <div className="progressBar">
         <div className="progressFill" style={{ width: `${filled * 10}%` }} />
       </div>
-      <p className="howto">
-        Use the buttons below to place this prompt — no take-backs!
-      </p>
-
+      <p className="howto">Use the buttons below to place this prompt — no take-backs!</p>
       <div className="card">
         <div className="cardLabel">★ Current Prompt ★</div>
-        <div className="promptNumber">{currentIndex + 1} of 10</div>
+        <div className="promptNumber">Prompt {currentIndex + 1} of 10</div>
         <div className="promptText">"{prompt}"</div>
         <div className="promptInstruction">— Where does this land? —</div>
       </div>
-
       <div className="card">
         <div className="ratingSelectLabel">Tap a number to rank this prompt</div>
         <div className="ratingButtons">
           {slots.map((item, i) => (
-            <button
-              key={i}
-              className="ratingBtn"
-              disabled={item !== null}
-              onClick={() => onPick(i)}
-            >
+            <button key={i} className="ratingBtn" disabled={item !== null} onClick={() => onPick(i)}>
               {i + 1}
             </button>
           ))}
         </div>
       </div>
-
       <div className="divider">✦ Your Rankings So Far ✦</div>
-
       <div style={{ marginBottom: "20px" }}>
         <div className="rankedList">
           {slots.map((item, i) => (
@@ -310,7 +468,6 @@ function ResultsScreen({ slots, onPlayAgain, onChangeMode }) {
 }
 
 // ── MAIN PAGE ─────────────────────────────────────────────────────────────────
-
 export default function IndexPage() {
   const [phase, setPhase] = useState("menu")
   const [prompts, setPrompts] = useState([])
@@ -383,7 +540,6 @@ export default function IndexPage() {
     <>
       <button className="fullscreenBtn" onClick={() => { playPop(); toggleFullscreen() }}>{fsLabel}</button>
       <div className="app">
-
         {showHeader && (
           <header className="header">
             <img className="decorLeft" src={ranchWater} alt="" aria-hidden="true" />
@@ -398,14 +554,11 @@ export default function IndexPage() {
           </header>
         )}
 
-        {phase === "menu" && <MenuScreen onRandom={startRandom} onCustom={startCustomEntry} />}
+        {phase === "menu" && <MenuScreen onRandom={startRandom} onCustom={startCustomEntry} onTenBut={() => setPhase("tenBut")} />}
         {phase === "custom" && <CustomScreen onBack={goMenu} onStart={launchCustom} />}
-        {phase === "playing" && (
-          <GameScreen prompts={prompts} slots={slots} currentIndex={currentIndex} onPick={pickSlot} />
-        )}
-        {phase === "results" && (
-          <ResultsScreen slots={slots} onPlayAgain={playAgain} onChangeMode={goMenu} />
-        )}
+        {phase === "playing" && <GameScreen prompts={prompts} slots={slots} currentIndex={currentIndex} onPick={pickSlot} />}
+        {phase === "results" && <ResultsScreen slots={slots} onPlayAgain={playAgain} onChangeMode={goMenu} />}
+        {phase === "tenBut" && <TenButGame onBack={goMenu} />}
       </div>
     </>
   )

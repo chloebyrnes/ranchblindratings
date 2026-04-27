@@ -85,7 +85,7 @@ body::before {
   display: block;
   margin: 4px auto;
   border-radius: 4px;
-  background: #ffffff;
+  background: transparent;
 }
 
 /* ── DECOR IMAGES ── */
@@ -947,4 +947,176 @@ body::before {
   text-transform: uppercase;
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+/* ── THEY'RE A 10 BUT GAME ── */
+.tenButMenuCard {
+  border-color: var(--rosewood);
+}
+
+.tenButCard {
+  text-align: center;
+}
+
+.tenButSetup {
+  font-family: var(--font);
+  font-size: clamp(13px, 3vw, 16px);
+  color: var(--terra-dark);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.tenButPrompt {
+  font-family: var(--font);
+  font-size: clamp(20px, 6vw, 34px);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  padding: 10px 0 6px;
+}
+
+.tenButButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.tenButYes {
+  padding: 18px 10px;
+  background: var(--rosewood);
+  color: #ffffff;
+  border: 2px solid var(--rosewood-dark);
+  border-radius: 3px;
+  font-family: var(--font);
+  font-size: clamp(15px, 4vw, 20px);
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 3px 3px 0 var(--rosewood-dark);
+  min-height: 70px;
+  -webkit-appearance: none;
+}
+.tenButYes:hover, .tenButYes:active {
+  background: var(--terracotta);
+  transform: translateY(-2px);
+}
+
+.tenButNo {
+  padding: 18px 10px;
+  background: var(--cream);
+  color: var(--ink);
+  border: 2px solid var(--rosewood);
+  border-radius: 3px;
+  font-family: var(--font);
+  font-size: clamp(15px, 4vw, 20px);
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 3px 3px 0 var(--terra-dark);
+  min-height: 70px;
+  -webkit-appearance: none;
+}
+.tenButNo:hover, .tenButNo:active {
+  background: var(--rosewood);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.tenButTally {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.tenButTallyYes { color: var(--rosewood); }
+.tenButTallyNo { color: var(--terra-dark); }
+
+/* Results */
+.tenButScore {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.tenButScoreBox {
+  border-radius: 4px;
+  padding: 16px;
+  text-align: center;
+}
+
+.tenButYesBox {
+  background: var(--rosewood);
+  color: #ffffff;
+}
+
+.tenButNoBox {
+  background: var(--cream);
+  color: var(--ink);
+  border: 2px solid var(--rosewood);
+}
+
+.tenButScoreNum {
+  font-family: var(--font);
+  font-size: clamp(32px, 8vw, 48px);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.tenButScoreLabel {
+  font-family: var(--font);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.tenButResultRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 10px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+}
+
+.tenButResultYes {
+  background: rgba(74, 92, 40, 0.08);
+  border-left: 4px solid var(--rosewood);
+}
+
+.tenButResultNo {
+  background: rgba(107, 35, 35, 0.05);
+  border-left: 4px solid var(--tan-deep, #ccc);
+  opacity: 0.7;
+}
+
+.tenButResultIcon {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--rosewood);
+  min-width: 20px;
+}
+
+.tenButResultNo .tenButResultIcon {
+  color: var(--terra-dark);
+}
+
+.tenButResultText {
+  font-family: var(--font);
+  font-size: clamp(12px, 3vw, 14px);
+  color: var(--ink);
+  line-height: 1.4;
 }
