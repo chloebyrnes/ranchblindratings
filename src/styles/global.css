@@ -60,7 +60,7 @@ body::before {
   margin-top: 16px;
   position: relative;
   overflow: visible;
-  background: #ffffff;
+  background: var(--cream-light);
   border: 2px solid var(--terracotta);
   border-radius: 12px;
   box-shadow: 3px 3px 0 var(--rosewood-dark);
@@ -903,4 +903,48 @@ body::before {
 .backBtnBottom:hover {
   background: var(--rosewood);
   color: #ffffff;
+}
+
+/* ── COMING SOON CARD ── */
+.comingSoonCard {
+  opacity: 0.88;
+  border-style: dashed;
+}
+
+.comingSoonTitle {
+  font-family: var(--font);
+  font-size: clamp(20px, 5vw, 26px);
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.comingSoonDesc {
+  font-family: var(--font);
+  font-size: clamp(13px, 3vw, 15px);
+  color: var(--terra-dark);
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  font-style: italic;
+}
+
+.comingSoonBtn {
+  display: block;
+  width: 100%;
+  background: var(--cream);
+  color: var(--terra-dark);
+  border: 2px dashed var(--terracotta);
+  border-radius: 3px;
+  padding: 14px;
+  font-family: var(--font);
+  font-size: clamp(13px, 3.5vw, 16px);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: not-allowed;
+  opacity: 0.6;
 }

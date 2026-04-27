@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react"
-import ranchLogo from "../../static/ranch2.jpg"
+import ranchLogo from "../../static/ranchgames.png"
 import ranchWater from "../../static/ranch_water3.png"
 import cigarette from "../../static/cigarette2.png"
 import alpCan from "../../static/alp2.png"
@@ -56,12 +56,10 @@ function shuffle(arr) {
   return a
 }
 
-// ── SOUNDS ───────────────────────────────────────────────────────────────────
 function makeCtx() {
   return new (window.AudioContext || window.webkitAudioContext)()
 }
 
-// Woody clunk — slot pick
 function playClick() {
   try {
     const ctx = makeCtx()
@@ -77,7 +75,6 @@ function playClick() {
   } catch (e) {}
 }
 
-// Triumphant chord — final pick / game over
 function playFinal() {
   try {
     const ctx = makeCtx()
@@ -97,7 +94,6 @@ function playFinal() {
   } catch (e) {}
 }
 
-// Soft pop — nav/menu buttons
 function playPop() {
   try {
     const ctx = makeCtx()
@@ -113,7 +109,6 @@ function playPop() {
   } catch (e) {}
 }
 
-// Rising whoosh — start game
 function playWhoosh() {
   try {
     const ctx = makeCtx()
@@ -129,7 +124,6 @@ function playWhoosh() {
   } catch (e) {}
 }
 
-// Ride again — descending bounce
 function playRideAgain() {
   try {
     const ctx = makeCtx()
@@ -165,8 +159,10 @@ function MenuScreen({ onRandom, onCustom }) {
         <span>Mirror your screen to a TV for group play</span>
         <button className="shareplayBtn" onClick={toggleFullscreen}>TV Mode</button>
       </div>
+
+      {/* ── GAME 1: Ranch Blind Ratings ── */}
       <div className="card">
-        <div className="cardLabel">★ Choose Your Path ★</div>
+        <div className="cardLabel">★ Ranch Blind Ratings ★</div>
         <p className="modeIntro">How do you want to play tonight, partner?</p>
         <div className="modeButtons">
           <button className="modeBtn" onClick={() => { playPop(); onCustom() }}>
@@ -178,6 +174,18 @@ function MenuScreen({ onRandom, onCustom }) {
             <span className="btnSub">Draw from the deck</span>
           </button>
         </div>
+      </div>
+
+      {/* ── GAME 2: They're A 10 But... — coming soon ── */}
+      <div className="card comingSoonCard">
+        <div className="cardLabel">★ Coming Soon ★</div>
+        <div className="comingSoonTitle">They're A 10 But...</div>
+        <p className="comingSoonDesc">
+          They're a 10 but they still use Internet Explorer. Still a yes or a hard no?
+        </p>
+        <button className="comingSoonBtn" disabled>
+          Ride Over Soon — Stay Tuned
+        </button>
       </div>
     </div>
   )
@@ -239,7 +247,7 @@ function GameScreen({ prompts, slots, currentIndex, onPick }) {
 
       <div className="card">
         <div className="cardLabel">★ Current Prompt ★</div>
-        <div className="promptNumber">Prompt {currentIndex + 1} of 10</div>
+        <div className="promptNumber">{currentIndex + 1} of 10</div>
         <div className="promptText">"{prompt}"</div>
         <div className="promptInstruction">— Where does this land? —</div>
       </div>
@@ -260,10 +268,9 @@ function GameScreen({ prompts, slots, currentIndex, onPick }) {
         </div>
       </div>
 
-      <div className="divider">✦ ranked so far ✦</div>
+      <div className="divider">✦ Your Rankings So Far ✦</div>
 
       <div style={{ marginBottom: "20px" }}>
-        <div className="slotsLabel">Your Rankings So Far</div>
         <div className="rankedList">
           {slots.map((item, i) => (
             <div key={i} className={`rankedRow${item === null ? " slotEmpty" : ""}`}>
@@ -284,20 +291,20 @@ function GameScreen({ prompts, slots, currentIndex, onPick }) {
 function ResultsScreen({ slots, onPlayAgain, onChangeMode }) {
   return (
     <div className="gameWrapper">
-    <div className="card">
-      <div className="resultsTitle">Final Rankings</div>
-      <div className="resultsSubtitle">★ Blind fate revealed, partner ★</div>
-      {slots.map((item, i) => (
-        <div className="resultRow" key={i}>
-          <span className="resultRank">{i + 1}</span>
-          <span className="resultLabel">{item || "—"}</span>
+      <div className="card">
+        <div className="resultsTitle">Final Rankings</div>
+        <div className="resultsSubtitle">★ Blind fate revealed, partner ★</div>
+        {slots.map((item, i) => (
+          <div className="resultRow" key={i}>
+            <span className="resultRank">{i + 1}</span>
+            <span className="resultLabel">{item || "—"}</span>
+          </div>
+        ))}
+        <div className="bottomButtons">
+          <button className="replayBtn" onClick={() => { playRideAgain(); onPlayAgain() }}>Ride Again</button>
+          <button className="replayBtn replayBtnSecondary" onClick={() => { playPop(); onChangeMode() }}>Change Mode</button>
         </div>
-      ))}
-      <div className="bottomButtons">
-        <button className="replayBtn" onClick={() => { playRideAgain(); onPlayAgain() }}>Ride Again</button>
-        <button className="replayBtn replayBtnSecondary" onClick={() => { playPop(); onChangeMode() }}>Change Mode</button>
       </div>
-    </div>
     </div>
   )
 }
@@ -377,15 +384,12 @@ export default function IndexPage() {
       <button className="fullscreenBtn" onClick={() => { playPop(); toggleFullscreen() }}>{fsLabel}</button>
       <div className="app">
 
-        {/* HEADER — only shown on menu screen */}
         {showHeader && (
           <header className="header">
-            {/* Decor images */}
             <img className="decorLeft" src={ranchWater} alt="" aria-hidden="true" />
             <img className="decorRight" src={cigarette} alt="" aria-hidden="true" />
             <img className="decorBottomLeft" src={alpCan} alt="" aria-hidden="true" />
             <img className="decorLuca" src={luca} alt="" aria-hidden="true" />
-
             <div className="headerInner">
               <div className="starRow">★ ★ ★ ★ ★</div>
               <img className="logoImg" src={ranchLogo} alt="Ranch Blind Ratings" />
@@ -413,19 +417,15 @@ export function Head() {
       <title>Ranch Blind Ratings</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
       <meta name="description" content="The blind ranking game for game night" />
-
-      {/* Favicon */}
       <link rel="icon" type="image/png" href="/ranch_water3.png" />
       <link rel="apple-touch-icon" href="/ranch_water3.png" />
-
-      {/* Open Graph — controls link preview in iMessage, etc */}
       <meta property="og:title" content="Ranch Blind Ratings" />
       <meta property="og:description" content="The blind ranking game for game night 🤠" />
-      <meta property="og:image" content="https://ranchblindratings.netlify.app/ranch2.jpg" />
+      <meta property="og:image" content="https://ranchblindratings.netlify.app/ranchgames.png" />
       <meta property="og:url" content="https://ranchblindratings.netlify.app" />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:image" content="https://ranchblindratings.netlify.app/ranch2.jpg" />
+      <meta name="twitter:image" content="https://ranchblindratings.netlify.app/ranchgames.png" />
     </>
   )
 }
