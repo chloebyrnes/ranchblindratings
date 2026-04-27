@@ -5,39 +5,21 @@ import cigarette from "../../static/cigarette2.png"
 import alpCan from "../../static/alp2.png"
 import luca from "../../static/luca.png"
 
-// ── RANCH BLIND RATINGS PROMPTS ───────────────────────────────────────────────
 const ALL_PROMPTS = [
-  "Stubbing your toe",
-  "Getting a day off work",
-  "Finding $20 in your pocket",
-  "Missing your alarm",
-  "A perfect slice of pizza",
-  "Sitting in traffic for an hour",
-  "Getting a surprise hug",
-  "Stepping on a LEGO",
-  "A hot shower after a long day",
-  "Winning a board game",
-  "Running out of phone battery",
-  "Watching a great sunset",
-  "Spilling coffee on yourself while you're wearing white",
-  "Getting a compliment from a stranger",
-  "Forgetting someone's name mid-conversation",
-  "Finishing a really good book",
-  "A mosquito bite on your ankle",
-  "Finding the perfect parking spot",
-  "Dropping your food on the floor",
-  "Waking up before your alarm naturally",
-  "Slow internet when you need it most",
-  "A dog greeting you at the door",
-  "Having your card declined in public",
-  "Getting the window seat on a flight",
-  "A song stuck in your head all day",
-  "First bite of Thanksgiving dinner",
-  "Accidentally liking an old photo while snooping",
-  "Fresh bedsheets after a shower",
+  "Stubbing your toe","Getting a day off work","Finding $20 in your pocket",
+  "Missing your alarm","A perfect slice of pizza","Sitting in traffic for an hour",
+  "Getting a surprise hug","Stepping on a LEGO","A hot shower after a long day",
+  "Winning a board game","Running out of phone battery","Watching a great sunset",
+  "Spilling coffee on yourself while you're wearing white","Getting a compliment from a stranger",
+  "Forgetting someone's name mid-conversation","Finishing a really good book",
+  "A mosquito bite on your ankle","Finding the perfect parking spot",
+  "Dropping your food on the floor","Waking up before your alarm naturally",
+  "Slow internet when you need it most","A dog greeting you at the door",
+  "Having your card declined in public","Getting the window seat on a flight",
+  "A song stuck in your head all day","First bite of Thanksgiving dinner",
+  "Accidentally liking an old photo while snooping","Fresh bedsheets after a shower",
   "Replying 'you too' when the waiter says enjoy your meal",
-  "Finding out your favorite show has a new season",
-  "Burning your tongue on hot food",
+  "Finding out your favorite show has a new season","Burning your tongue on hot food",
   "Fracturing your cock",
   "When you try to quietly fart in a meeting but it comes out as a long wet trumpet solo",
   "Accidentally playing porn through the bluetooth speaker at a family gathering",
@@ -48,67 +30,39 @@ const ALL_PROMPTS = [
   "When you pull down your pants to poop and the seat is already warm from the last person",
 ]
 
-// ── THEY'RE A 10 BUT... PROMPTS ───────────────────────────────────────────────
 const TEN_BUT_PROMPTS = [
-  "they still use Internet Explorer",
-  "they laugh at their own jokes before the punchline",
-  "they call every movie they don't understand 'boring'",
-  "they reply to group texts with 'k'",
-  "they've never left their home state",
-  "they pronounce it 'expresso'",
-  "they clap when the plane lands",
-  "they still have a Hotmail address",
+  "they still use Internet Explorer","they laugh at their own jokes before the punchline",
+  "they call every movie they don't understand 'boring'","they reply to group texts with 'k'",
+  "they've never left their home state","they pronounce it 'expresso'",
+  "they clap when the plane lands","they still have a Hotmail address",
   "they put their phone face down when you're talking",
   "they describe their personality as 'I don't like drama'",
-  "they're always 15 minutes late to everything",
-  "they've never read a book for fun",
-  "they ask to split the bill down to the cent",
-  "they have a photo of themselves as their phone wallpaper",
-  "they use speakerphone in public",
-  "they think sushi is gross without trying it",
-  "they still forward chain emails",
-  "they can't keep a plant alive",
-  "they narrate everything they're doing while cooking",
-  "they leave voicemails instead of texting",
-  "they say 'I'm not racist, but...'",
-  "they've never been in a real argument",
-  "they chew with their mouth open",
-  "they think The Office UK is better than The Office US",
-  "they call their pet their 'fur baby' constantly",
-  "they screenshot everything you say",
-  "they still wear Axe body spray",
-  "they have 47 unread emails",
-  "they order their steak well done",
-  "they think astrology runs their life",
-  "they use Comic Sans unironically",
-  "they've never had a cavity",
-  "they still quote Borat in 2025",
-  "they tip exactly 15% every time, calculated on their phone",
-  "they don't laugh at anything at the movies",
-  "they've blocked their ex 7 times and unblocked them 8",
-  "they always have a 'actually...' ready",
-  "they ask to try your food and take a bigger bite than expected",
-  "they think they can fix anyone",
-  "they cry at commercials",
-  "they won't eat leftovers",
-  "they're weirdly competitive at mini golf",
-  "they screenshot their Wordle score every day",
-  "they still owe you $12 from 6 months ago",
-  "they refuse to wear sunscreen",
-  "they make everything a teachable moment",
-  "they've never apologized first in their life",
-  "they think every song from their teen years is a banger",
-  "they have strong opinions about fonts",
+  "they're always 15 minutes late to everything","they've never read a book for fun",
+  "they ask to split the bill down to the cent","they have a photo of themselves as their phone wallpaper",
+  "they use speakerphone in public","they think sushi is gross without trying it",
+  "they still forward chain emails","they can't keep a plant alive",
+  "they narrate everything they're doing while cooking","they leave voicemails instead of texting",
+  "they say 'I'm not racist, but...'","they've never been in a real argument",
+  "they chew with their mouth open","they think The Office UK is better than The Office US",
+  "they call their pet their 'fur baby' constantly","they screenshot everything you say",
+  "they still wear Axe body spray","they have 47 unread emails",
+  "they order their steak well done","they think astrology runs their life",
+  "they use Comic Sans unironically","they've never had a cavity",
+  "they still quote Borat in 2025","they tip exactly 15% every time, calculated on their phone",
+  "they don't laugh at anything at the movies","they've blocked their ex 7 times and unblocked them 8",
+  "they always have a 'actually...' ready","they ask to try your food and take a bigger bite than expected",
+  "they think they can fix anyone","they cry at commercials","they won't eat leftovers",
+  "they're weirdly competitive at mini golf","they screenshot their Wordle score every day",
+  "they still owe you $12 from 6 months ago","they refuse to wear sunscreen",
+  "they make everything a teachable moment","they've never apologized first in their life",
+  "they think every song from their teen years is a banger","they have strong opinions about fonts",
   "they've watched The Last of Us but won't play the game",
   "they refer to their streaming queue as 'the pile of shame'",
   "they have 'thoughts' about the correct way to load a dishwasher",
-  "they call the TV remote 'the clicker'",
-  "they still say 'per my last email' unironically",
+  "they call the TV remote 'the clicker'","they still say 'per my last email' unironically",
   "they've named all their houseplants after coworkers they don't like",
-  "they pronounce 'quinoa' a new way every time",
-  "they use the word 'adulting' with zero shame",
-  "they've memorized the Cheesecake Factory menu",
-  "they send 'u up?' at 11:59pm",
+  "they pronounce 'quinoa' a new way every time","they use the word 'adulting' with zero shame",
+  "they've memorized the Cheesecake Factory menu","they send 'u up?' at 11:59pm",
   "they use a different laugh for when their boss says something",
   "they describe every trip they've ever taken in real-time",
   "they have very specific opinions about which Trader Joe's is better",
@@ -165,14 +119,10 @@ function shuffle(arr) {
 function makeCtx() {
   return new (window.AudioContext || window.webkitAudioContext)()
 }
-
 function playClick() {
   try {
-    const ctx = makeCtx()
-    const osc = ctx.createOscillator()
-    const gain = ctx.createGain()
-    osc.connect(gain); gain.connect(ctx.destination)
-    osc.type = "sine"
+    const ctx = makeCtx(); const osc = ctx.createOscillator(); const gain = ctx.createGain()
+    osc.connect(gain); gain.connect(ctx.destination); osc.type = "sine"
     osc.frequency.setValueAtTime(220, ctx.currentTime)
     osc.frequency.exponentialRampToValueAtTime(110, ctx.currentTime + 0.08)
     gain.gain.setValueAtTime(0.35, ctx.currentTime)
@@ -180,33 +130,24 @@ function playClick() {
     osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.18)
   } catch (e) {}
 }
-
 function playFinal() {
   try {
     const ctx = makeCtx()
-    const notes = [261, 329, 392]
-    notes.forEach((freq, idx) => {
-      const osc = ctx.createOscillator()
-      const gain = ctx.createGain()
-      osc.connect(gain); gain.connect(ctx.destination)
-      osc.type = "triangle"
+    ;[261, 329, 392].forEach((freq, idx) => {
+      const osc = ctx.createOscillator(); const gain = ctx.createGain()
+      osc.connect(gain); gain.connect(ctx.destination); osc.type = "triangle"
       osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.06)
       gain.gain.setValueAtTime(0, ctx.currentTime + idx * 0.06)
       gain.gain.linearRampToValueAtTime(0.2, ctx.currentTime + idx * 0.06 + 0.02)
       gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.06 + 0.4)
-      osc.start(ctx.currentTime + idx * 0.06)
-      osc.stop(ctx.currentTime + idx * 0.06 + 0.4)
+      osc.start(ctx.currentTime + idx * 0.06); osc.stop(ctx.currentTime + idx * 0.06 + 0.4)
     })
   } catch (e) {}
 }
-
 function playPop() {
   try {
-    const ctx = makeCtx()
-    const osc = ctx.createOscillator()
-    const gain = ctx.createGain()
-    osc.connect(gain); gain.connect(ctx.destination)
-    osc.type = "sine"
+    const ctx = makeCtx(); const osc = ctx.createOscillator(); const gain = ctx.createGain()
+    osc.connect(gain); gain.connect(ctx.destination); osc.type = "sine"
     osc.frequency.setValueAtTime(400, ctx.currentTime)
     osc.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.06)
     gain.gain.setValueAtTime(0.2, ctx.currentTime)
@@ -214,14 +155,10 @@ function playPop() {
     osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.12)
   } catch (e) {}
 }
-
 function playWhoosh() {
   try {
-    const ctx = makeCtx()
-    const osc = ctx.createOscillator()
-    const gain = ctx.createGain()
-    osc.connect(gain); gain.connect(ctx.destination)
-    osc.type = "sawtooth"
+    const ctx = makeCtx(); const osc = ctx.createOscillator(); const gain = ctx.createGain()
+    osc.connect(gain); gain.connect(ctx.destination); osc.type = "sawtooth"
     osc.frequency.setValueAtTime(150, ctx.currentTime)
     osc.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.2)
     gain.gain.setValueAtTime(0.15, ctx.currentTime)
@@ -229,14 +166,10 @@ function playWhoosh() {
     osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.25)
   } catch (e) {}
 }
-
 function playYes() {
   try {
-    const ctx = makeCtx()
-    const osc = ctx.createOscillator()
-    const gain = ctx.createGain()
-    osc.connect(gain); gain.connect(ctx.destination)
-    osc.type = "sine"
+    const ctx = makeCtx(); const osc = ctx.createOscillator(); const gain = ctx.createGain()
+    osc.connect(gain); gain.connect(ctx.destination); osc.type = "sine"
     osc.frequency.setValueAtTime(440, ctx.currentTime)
     osc.frequency.exponentialRampToValueAtTime(660, ctx.currentTime + 0.1)
     gain.gain.setValueAtTime(0.25, ctx.currentTime)
@@ -244,36 +177,29 @@ function playYes() {
     osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.2)
   } catch (e) {}
 }
-
+// New No sound — soft thud, not harsh
 function playNo() {
   try {
     const ctx = makeCtx()
-    const osc = ctx.createOscillator()
-    const gain = ctx.createGain()
-    osc.connect(gain); gain.connect(ctx.destination)
-    osc.type = "sawtooth"
-    osc.frequency.setValueAtTime(300, ctx.currentTime)
-    osc.frequency.exponentialRampToValueAtTime(150, ctx.currentTime + 0.15)
-    gain.gain.setValueAtTime(0.2, ctx.currentTime)
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2)
-    osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.2)
+    const osc = ctx.createOscillator(); const gain = ctx.createGain()
+    osc.connect(gain); gain.connect(ctx.destination); osc.type = "sine"
+    osc.frequency.setValueAtTime(180, ctx.currentTime)
+    osc.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.12)
+    gain.gain.setValueAtTime(0.22, ctx.currentTime)
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.22)
+    osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.22)
   } catch (e) {}
 }
-
 function playRideAgain() {
   try {
     const ctx = makeCtx()
-    const notes = [523, 440, 349]
-    notes.forEach((freq, idx) => {
-      const osc = ctx.createOscillator()
-      const gain = ctx.createGain()
-      osc.connect(gain); gain.connect(ctx.destination)
-      osc.type = "sine"
+    ;[523, 440, 349].forEach((freq, idx) => {
+      const osc = ctx.createOscillator(); const gain = ctx.createGain()
+      osc.connect(gain); gain.connect(ctx.destination); osc.type = "sine"
       osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.07)
       gain.gain.setValueAtTime(0.18, ctx.currentTime + idx * 0.07)
       gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.07 + 0.15)
-      osc.start(ctx.currentTime + idx * 0.07)
-      osc.stop(ctx.currentTime + idx * 0.07 + 0.15)
+      osc.start(ctx.currentTime + idx * 0.07); osc.stop(ctx.currentTime + idx * 0.07 + 0.15)
     })
   } catch (e) {}
 }
@@ -282,15 +208,14 @@ function playRideAgain() {
 function TenButGame({ onBack }) {
   const [prompts] = useState(() => shuffle(TEN_BUT_PROMPTS))
   const [index, setIndex] = useState(0)
-  const [answers, setAnswers] = useState([]) // { prompt, answer }
-  const [phase, setPhase] = useState("playing") // playing | results
+  const [answers, setAnswers] = useState([])
+  const [phase, setPhase] = useState("playing")
 
   const answer = (choice) => {
     const newAnswers = [...answers, { prompt: prompts[index], answer: choice }]
     setAnswers(newAnswers)
     if (index + 1 >= prompts.length) {
-      playFinal()
-      setPhase("results")
+      playFinal(); setPhase("results")
     } else {
       choice === "yes" ? playYes() : playNo()
       setIndex(index + 1)
@@ -306,7 +231,6 @@ function TenButGame({ onBack }) {
         <div className="card">
           <div className="resultsTitle">Your Verdict</div>
           <div className="resultsSubtitle">★ Still a yes or a hard no? ★</div>
-
           <div className="tenButScore">
             <div className="tenButScoreBox tenButYesBox">
               <div className="tenButScoreNum">{yesCount}</div>
@@ -317,14 +241,12 @@ function TenButGame({ onBack }) {
               <div className="tenButScoreLabel">Hard No</div>
             </div>
           </div>
-
           {answers.map((a, i) => (
             <div key={i} className={`tenButResultRow ${a.answer === "yes" ? "tenButResultYes" : "tenButResultNo"}`}>
               <span className="tenButResultIcon">{a.answer === "yes" ? "✓" : "✗"}</span>
               <span className="tenButResultText">They're a 10 but {a.prompt}</span>
             </div>
           ))}
-
           <div className="bottomButtons">
             <button className="replayBtn" onClick={() => { playRideAgain(); window.location.reload() }}>Play Again</button>
             <button className="replayBtn replayBtnSecondary" onClick={() => { playPop(); onBack() }}>Back</button>
@@ -349,32 +271,55 @@ function TenButGame({ onBack }) {
       </div>
 
       <div className="tenButButtons">
-        <button className="tenButNo" onClick={() => answer("no")}>
-          ✗ Hard No
-        </button>
-        <button className="tenButYes" onClick={() => answer("yes")}>
-          ✓ Still a Yes
-        </button>
+        <button className="tenButNo" onClick={() => answer("no")}>✗ Hard No</button>
+        <button className="tenButYes" onClick={() => answer("yes")}>✓ Still a Yes</button>
       </div>
 
       <div className="tenButTally">
-        <span className="tenButTallyYes">✓ {answers.filter(a => a.answer === "yes").length} yes</span>
-        <span className="tenButTallyNo">✗ {answers.filter(a => a.answer === "no").length} no</span>
+        <span className="tenButTallyYes">✓ {yesCount} yes</span>
+        <span className="tenButTallyNo">✗ {noCount} no</span>
       </div>
+
+      {/* Live running list of answered cards */}
+      {answers.length > 0 && (
+        <div style={{ marginBottom: "20px" }}>
+          <div className="divider">✦ your answers so far ✦</div>
+          <div className="rankedList">
+            {[...answers].reverse().map((a, i) => (
+              <div key={i} className={`tenButResultRow ${a.answer === "yes" ? "tenButResultYes" : "tenButResultNo"}`}>
+                <span className="tenButResultIcon">{a.answer === "yes" ? "✓" : "✗"}</span>
+                <span className="tenButResultText">They're a 10 but {a.prompt}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back to Menu</button>
     </div>
   )
 }
 
-// ── RANCH BLIND RATINGS SCREENS ───────────────────────────────────────────────
+// ── SCREENS ──────────────────────────────────────────────────────────────────
 function MenuScreen({ onRandom, onCustom, onTenBut }) {
   const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen?.()
-    } else {
-      document.exitFullscreen?.()
-    }
+    if (!document.fullscreenElement) { document.documentElement.requestFullscreen?.() }
+    else { document.exitFullscreen?.() }
     playPop()
   }
+
+  const openWeather = () => {
+    playWhoosh()
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+    if (isMobile) {
+      // Try to open native weather app, fall back to weather.com
+      window.location.href = "weather://"
+      setTimeout(() => { window.open("https://weather.com", "_blank") }, 500)
+    } else {
+      window.open("https://weather.com", "_blank")
+    }
+  }
+
   return (
     <div>
       <div className="shareplayBanner">
@@ -399,13 +344,16 @@ function MenuScreen({ onRandom, onCustom, onTenBut }) {
 
       <div className="card tenButMenuCard">
         <div className="cardLabel">★ They're A 10 But... ★</div>
-   <p className="modeIntro">Make your judgement!</p>
-        <p className="comingSoonDesc">
-          They're gorgeous. But do their red flags cancel it out? You be the judge.
-        </p>
-        <button className="startBtn" onClick={() => { playWhoosh(); onTenBut() }}>
-          Play Now
-        </button>
+        <p className="modeIntro">Make your judgement!</p>
+        <p className="comingSoonDesc">They're gorgeous. But do their red flags cancel it out? You be the judge.</p>
+        <button className="startBtn" onClick={() => { playWhoosh(); onTenBut() }}>Play Now</button>
+      </div>
+
+      <div className="card">
+        <div className="cardLabel">☁ Guess The Weather ☁</div>
+        <p className="modeIntro">Check the forecast!</p>
+        <p className="comingSoonDesc">Open your weather app and see if your gut matches the forecast.</p>
+        <button className="startBtn" onClick={openWeather}>Open Weather App</button>
       </div>
     </div>
   )
@@ -414,9 +362,7 @@ function MenuScreen({ onRandom, onCustom, onTenBut }) {
 function CustomScreen({ onBack, onStart }) {
   const [inputs, setInputs] = useState(Array(10).fill(""))
   const handleChange = (i, val) => {
-    const next = [...inputs]
-    next[i] = val
-    setInputs(next)
+    const next = [...inputs]; next[i] = val; setInputs(next)
   }
   const allFilled = inputs.every(v => v.trim().length > 0)
   return (
@@ -431,7 +377,7 @@ function CustomScreen({ onBack, onStart }) {
               <input
                 className="promptInput"
                 type="text"
-                maxLength={60}
+                maxLength={200}
                 placeholder={`Prompt #${i + 1}...`}
                 value={val}
                 onChange={e => handleChange(i, e.target.value)}
@@ -439,11 +385,8 @@ function CustomScreen({ onBack, onStart }) {
             </div>
           ))}
         </div>
-        <button
-          className="startBtn"
-          disabled={!allFilled}
-          onClick={() => { playWhoosh(); onStart(inputs.map(v => v.trim())) }}
-        >
+        <button className="startBtn" disabled={!allFilled}
+          onClick={() => { playWhoosh(); onStart(inputs.map(v => v.trim())) }}>
           Deal the Cards
         </button>
       </div>
@@ -471,9 +414,7 @@ function GameScreen({ prompts, slots, currentIndex, onPick }) {
         <div className="ratingSelectLabel">Tap a number to rank this prompt</div>
         <div className="ratingButtons">
           {slots.map((item, i) => (
-            <button key={i} className="ratingBtn" disabled={item !== null} onClick={() => onPick(i)}>
-              {i + 1}
-            </button>
+            <button key={i} className="ratingBtn" disabled={item !== null} onClick={() => onPick(i)}>{i + 1}</button>
           ))}
         </div>
       </div>
@@ -483,11 +424,7 @@ function GameScreen({ prompts, slots, currentIndex, onPick }) {
           {slots.map((item, i) => (
             <div key={i} className={`rankedRow${item === null ? " slotEmpty" : ""}`}>
               <span className="rankedRowNum">{i + 1}</span>
-              {item !== null ? (
-                <span className="rankedRowText">{item}</span>
-              ) : (
-                <span className="rankedRowEmpty">empty</span>
-              )}
+              {item !== null ? <span className="rankedRowText">{item}</span> : <span className="rankedRowEmpty">empty</span>}
             </div>
           ))}
         </div>
@@ -529,68 +466,36 @@ export default function IndexPage() {
 
   const startRandom = useCallback(() => {
     setPrompts(shuffle(ALL_PROMPTS).slice(0, 10))
-    setSlots(Array(10).fill(null))
-    setCurrentIndex(0)
-    setMode("random")
-    setPhase("playing")
+    setSlots(Array(10).fill(null)); setCurrentIndex(0); setMode("random"); setPhase("playing")
   }, [])
-
   const startCustomEntry = useCallback(() => { setPhase("custom") }, [])
-
   const launchCustom = useCallback(inputs => {
-    setCustomPrompts(inputs)
-    setPrompts(shuffle(inputs))
-    setSlots(Array(10).fill(null))
-    setCurrentIndex(0)
-    setMode("custom")
-    setPhase("playing")
+    setCustomPrompts(inputs); setPrompts(shuffle(inputs))
+    setSlots(Array(10).fill(null)); setCurrentIndex(0); setMode("custom"); setPhase("playing")
   }, [])
-
   const pickSlot = useCallback(i => {
     if (slots[i] !== null) return
-    const newSlots = [...slots]
-    newSlots[i] = prompts[currentIndex]
-    setSlots(newSlots)
+    const newSlots = [...slots]; newSlots[i] = prompts[currentIndex]; setSlots(newSlots)
     const nextIndex = currentIndex + 1
-    if (nextIndex >= 10) {
-      playFinal()
-      setPhase("results")
-    } else {
-      playClick()
-      setCurrentIndex(nextIndex)
-    }
+    if (nextIndex >= 10) { playFinal(); setPhase("results") }
+    else { playClick(); setCurrentIndex(nextIndex) }
   }, [slots, prompts, currentIndex])
-
   const playAgain = useCallback(() => {
-    if (mode === "custom" && customPrompts.length > 0) {
-      setPrompts(shuffle(customPrompts))
-    } else {
-      setPrompts(shuffle(ALL_PROMPTS).slice(0, 10))
-    }
-    setSlots(Array(10).fill(null))
-    setCurrentIndex(0)
-    setPhase("playing")
+    if (mode === "custom" && customPrompts.length > 0) { setPrompts(shuffle(customPrompts)) }
+    else { setPrompts(shuffle(ALL_PROMPTS).slice(0, 10)) }
+    setSlots(Array(10).fill(null)); setCurrentIndex(0); setPhase("playing")
   }, [mode, customPrompts])
-
   const goMenu = useCallback(() => { setPhase("menu") }, [])
-
   const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen?.()
-      setFsLabel("✕ Exit TV")
-    } else {
-      document.exitFullscreen?.()
-      setFsLabel("⛶ TV Mode")
-    }
+    if (!document.fullscreenElement) { document.documentElement.requestFullscreen?.(); setFsLabel("✕ Exit TV") }
+    else { document.exitFullscreen?.(); setFsLabel("⛶ TV Mode") }
   }
-
-  const showHeader = phase === "menu"
 
   return (
     <>
       <button className="fullscreenBtn" onClick={() => { playPop(); toggleFullscreen() }}>{fsLabel}</button>
       <div className="app">
-        {showHeader && (
+        {phase === "menu" && (
           <header className="header">
             <img className="decorLeft" src={ranchWater} alt="" aria-hidden="true" />
             <img className="decorRight" src={cigarette} alt="" aria-hidden="true" />
@@ -603,7 +508,6 @@ export default function IndexPage() {
             </div>
           </header>
         )}
-
         {phase === "menu" && <MenuScreen onRandom={startRandom} onCustom={startCustomEntry} onTenBut={() => setPhase("tenBut")} />}
         {phase === "custom" && <CustomScreen onBack={goMenu} onStart={launchCustom} />}
         {phase === "playing" && <GameScreen prompts={prompts} slots={slots} currentIndex={currentIndex} onPick={pickSlot} />}
