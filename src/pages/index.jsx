@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react"
-import ranchLogo from "../../static/ranchgames.png"
+import ranchLogo from "../../static/ranchgameslogo.png"
 import ranchWater from "../../static/ranch_water3.png"
 import cigarette from "../../static/cigarette2.png"
 import alpCan from "../../static/alp2.png"
@@ -100,6 +100,56 @@ const TEN_BUT_PROMPTS = [
   "they think every song from their teen years is a banger",
   "they have strong opinions about fonts",
   "they've watched The Last of Us but won't play the game",
+  "they refer to their streaming queue as 'the pile of shame'",
+  "they have 'thoughts' about the correct way to load a dishwasher",
+  "they call the TV remote 'the clicker'",
+  "they still say 'per my last email' unironically",
+  "they've named all their houseplants after coworkers they don't like",
+  "they pronounce 'quinoa' a new way every time",
+  "they use the word 'adulting' with zero shame",
+  "they've memorized the Cheesecake Factory menu",
+  "they send 'u up?' at 11:59pm",
+  "they use a different laugh for when their boss says something",
+  "they describe every trip they've ever taken in real-time",
+  "they have very specific opinions about which Trader Joe's is better",
+  "they call a podcast 'life-changing' every other week",
+  "they still type in all lowercase like it's 2014 tumblr",
+  "they take their shoes off the moment they enter any building",
+  "they have their email organized into 47 subfolders",
+  "they've never once refreshed a page — they close and reopen the tab",
+  "they think they're the only one who notices the film grain",
+  "they say 'circling back' in text messages",
+  "they've never eaten a meal without photographing it first",
+  "they use 'lol' as punctuation in work slack messages",
+  "they have opinions on the correct pasta shape for every sauce",
+  "they close apps on their phone to 'save battery'",
+  "they describe movies as 'a slow burn' when they just mean boring",
+  "they've told you about their 5-step morning routine unprompted",
+  "they charge their AirPods more than they use them",
+  "they switch to whisper to tell you something that isn't a secret",
+  "they've started three separate journal 'streaks' this year",
+  "they use the phrase 'I did my research' about a YouTube video",
+  "they pronounce 'charcuterie' with full confidence and incorrectly",
+  "they've never once used the dark mode option",
+  "they still screenshot memes instead of sharing the link",
+  "they have a 'fancy' olive oil they won't cook with",
+  "they've muted 80% of their contacts but deny being a bad texter",
+  "they think being direct is the same as being rude",
+  "they google things while you're literally explaining it to them",
+  "they call anything from the 90s 'retro' but anything from the 80s 'vintage'",
+  "they add 'just' to every request to seem less demanding",
+  "they're always 'about to start' a project",
+  "they keep every charger they've ever owned in a drawer",
+  "they say 'no worries' when they're clearly worried",
+  "they've memorized every Ina Garten 'store-bought is fine' moment",
+  "they've never sent a voice memo under 4 minutes",
+  "they describe their sense of humor as 'dark' but only like puns",
+  "they use a physical planner but also three different apps",
+  "they've bookmarked 200 recipes and cooked zero of them",
+  "they think they could have been a chef",
+  "they hold their breath during someone else's parallel parking",
+  "they read the comments on news articles and get mad about it",
+  "they've never once called a restaurant to check their hours",
 ]
 
 function shuffle(arr) {
@@ -349,12 +399,12 @@ function MenuScreen({ onRandom, onCustom, onTenBut }) {
 
       <div className="card tenButMenuCard">
         <div className="cardLabel">★ They're A 10 But... ★</div>
-        <div className="comingSoonTitle">They're A 10 But...</div>
+       <p className="intro">Make your judgement!</p>
         <p className="comingSoonDesc">
           They're gorgeous. But do their red flags cancel it out? You be the judge.
         </p>
         <button className="startBtn" onClick={() => { playWhoosh(); onTenBut() }}>
-          Make Your Judgment
+          Play Now
         </button>
       </div>
     </div>
