@@ -6,81 +6,53 @@ import alpCan from "../../static/alp2.png"
 import luca from "../../static/luca.png"
 
 const GOOD_PROMPTS = [
-  "Getting a day off work",
-  "A hot shower after a long day",
-  "Winning a board game",
-  "Watching a great sunset",
-  "Getting a compliment from a stranger",
-  "Finishing a really good book",
-  "Finding the perfect parking spot",
-  "Waking up before your alarm naturally",
-  "A dog greeting you at the door",
-  "Getting the window seat on a flight",
-  "Fresh bedsheets after a shower",
+  "Getting a day off work","A hot shower after a long day","Winning a board game",
+  "Watching a great sunset","Getting a compliment from a stranger","Finishing a really good book",
+  "Finding the perfect parking spot","Waking up before your alarm naturally","A dog greeting you at the door",
+  "Getting the window seat on a flight","Fresh bedsheets after a shower",
   "Finding out your favorite show has a new season",
   "Somebody bringing you coffee exactly how you like it without you asking",
   "When your team pulls off a miracle comeback in the last seconds of the game",
   "When the vending machine drops two snacks instead of one",
-  "Coming up with the perfect prompt at a ranch",
-  "Guessing the moon illumination perfectly",
+  "Coming up with the perfect prompt at a ranch","Guessing the moon illumination perfectly",
   "A good smoothie on a summer day",
   "When your layover has a sick pizza joint and you become buddies with the pizza chef",
-  "A rodeo with the ranch gang",
-  "Eating a soufflé from Jeffrey",
-  "A crisp dap",
-  "Lazy Rivers",
-  "Ghost wipes",
-  "When a southern black woman calls you 'honey'",
-  "Wedding Cigar",
-  "When you butter a reverse job into a parking space",
-  "Magicians",
+  "A rodeo with the ranch gang","Eating a soufflé from Jeffrey","A crisp dap","Lazy Rivers",
+  "Ghost wipes","When a southern black woman calls you 'honey'","Wedding Cigar",
+  "When you butter a reverse job into a parking space","Magicians",
   "When the girl at Publix calls you out of a long line to start a new checkout line",
   "Falling asleep on the couch and waking up to find someone put a blanket on you",
   "When you're dreading a thing all week and it gets cancelled the morning of",
   "Hearing your song come on at a gas station and realizing the person pumping next to you is also nodding",
-  "Telling a joke and your buddy laughs so hard he snorts",
-  "A ripping fire pit with the gang",
+  "Telling a joke and your buddy laughs so hard he snorts","A ripping fire pit with the gang",
   "When you're driving back late and everyone else in the car falls asleep and you've got the music to yourself",
-  "Getting the whole aisle to yourself on a plane",
-  "Nailing a perfect medium rare on a steak",
-  "When a dog does a big stretch",
-  "Getting a reservation for Rocca on the day of",
-  "A rainy Sunday with nothing to do",
-  "A sick ass tree house",
-  "When the bill comes out way cheaper than you expected",
-  "An ice cold beer",
-  "Ranching in Italy with the whole Ranch",
-  "Thrifting a sick band tee shirt",
-  "Ripping a dart",
+  "Getting the whole aisle to yourself on a plane","Nailing a perfect medium rare on a steak",
+  "When a dog does a big stretch","Getting a reservation for Rocca on the day of",
+  "A rainy Sunday with nothing to do","A sick ass tree house",
+  "When the bill comes out way cheaper than you expected","An ice cold beer",
+  "Ranching in Italy with the whole Ranch","Thrifting a sick band tee shirt","Ripping a dart",
   "When you go to a boring work meeting but your boss who you just met offers you an alp",
 ]
 
 const BAD_PROMPTS = [
-  "Stubbing your toe",
-  "Finding $20 in your pocket",
-  "Missing your alarm",
+  "Stubbing your toe","Finding $20 in your pocket","Missing your alarm",
   "Sitting in traffic for an hour and you have to pee",
   "Spilling coffee on yourself while you're wearing white",
-  "Forgetting someone's name mid-conversation",
-  "A mosquito bite on your ankle",
-  "Dropping your food on the floor",
-  "Having your card declined in public",
+  "Forgetting someone's name mid-conversation","A mosquito bite on your ankle",
+  "Dropping your food on the floor","Having your card declined in public",
   "Accidentally liking an old photo while stalking someone on IG",
-  "Replying 'you too' when the waiter says enjoy your meal",
-  "Burning your tongue on hot food",
+  "Replying 'you too' when the waiter says enjoy your meal","Burning your tongue on hot food",
   "Fracturing your cock",
   "When you try to quietly fart in a meeting but it comes out as a long wet trumpet solo",
   "Accidentally playing porn through the bluetooth speaker at a family gathering",
   "When your mom likes a thirst comment you left on an instagram model's photo",
   "When you pull down your pants to poop and the seat is already warm from the last person",
   "Having 10/10 buffalo wings, using the bathroom and getting buffalo sauce in your weiner hole",
-  "Slamming your cock in a toilet bowl",
-  "Cutting off your nipple while trying to make a salad",
+  "Slamming your cock in a toilet bowl","Cutting off your nipple while trying to make a salad",
   "Landing a backflip at the rodeo only to get plowed by a horse",
   "Backing your truck into the golf sim",
   "Accidentally ordering your Uber Eats to the ranch on a work day",
-  "Getting pantsed in public - full dong falls out",
-  "Accidentally order 3's instead of 6's",
+  "Getting pantsed in public - full dong falls out","Accidentally order 3's instead of 6's",
   "Sneezing so hard at a urinal that you pee on your own shoe",
   "Doing a confident lean against a wall that turns out to be a door, which opens and fracturing you're cock",
   "Fully committing to a fist bump when the other guy was going for a handshake and then both of you just kind of hover there",
@@ -95,8 +67,7 @@ const BAD_PROMPTS = [
   "Zipping up your cock something about Mary style",
   "Watching your debit card get declined for a $7 purchase in a small, very quiet coffee shop",
   "Ordering a drink on a plane only for the flight attendant to spill it on your head",
-  "Seeing Casey Tibbs hog at football practice",
-  "Getting close lined playing red rover on the yard",
+  "Seeing Casey Tibbs hog at football practice","Getting close lined playing red rover on the yard",
   "Holding Brady for the first time and he shits on you",
   "A horrible nights sleep only to be woken up to the sound of your dog barfing on your new jeans",
   "You buy a nifty new piece of art at the thrift store and go to hang it up and smoke your thumb with the hammer",
@@ -106,17 +77,14 @@ const BAD_PROMPTS = [
 ]
 
 const TEN_BUT_PROMPTS = [
-  "They only go to the bathroom with the door open",
-  "They smell awful",
-  "They howl whenever there is a full moon",
-  "They love Minecraft and wear Minecraft merch",
+  "They only go to the bathroom with the door open","They smell awful",
+  "They howl whenever there is a full moon","They love Minecraft and wear Minecraft merch",
   "They dress up as a clown for kids birthday parties and their instagram handle is GIGGLESTHECLOWN",
   "They have a fanny pack they wear to every occasion including funerals and first dates",
   "They refer to their car as 'she' and have cried when it got a scratch",
   "They eat cereal with orange juice instead of milk and think it's a personality",
   "They've never once flushed a public toilet with their hand",
-  "They collect porcelain dolls and have names for all of them",
-  "They sleep in their jeans",
+  "They collect porcelain dolls and have names for all of them","They sleep in their jeans",
   "They have a face tattoo of their own face",
   "They answer the phone by saying 'speak' no matter who it is",
   "They genuinely believe they can communicate with pigeons",
@@ -127,8 +95,7 @@ const TEN_BUT_PROMPTS = [
   "They have a blog that has been 'coming soon' since 2014",
   "They do karate in the backyard every morning and invite no one but leave the gate open",
   "They've eaten at Olive Garden on their last four birthdays by choice and will do it again",
-  "They refer to all beverages as 'juice'",
-  "They have a second Instagram account for their hand",
+  "They refer to all beverages as 'juice'","They have a second Instagram account for their hand",
   "They give themselves a nickname and introduce themselves by it immediately",
   "Their laugh sounds exactly like a seal and they know it and lean into it",
   "They've been 'working on a novel' for eleven years and it is four pages",
@@ -138,8 +105,7 @@ const TEN_BUT_PROMPTS = [
   "They make their own butter and tell you about it within the first ten minutes",
   "They've memorized the entire Shrek script and will use it in normal conversation",
   "They have a theme song they hum when they walk into rooms",
-  "They wear transition lenses indoors on purpose",
-  "They've named all their teeth",
+  "They wear transition lenses indoors on purpose","They've named all their teeth",
   "They greet everyone they meet with a formal bow",
   "They won't eat anything that is touching another thing on the plate",
   "They have a podcast with one episode from 2019 and it is two hours long",
@@ -153,8 +119,7 @@ const TEN_BUT_PROMPTS = [
   "They have a go-bag packed at all times and the contents change seasonally",
   "They refer to themselves in the third person when they are proud of something they did",
   "They've been permanently banned from one specific Dave and Buster's",
-  "They leave reviews for parking lots",
-  "They whistle constantly and have no idea they are doing it",
+  "They leave reviews for parking lots","They whistle constantly and have no idea they are doing it",
 ]
 
 const TRIVIA_QUESTIONS = [
@@ -249,7 +214,6 @@ const TRIVIA_QUESTIONS = [
   { q: "How many teeth does a snail have?", a: "Thousands (up to 14,000)" },
   { q: "What is the capital of Saudi Arabia?", a: "Riyadh" },
   { q: "Which planet rotates on its side?", a: "Uranus" },
-  { q: "What is the only fruit that grows its seed on the outside?", a: "Strawberry" },
   { q: "How many muscles does the human body have?", a: "Over 600" },
   { q: "Which country has the longest coastline in the world?", a: "Canada" },
   { q: "What is the capital of Vietnam?", a: "Hanoi" },
@@ -259,6 +223,45 @@ const TRIVIA_QUESTIONS = [
   { q: "How many liters are in a gallon?", a: "About 3.785" },
   { q: "Which country is both an island and a continent?", a: "Australia" },
 ]
+
+const SPY_CATEGORIES = {
+  "Christmas": ["Santa Claus","Christmas Tree","Candy Cane","Rudolph","Mistletoe","Eggnog","Christmas Stocking","Ugly Sweater","Wreath","Gingerbread Man"],
+  "Dessert": ["Tiramisu","Crème Brûlée","Chocolate Lava Cake","Cheesecake","Macarons","Banana Split","Churros","Bread Pudding","Panna Cotta","Cannoli"],
+  "Jobs": ["Surgeon","Air Traffic Controller","Bomb Disposal Expert","Submarine Captain","Astronaut","Rodeo Clown","Ventriloquist","Mattress Tester","Professional Bridesmaid","Chicken Sexer"],
+  "At the Beach": ["Lifeguard","Sunscreen","Sandcastle","Seagull","Beach Umbrella","Boogie Board","Jellyfish","Crab","Surf Instructor","Ice Cream Truck"],
+  "At a Wedding": ["Best Man","Flower Girl","Open Bar","Bouquet Toss","Father-Daughter Dance","Wedding Cake","Ring Bearer","Crying Guest","Photobooth","DJ"],
+  "Wild West": ["Sheriff","Saloon","Tumbleweed","Gold Nugget","Stagecoach","Wanted Poster","Lasso","Spittoon","Canteen","Campfire"],
+  "Halloween": ["Vampire","Witch","Jack-o-Lantern","Candy Corn","Haunted House","Zombie","Black Cat","Cauldron","Skeleton","Full Moon"],
+  "Airport": ["TSA Agent","Carry-On Bag","Boarding Pass","Overpriced Sandwich","Middle Seat","Duty Free Shop","Delayed Flight","Lost Luggage","Customs","Sky Bridge"],
+  "Thanksgiving": ["Turkey","Gravy Boat","Cranberry Sauce","Stuffing","Pumpkin Pie","Green Bean Casserole","Drunk Uncle","Folding Table","Nap","Leftovers"],
+  "At a Bar": ["Bartender","Happy Hour","Jukebox","Pool Table","Last Call","Tab","Bouncer","Trivia Night","Bar Fight","Karaoke"],
+  "Space": ["Black Hole","Space Shuttle","Astronaut Ice Cream","Meteorite","Space Suit","Moon Rover","Nebula","Satellite","Gravity Boot","Tang"],
+  "The Ranch": ["Ranch Water","ALP Can","Golf Sim","Soufflé","Fire Pit","Luca","Boot","Argi's Chair","The Rodeo","Ranch Gang"],
+  "Hospital": ["Surgeon","IV Drip","Hospital Gown","Bedpan","Defibrillator","Stethoscope","Waiting Room","Orderly","MRI Machine","Jello"],
+  "Gym": ["Personal Trainer","Protein Shake","Bench Press","Foam Roller","Locker Room","Treadmill","Squat Rack","Spotter","Mirror Selfie","Sauna"],
+  "Movie Theater": ["Popcorn","Trailers","Back Row","Usher","Recliner Seat","Junior Mints","Talker","Projector","Sneak-In Snacks","End Credits"],
+  "Camping": ["Tent","S'mores","Bear Spray","Sleeping Bag","Campfire","Headlamp","Trail Mix","Bug Spray","Canoe","Outhouse"],
+  "New Year's Eve": ["Champagne","Countdown","Ball Drop","Party Hat","Midnight Kiss","Fireworks","Dick Clark","Designated Driver","Noisemaker","Resolution"],
+  "Fast Food": ["Drive-Thru","Happy Meal","Secret Menu","Dipping Sauce","Meal Deal","Soft Serve","Order Kiosk","Dollar Menu","Grease Trap","Free Refills"],
+}
+
+const ALPHABET_CATEGORIES = [
+  "Things at a Rodeo","Things at a Ranch","Things at a Bar","Things at a Wedding",
+  "Things at a BBQ","Types of Beer","Things in a Pickup Truck","Things You Find at a Gas Station",
+  "Things That Are Spicy","Things at a Football Game","Things at a County Fair","Things in Texas",
+  "Things You'd Find at a Cookout","Things in a Barn","Things on a Menu at a Diner",
+  "Things That Are Cold","Things at a Tailgate","Things in a Swimming Pool",
+  "Things You Do on a Sunday","Things at a Casino","Things You Find on a Beach",
+  "Things That Are Loud","Things in a Tackle Box","Things at a Campsite",
+  "Things That Are Country","Things You'd Find at a State Fair","Things in a Garage",
+  "Things on a Farm","Things That Are Gross","Things That Can Go Wrong on a Road Trip",
+  "Things at a Golf Course","Things That Are Overrated","Things People Do at 2am",
+  "Things in a Man Cave","Things at a High School Reunion","Things That Smell Bad",
+  "Things at a Concert","Things You'd Bring to a Desert Island","Things in a Locker Room",
+  "Things That Are Embarrassing",
+]
+
+const ALPHABET_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
 
 function shuffle(arr) {
   const a = [...arr]
@@ -291,13 +294,10 @@ const quotes = [
   { text: "I've got the body of a god. Unfortunately it's Buddha.", author: "Billy Connolly" },
   { text: "I was not designed to wake up before the chickens.", author: "City folk, lost" },
 ]
-
 const quote = quotes[Math.floor(Math.random() * quotes.length)]
 
 // ── SOUNDS ───────────────────────────────────────────────────────────────────
-function makeCtx() {
-  return new (window.AudioContext || window.webkitAudioContext)()
-}
+function makeCtx() { return new (window.AudioContext || window.webkitAudioContext)() }
 function playClick() {
   try {
     const ctx = makeCtx(); const osc = ctx.createOscillator(); const gain = ctx.createGain()
@@ -362,8 +362,7 @@ function playYes() {
 }
 function playNo() {
   try {
-    const ctx = makeCtx()
-    const osc = ctx.createOscillator(); const gain = ctx.createGain()
+    const ctx = makeCtx(); const osc = ctx.createOscillator(); const gain = ctx.createGain()
     osc.connect(gain); gain.connect(ctx.destination); osc.type = "sine"
     osc.frequency.setValueAtTime(180, ctx.currentTime)
     osc.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.12)
@@ -394,77 +393,52 @@ function TriviaGame({ onBack }) {
   const [score, setScore] = useState({ correct: 0, wrong: 0 })
   const [history, setHistory] = useState([])
   const [phase, setPhase] = useState("playing")
-
   const current = questions[index]
-
   const markAnswer = (correct) => {
     const newScore = { ...score, [correct ? "correct" : "wrong"]: score[correct ? "correct" : "wrong"] + 1 }
     const newHistory = [...history, { q: current.q, a: current.a, correct }]
-    setScore(newScore)
-    setHistory(newHistory)
-    if (index + 1 >= questions.length) {
-      playFinal(); setPhase("results")
-    } else {
-      correct ? playYes() : playNo()
-      setIndex(index + 1)
-      setRevealed(false)
-    }
+    setScore(newScore); setHistory(newHistory)
+    if (index + 1 >= questions.length) { playFinal(); setPhase("results") }
+    else { correct ? playYes() : playNo(); setIndex(index + 1); setRevealed(false) }
   }
-
-  if (phase === "results") {
-    return (
-      <div className="gameWrapper">
-        <div className="card">
-          <div className="resultsTitle">Trivia Results</div>
-          <div className="resultsSubtitle">★ How smart are ya, partner? ★</div>
-          <div className="tenButScore">
-            <div className="tenButScoreBox tenButYesBox">
-              <div className="tenButScoreNum">{score.correct}</div>
-              <div className="tenButScoreLabel">Correct</div>
-            </div>
-            <div className="tenButScoreBox tenButNoBox">
-              <div className="tenButScoreNum">{score.wrong}</div>
-              <div className="tenButScoreLabel">Wrong</div>
-            </div>
+  if (phase === "results") return (
+    <div className="gameWrapper">
+      <div className="card">
+        <div className="resultsTitle">Trivia Results</div>
+        <div className="resultsSubtitle">★ How smart are ya, partner? ★</div>
+        <div className="tenButScore">
+          <div className="tenButScoreBox tenButYesBox"><div className="tenButScoreNum">{score.correct}</div><div className="tenButScoreLabel">Correct</div></div>
+          <div className="tenButScoreBox tenButNoBox"><div className="tenButScoreNum">{score.wrong}</div><div className="tenButScoreLabel">Wrong</div></div>
+        </div>
+        {history.map((h, i) => (
+          <div key={i} className={`tenButResultRow ${h.correct ? "tenButResultYes" : "tenButResultNo"}`}>
+            <span className="tenButResultIcon">{h.correct ? "✓" : "✗"}</span>
+            <span className="tenButResultText"><strong>{h.q}</strong><br />{h.a}</span>
           </div>
-          {history.map((h, i) => (
-            <div key={i} className={`tenButResultRow ${h.correct ? "tenButResultYes" : "tenButResultNo"}`}>
-              <span className="tenButResultIcon">{h.correct ? "✓" : "✗"}</span>
-              <span className="tenButResultText"><strong>{h.q}</strong><br />{h.a}</span>
-            </div>
-          ))}
-          <div className="bottomButtons">
-            <button className="replayBtn" onClick={() => { playRideAgain(); window.location.reload() }}>Play Again</button>
-            <button className="replayBtn replayBtnSecondary" onClick={() => { playPop(); onBack() }}>Back</button>
-          </div>
+        ))}
+        <div className="bottomButtons">
+          <button className="replayBtn" onClick={() => { playRideAgain(); window.location.reload() }}>Play Again</button>
+          <button className="replayBtn replayBtnSecondary" onClick={() => { playPop(); onBack() }}>Back</button>
         </div>
       </div>
-    )
-  }
-
+    </div>
+  )
   return (
     <div className="gameWrapper">
-      <div className="progressBar">
-        <div className="progressFill" style={{ width: `${(index / questions.length) * 100}%` }} />
-      </div>
+      <div className="progressBar"><div className="progressFill" style={{ width: `${(index / questions.length) * 100}%` }} /></div>
       <p className="howto">Read the question out loud — then reveal the answer!</p>
       <div className="card tenButCard">
         <div className="cardLabel">★ Trivia ★</div>
         <div className="promptNumber">Question {index + 1} of {questions.length}</div>
         <div className="tenButPrompt" style={{ fontSize: "clamp(16px, 4.5vw, 26px)" }}>{current.q}</div>
       </div>
-
       {!revealed ? (
-        <button className="startBtn" onClick={() => { playClick(); setRevealed(true) }}>
-          Reveal Answer
-        </button>
+        <button className="startBtn" onClick={() => { playClick(); setRevealed(true) }}>Reveal Answer</button>
       ) : (
         <>
           <div className="card" style={{ textAlign: "center", marginBottom: "14px" }}>
             <div className="cardLabel">★ Answer ★</div>
-            <div className="tenButPrompt" style={{ fontSize: "clamp(18px, 5vw, 30px)", color: "var(--rosewood)" }}>
-              {current.a}
-            </div>
+            <div className="tenButPrompt" style={{ fontSize: "clamp(18px, 5vw, 30px)", color: "var(--rosewood)" }}>{current.a}</div>
           </div>
           <div className="tenButButtons">
             <button className="tenButNo" onClick={() => markAnswer(false)}>✗ Got it Wrong</button>
@@ -472,12 +446,10 @@ function TriviaGame({ onBack }) {
           </div>
         </>
       )}
-
       <div className="tenButTally" style={{ marginTop: "12px" }}>
         <span className="tenButTallyYes">✓ {score.correct} correct</span>
         <span className="tenButTallyNo">✗ {score.wrong} wrong</span>
       </div>
-
       {history.length > 0 && (
         <div style={{ marginBottom: "20px" }}>
           <div className="divider">✦ previous answers ✦</div>
@@ -502,57 +474,39 @@ function TenButGame({ onBack }) {
   const [index, setIndex] = useState(0)
   const [answers, setAnswers] = useState([])
   const [phase, setPhase] = useState("playing")
-
   const answer = (choice) => {
     const newAnswers = [...answers, { prompt: prompts[index], answer: choice }]
     setAnswers(newAnswers)
-    if (index + 1 >= prompts.length) {
-      playFinal(); setPhase("results")
-    } else {
-      choice === "yes" ? playYes() : playNo()
-      setIndex(index + 1)
-    }
+    if (index + 1 >= prompts.length) { playFinal(); setPhase("results") }
+    else { choice === "yes" ? playYes() : playNo(); setIndex(index + 1) }
   }
-
   const yesCount = answers.filter(a => a.answer === "yes").length
   const noCount = answers.filter(a => a.answer === "no").length
-
-  if (phase === "results") {
-    return (
-      <div className="gameWrapper">
-        <div className="card">
-          <div className="resultsTitle">Your Verdict</div>
-          <div className="resultsSubtitle">★ Still a yes or a hard no? ★</div>
-          <div className="tenButScore">
-            <div className="tenButScoreBox tenButYesBox">
-              <div className="tenButScoreNum">{yesCount}</div>
-              <div className="tenButScoreLabel">Still a Yes</div>
-            </div>
-            <div className="tenButScoreBox tenButNoBox">
-              <div className="tenButScoreNum">{noCount}</div>
-              <div className="tenButScoreLabel">Hard No</div>
-            </div>
+  if (phase === "results") return (
+    <div className="gameWrapper">
+      <div className="card">
+        <div className="resultsTitle">Your Verdict</div>
+        <div className="resultsSubtitle">★ Still a yes or a hard no? ★</div>
+        <div className="tenButScore">
+          <div className="tenButScoreBox tenButYesBox"><div className="tenButScoreNum">{yesCount}</div><div className="tenButScoreLabel">Still a Yes</div></div>
+          <div className="tenButScoreBox tenButNoBox"><div className="tenButScoreNum">{noCount}</div><div className="tenButScoreLabel">Hard No</div></div>
+        </div>
+        {answers.map((a, i) => (
+          <div key={i} className={`tenButResultRow ${a.answer === "yes" ? "tenButResultYes" : "tenButResultNo"}`}>
+            <span className="tenButResultIcon">{a.answer === "yes" ? "✓" : "✗"}</span>
+            <span className="tenButResultText">They're a 10 but {a.prompt}</span>
           </div>
-          {answers.map((a, i) => (
-            <div key={i} className={`tenButResultRow ${a.answer === "yes" ? "tenButResultYes" : "tenButResultNo"}`}>
-              <span className="tenButResultIcon">{a.answer === "yes" ? "✓" : "✗"}</span>
-              <span className="tenButResultText">They're a 10 but {a.prompt}</span>
-            </div>
-          ))}
-          <div className="bottomButtons">
-            <button className="replayBtn" onClick={() => { playRideAgain(); window.location.reload() }}>Play Again</button>
-            <button className="replayBtn replayBtnSecondary" onClick={() => { playPop(); onBack() }}>Back</button>
-          </div>
+        ))}
+        <div className="bottomButtons">
+          <button className="replayBtn" onClick={() => { playRideAgain(); window.location.reload() }}>Play Again</button>
+          <button className="replayBtn replayBtnSecondary" onClick={() => { playPop(); onBack() }}>Back</button>
         </div>
       </div>
-    )
-  }
-
+    </div>
+  )
   return (
     <div className="gameWrapper">
-      <div className="progressBar">
-        <div className="progressFill" style={{ width: `${(index / prompts.length) * 100}%` }} />
-      </div>
+      <div className="progressBar"><div className="progressFill" style={{ width: `${(index / prompts.length) * 100}%` }} /></div>
       <p className="howto">Would you still date them?</p>
       <div className="card tenButCard">
         <div className="cardLabel">★ They're A 10 But... ★</div>
@@ -586,44 +540,19 @@ function TenButGame({ onBack }) {
   )
 }
 
-
-// ── SPY GAME DATA ─────────────────────────────────────────────────────────────
-const SPY_CATEGORIES = {
-  "Christmas": ["Santa Claus", "Christmas Tree", "Candy Cane", "Rudolph", "Mistletoe", "Eggnog", "Christmas Stocking", "Ugly Sweater", "Wreath", "Gingerbread Man"],
-  "Dessert": ["Tiramisu", "Crème Brûlée", "Chocolate Lava Cake", "Cheesecake", "Macarons", "Banana Split", "Churros", "Bread Pudding", "Panna Cotta", "Cannoli"],
-  "Jobs": ["Surgeon", "Air Traffic Controller", "Bomb Disposal Expert", "Submarine Captain", "Astronaut", "Rodeo Clown", "Ventriloquist", "Mattress Tester", "Professional Bridesmaid", "Chicken Sexer"],
-  "At the Beach": ["Lifeguard", "Sunscreen", "Sandcastle", "Seagull", "Beach Umbrella", "Boogie Board", "Jellyfish", "Crab", "Surf Instructor", "Ice Cream Truck"],
-  "At a Wedding": ["Best Man", "Flower Girl", "Open Bar", "Bouquet Toss", "Father-Daughter Dance", "Wedding Cake", "Ring Bearer", "Crying Guest", "Photobooth", "DJ"],
-  "Wild West": ["Sheriff", "Saloon", "Tumbleweed", "Gold Nugget", "Stagecoach", "Wanted Poster", "Lasso", "Spittoon", "Canteen", "Campfire"],
-  "Halloween": ["Vampire", "Witch", "Jack-o-Lantern", "Candy Corn", "Haunted House", "Zombie", "Black Cat", "Cauldron", "Skeleton", "Full Moon"],
-  "Airport": ["TSA Agent", "Carry-On Bag", "Boarding Pass", "Overpriced Sandwich", "Middle Seat", "Duty Free Shop", "Delayed Flight", "Lost Luggage", "Customs", "Sky Bridge"],
-  "Thanksgiving": ["Turkey", "Gravy Boat", "Cranberry Sauce", "Stuffing", "Pumpkin Pie", "Green Bean Casserole", "Drunk Uncle", "Folding Table", "Nap", "Leftovers"],
-  "At a Bar": ["Bartender", "Happy Hour", "Jukebox", "Pool Table", "Last Call", "Tab", "Bouncer", "Trivia Night", "Bar Fight", "Karaoke"],
-  "Space": ["Black Hole", "Space Shuttle", "Astronaut Ice Cream", "Meteorite", "Space Suit", "Moon Rover", "Nebula", "Satellite", "Gravity Boot", "Tang"],
-  "The Ranch": ["Ranch Water", "ALP Can", "Golf Sim", "Soufflé", "Fire Pit", "Luca", "Boot", "Argi's Chair", "The Rodeo", "Ranch Gang"],
-  "Hospital": ["Surgeon", "IV Drip", "Hospital Gown", "Bedpan", "Defibrillator", "Stethoscope", "Waiting Room", "Orderly", "MRI Machine", "Jello"],
-  "Gym": ["Personal Trainer", "Protein Shake", "Bench Press", "Foam Roller", "Locker Room", "Treadmill", "Squat Rack", "Spotter", "Mirror Selfie", "Sauna"],
-  "Movie Theater": ["Popcorn", "Trailers", "Back Row", "Usher", "Recliner Seat", "Junior Mints", "Talker", "Projector", "Sneak-In Snacks", "End Credits"],
-  "Camping": ["Tent", "S'mores", "Bear Spray", "Sleeping Bag", "Campfire", "Headlamp", "Trail Mix", "Bug Spray", "Canoe", "Outhouse"],
-  "New Year's Eve": ["Champagne", "Countdown", "Ball Drop", "Party Hat", "Midnight Kiss", "Fireworks", "Dick Clark", "Designated Driver", "Noisemaker", "Resolution"],
-  "Fast Food": ["Drive-Thru", "Happy Meal", "Secret Menu", "Dipping Sauce", "Meal Deal", "Soft Serve", "Order Kiosk", "Dollar Menu", "Grease Trap", "Free Refills"],
-}
-
 // ── SPY GAME ──────────────────────────────────────────────────────────────────
 function SpyGame({ onBack }) {
-  const [phase, setPhase] = useState("setup") // setup | reveal | playing | spyGuess | results
+  const [phase, setPhase] = useState("setup")
   const [playerNames, setPlayerNames] = useState(["", "", "", "", ""])
   const [category, setCategory] = useState("")
   const [item, setItem] = useState("")
   const [spyIndex, setSpyIndex] = useState(null)
   const [revealIndex, setRevealIndex] = useState(0)
-  const [currentReveal, setCurrentReveal] = useState(null) // null | "spy" | "player"
+  const [currentReveal, setCurrentReveal] = useState(null)
   const [spyGuess, setSpyGuess] = useState("")
-  const [gameResult, setGameResult] = useState(null) // "spyCaught" | "spyGuessedRight" | "spyEscaped"
+  const [gameResult, setGameResult] = useState(null)
   const [votedSpy, setVotedSpy] = useState(null)
-
   const validPlayers = playerNames.filter(n => n.trim().length > 0)
-
   const startGame = () => {
     if (validPlayers.length < 3) return
     const cats = Object.keys(SPY_CATEGORIES)
@@ -631,124 +560,58 @@ function SpyGame({ onBack }) {
     const items = SPY_CATEGORIES[chosenCat]
     const chosenItem = items[Math.floor(Math.random() * items.length)]
     const spy = Math.floor(Math.random() * validPlayers.length)
-    setCategory(chosenCat)
-    setItem(chosenItem)
-    setSpyIndex(spy)
-    setRevealIndex(0)
-    setCurrentReveal(null)
-    setPhase("reveal")
-    playWhoosh()
+    setCategory(chosenCat); setItem(chosenItem); setSpyIndex(spy)
+    setRevealIndex(0); setCurrentReveal(null); setPhase("reveal"); playWhoosh()
   }
-
   const handleRevealTap = () => {
-    if (currentReveal === null) {
-      // Show the role
-      setCurrentReveal(revealIndex === spyIndex ? "spy" : "player")
-      playClick()
-    } else {
-      // Hide and move to next player
+    if (currentReveal === null) { setCurrentReveal(revealIndex === spyIndex ? "spy" : "player"); playClick() }
+    else {
       setCurrentReveal(null)
-      if (revealIndex + 1 >= validPlayers.length) {
-        setPhase("playing")
-        playFinal()
-      } else {
-        setRevealIndex(revealIndex + 1)
-      }
+      if (revealIndex + 1 >= validPlayers.length) { setPhase("playing"); playFinal() }
+      else { setRevealIndex(revealIndex + 1) }
     }
   }
-
   const handleVote = (idx) => {
     setVotedSpy(idx)
-    if (idx === spyIndex) {
-      // Spy was caught — now spy gets to guess
-      setPhase("spyGuess")
-      playYes()
-    } else {
-      // Wrong person — spy wins
-      setGameResult("spyEscaped")
-      setPhase("results")
-      playNo()
-    }
+    if (idx === spyIndex) { setPhase("spyGuess"); playYes() }
+    else { setGameResult("spyEscaped"); setPhase("results"); playNo() }
   }
-
   const handleSpyGuess = () => {
     const guess = spyGuess.trim().toLowerCase()
     const correct = item.toLowerCase()
-    if (guess === correct || correct.includes(guess) || guess.includes(correct.split(" ")[0].toLowerCase())) {
-      setGameResult("spyGuessedRight")
-    } else {
-      setGameResult("spyCaught")
-    }
-    setPhase("results")
-    playFinal()
+    setGameResult(guess === correct || correct.includes(guess) || guess.includes(correct.split(" ")[0].toLowerCase()) ? "spyGuessedRight" : "spyCaught")
+    setPhase("results"); playFinal()
   }
-
   const resetGame = () => {
-    setPhase("setup")
-    setPlayerNames(["", "", "", ""])
-    setCategory("")
-    setItem("")
-    setSpyIndex(null)
-    setRevealIndex(0)
-    setCurrentReveal(null)
-    setSpyGuess("")
-    setGameResult(null)
-    setVotedSpy(null)
+    setPhase("setup"); setPlayerNames(["", "", "", "", ""]); setCategory(""); setItem("")
+    setSpyIndex(null); setRevealIndex(0); setCurrentReveal(null); setSpyGuess(""); setGameResult(null); setVotedSpy(null)
   }
-
-  // ── SETUP ──
-  if (phase === "setup") {
-    return (
-      <div className="gameWrapper">
-        <div className="card">
-          <div className="cardLabel">★ Spy — Enter Players ★</div>
-          <p className="howto" style={{marginBottom:"16px"}}>Add the names of everyone playing (3–10 players). Pass the phone around to reveal roles.</p>
-          <div className="promptInputs">
-            {playerNames.map((name, i) => (
-              <div className="promptInputRow" key={i}>
-                <span className="promptNumLabel">{i + 1}</span>
-                <input
-                  className="promptInput"
-                  type="text"
-                  maxLength={20}
-                  placeholder={`Player ${i + 1}...`}
-                  value={name}
-                  onChange={e => {
-                    const next = [...playerNames]
-                    next[i] = e.target.value
-                    setPlayerNames(next)
-                  }}
-                />
-                {playerNames.length > 3 && (
-                  <button
-                    onClick={() => setPlayerNames(playerNames.filter((_, j) => j !== i))}
-                    style={{background:"none",border:"none",color:"var(--rosewood)",fontSize:"18px",cursor:"pointer",padding:"0 4px"}}
-                  >✕</button>
-                )}
-              </div>
-            ))}
-          </div>
-          {playerNames.length < 10 && (
-            <button
-              className="backBtnBottom"
-              style={{marginBottom:"12px"}}
-              onClick={() => setPlayerNames([...playerNames, ""])}
-            >+ Add Player</button>
-          )}
-          <button
-            className="startBtn"
-            disabled={validPlayers.length < 3}
-            onClick={startGame}
-          >
-            Deal Roles
-          </button>
+  if (phase === "setup") return (
+    <div className="gameWrapper">
+      <div className="card">
+        <div className="cardLabel">★ Spy — Enter Players ★</div>
+        <p className="howto" style={{marginBottom:"16px"}}>Add the names of everyone playing (3–10 players). Pass the phone around to reveal roles.</p>
+        <div className="promptInputs">
+          {playerNames.map((name, i) => (
+            <div className="promptInputRow" key={i}>
+              <span className="promptNumLabel">{i + 1}</span>
+              <input className="promptInput" type="text" maxLength={20} placeholder={`Player ${i + 1}...`} value={name}
+                onChange={e => { const next = [...playerNames]; next[i] = e.target.value; setPlayerNames(next) }} />
+              {playerNames.length > 3 && (
+                <button onClick={() => setPlayerNames(playerNames.filter((_, j) => j !== i))}
+                  style={{background:"none",border:"none",color:"var(--rosewood)",fontSize:"18px",cursor:"pointer",padding:"0 4px"}}>✕</button>
+              )}
+            </div>
+          ))}
         </div>
-        <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back to Menu</button>
+        {playerNames.length < 10 && (
+          <button className="backBtnBottom" style={{marginBottom:"12px"}} onClick={() => setPlayerNames([...playerNames, ""])}>+ Add Player</button>
+        )}
+        <button className="startBtn" disabled={validPlayers.length < 3} onClick={startGame}>Deal Roles</button>
       </div>
-    )
-  }
-
-  // ── REVEAL ──
+      <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back to Menu</button>
+    </div>
+  )
   if (phase === "reveal") {
     const playerName = validPlayers[revealIndex]
     return (
@@ -757,14 +620,7 @@ function SpyGame({ onBack }) {
           <div className="cardLabel">★ Spy ★</div>
           <div className="promptNumber">{revealIndex + 1} of {validPlayers.length}</div>
           <div className="tenButSetup" style={{fontSize:"clamp(18px,5vw,28px)",marginBottom:"6px"}}>{playerName}</div>
-          <p className="howto" style={{marginBottom:"16px"}}>
-            {currentReveal === null
-              ? "Tap below to see your role — don't show anyone else!"
-              : currentReveal === "spy"
-                ? "Memorize it, then tap to hide"
-                : "Memorize it, then tap to hide"}
-          </p>
-
+          <p className="howto" style={{marginBottom:"16px"}}>{currentReveal === null ? "Tap below to see your role — don't show anyone else!" : "Memorize it, then tap to hide"}</p>
           {currentReveal === null ? (
             <button className="startBtn" onClick={handleRevealTap}>👁 Reveal My Role</button>
           ) : (
@@ -791,64 +647,34 @@ function SpyGame({ onBack }) {
       </div>
     )
   }
-
-  // ── PLAYING ──
-  if (phase === "playing") {
-    return (
-      <div className="gameWrapper">
-        <div className="card">
-          <div className="cardLabel">★ Spy — In Progress ★</div>
-          <div className="spyPlayingCategory">Category: <strong>{category}</strong></div>
-          <p className="howto" style={{margin:"14px 0"}}>
-            Go around asking each other questions about the item. Try to spot the spy — they only know the category!
-          </p>
-          <div className="spyPlayerList">
-            {validPlayers.map((name, i) => (
-              <div key={i} className="spyPlayerChip">{name}</div>
-            ))}
-          </div>
-          <div className="divider" style={{margin:"18px 0"}}>✦ ready to vote? ✦</div>
-          <p className="howto" style={{marginBottom:"12px"}}>Who do you think is the spy?</p>
-          <div className="spyVoteButtons">
-            {validPlayers.map((name, i) => (
-              <button key={i} className="spyVoteBtn" onClick={() => handleVote(i)}>{name}</button>
-            ))}
-          </div>
-        </div>
-        <button className="backBtnBottom" onClick={() => { playPop(); resetGame() }}>← Start Over</button>
+  if (phase === "playing") return (
+    <div className="gameWrapper">
+      <div className="card">
+        <div className="cardLabel">★ Spy — In Progress ★</div>
+        <div className="spyPlayingCategory">Category: <strong>{category}</strong></div>
+        <p className="howto" style={{margin:"14px 0"}}>Go around asking each other questions. Try to spot the spy — they only know the category!</p>
+        <div className="spyPlayerList">{validPlayers.map((name, i) => <div key={i} className="spyPlayerChip">{name}</div>)}</div>
+        <div className="divider" style={{margin:"18px 0"}}>✦ ready to vote? ✦</div>
+        <p className="howto" style={{marginBottom:"12px"}}>Who do you think is the spy?</p>
+        <div className="spyVoteButtons">{validPlayers.map((name, i) => <button key={i} className="spyVoteBtn" onClick={() => handleVote(i)}>{name}</button>)}</div>
       </div>
-    )
-  }
-
-  // ── SPY GUESS ──
-  if (phase === "spyGuess") {
-    return (
-      <div className="gameWrapper">
-        <div className="card tenButCard">
-          <div className="cardLabel">★ Spy Caught! ★</div>
-          <div className="tenButSetup">The group voted for</div>
-          <div className="tenButPrompt" style={{color:"var(--rosewood)"}}>{validPlayers[votedSpy]}</div>
-          <p className="howto" style={{margin:"14px 0"}}>
-            {validPlayers[spyIndex]}, you were caught! But you get one chance — guess the item to steal the win.
-          </p>
-          <p className="slotsLabel" style={{marginBottom:"8px"}}>Category: <strong>{category}</strong></p>
-          <input
-            className="promptInput"
-            type="text"
-            placeholder="Your guess..."
-            value={spyGuess}
-            onChange={e => setSpyGuess(e.target.value)}
-            style={{marginBottom:"14px", width:"100%"}}
-          />
-          <button className="startBtn" disabled={!spyGuess.trim()} onClick={handleSpyGuess}>
-            Submit Guess
-          </button>
-        </div>
+      <button className="backBtnBottom" onClick={() => { playPop(); resetGame() }}>← Start Over</button>
+    </div>
+  )
+  if (phase === "spyGuess") return (
+    <div className="gameWrapper">
+      <div className="card tenButCard">
+        <div className="cardLabel">★ Spy Caught! ★</div>
+        <div className="tenButSetup">The group voted for</div>
+        <div className="tenButPrompt" style={{color:"var(--rosewood)"}}>{validPlayers[votedSpy]}</div>
+        <p className="howto" style={{margin:"14px 0"}}>{validPlayers[spyIndex]}, you were caught! Guess the item to steal the win.</p>
+        <p className="slotsLabel" style={{marginBottom:"8px"}}>Category: <strong>{category}</strong></p>
+        <input className="promptInput" type="text" placeholder="Your guess..." value={spyGuess}
+          onChange={e => setSpyGuess(e.target.value)} style={{marginBottom:"14px", width:"100%"}} />
+        <button className="startBtn" disabled={!spyGuess.trim()} onClick={handleSpyGuess}>Submit Guess</button>
       </div>
-    )
-  }
-
-  // ── RESULTS ──
+    </div>
+  )
   if (phase === "results") {
     const messages = {
       spyCaught: { title: "Spy Caught!", sub: "The group wins!", color: "var(--rosewood)" },
@@ -876,31 +702,181 @@ function SpyGame({ onBack }) {
       </div>
     )
   }
-
   return null
 }
 
+// ── ALPHABET GAME ─────────────────────────────────────────────────────────────
+function AlphabetGame({ onBack }) {
+  const [phase, setPhase] = useState("setup")
+  const [playerNames, setPlayerNames] = useState(["", "", "", ""])
+  const [category, setCategory] = useState("")
+  const [letterIndex, setLetterIndex] = useState(0)
+  const [eliminated, setEliminated] = useState([])
+  const [currentPlayer, setCurrentPlayer] = useState(0)
+  const [failedPlayer, setFailedPlayer] = useState(null)
+  const [winner, setWinner] = useState(null)
+  const validPlayers = playerNames.filter(n => n.trim().length > 0)
+  const startGame = () => {
+    if (validPlayers.length < 2) return
+    const chosen = ALPHABET_CATEGORIES[Math.floor(Math.random() * ALPHABET_CATEGORIES.length)]
+    setCategory(chosen); setLetterIndex(0); setEliminated([]); setCurrentPlayer(0)
+    setFailedPlayer(null); setWinner(null); setPhase("playing"); playWhoosh()
+  }
+  const activePlayers = validPlayers.map((name, i) => ({ name, originalIndex: i })).filter((_, i) => !eliminated.includes(i))
+  const currentActiveIndex = currentPlayer % activePlayers.length
+  const currentName = activePlayers[currentActiveIndex]?.name || ""
+  const currentLetter = ALPHABET_LETTERS[letterIndex]
+  const handleGotIt = () => {
+    playYes()
+    const nextLetter = letterIndex + 1
+    if (nextLetter >= ALPHABET_LETTERS.length) { setPhase("done"); setWinner("all"); playFinal(); return }
+    setLetterIndex(nextLetter); setCurrentPlayer((currentPlayer + 1) % activePlayers.length)
+  }
+  const handleMissed = () => {
+    playNo()
+    const eliminatedOriginalIndex = activePlayers[currentActiveIndex].originalIndex
+    const newEliminated = [...eliminated, eliminatedOriginalIndex]
+    setFailedPlayer(activePlayers[currentActiveIndex].name)
+    const remaining = validPlayers.filter((_, i) => !newEliminated.includes(i))
+    if (remaining.length <= 1) { setEliminated(newEliminated); setWinner(remaining[0] || "Nobody"); setPhase("done"); playFinal(); return }
+    setEliminated(newEliminated); setPhase("eliminated"); setCurrentPlayer(currentActiveIndex % (activePlayers.length - 1))
+  }
+  const continueAfterElimination = () => { setFailedPlayer(null); setPhase("playing"); playClick() }
+  const resetGame = () => {
+    setPhase("setup"); setCategory(""); setLetterIndex(0); setEliminated([])
+    setCurrentPlayer(0); setFailedPlayer(null); setWinner(null)
+  }
+  if (phase === "setup") return (
+    <div className="gameWrapper">
+      <div className="card">
+        <div className="cardLabel">★ Alphabet Game — Players ★</div>
+        <p className="howto" style={{marginBottom:"16px"}}>Enter players in turn order. A category shows — go A to Z naming things in that category. Miss your letter and you're out!</p>
+        <div className="promptInputs">
+          {playerNames.map((name, i) => (
+            <div className="promptInputRow" key={i}>
+              <span className="promptNumLabel">{i + 1}</span>
+              <input className="promptInput" type="text" maxLength={20} placeholder={`Player ${i + 1}...`} value={name}
+                onChange={e => { const next = [...playerNames]; next[i] = e.target.value; setPlayerNames(next) }} />
+              {playerNames.length > 2 && (
+                <button onClick={() => setPlayerNames(playerNames.filter((_, j) => j !== i))}
+                  style={{background:"none",border:"none",color:"var(--rosewood)",fontSize:"18px",cursor:"pointer",padding:"0 4px"}}>✕</button>
+              )}
+            </div>
+          ))}
+        </div>
+        {playerNames.length < 10 && (
+          <button className="backBtnBottom" style={{marginBottom:"12px"}} onClick={() => setPlayerNames([...playerNames, ""])}>+ Add Player</button>
+        )}
+        <button className="startBtn" disabled={validPlayers.length < 2} onClick={startGame}>Start Game</button>
+      </div>
+      <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back to Menu</button>
+    </div>
+  )
+  if (phase === "eliminated") {
+    const remaining = validPlayers.filter((_, i) => !eliminated.includes(i))
+    return (
+      <div className="gameWrapper">
+        <div className="card tenButCard">
+          <div className="cardLabel">★ Eliminated ★</div>
+          <div className="tenButPrompt" style={{color:"var(--rosewood)",fontSize:"clamp(22px,6vw,38px)"}}>{failedPlayer}</div>
+          <p className="howto" style={{margin:"12px 0"}}>Couldn't name something starting with <strong>{currentLetter}</strong> for <strong>{category}</strong></p>
+          <div className="spyPlayerList" style={{margin:"12px 0"}}>{remaining.map((name, i) => <div key={i} className="spyPlayerChip">{name}</div>)}</div>
+          <p className="howto">{remaining.length} player{remaining.length !== 1 ? "s" : ""} remaining — letter {currentLetter} stays!</p>
+          <button className="startBtn" style={{marginTop:"14px"}} onClick={continueAfterElimination}>Continue →</button>
+        </div>
+      </div>
+    )
+  }
+  if (phase === "done") return (
+    <div className="gameWrapper">
+      <div className="card tenButCard">
+        <div className="resultsTitle">{winner === "all" ? "You Did It!" : "Winner!"}</div>
+        <div className="resultsSubtitle">{winner === "all" ? "★ The whole group survived the alphabet ★" : "★ Last one standing ★"}</div>
+        {winner !== "all" && <div className="tenButPrompt" style={{color:"var(--rosewood)",margin:"12px 0"}}>{winner}</div>}
+        <div className="spyResultDetails">
+          <div className="spyResultRow"><span>Category</span><strong>{category}</strong></div>
+          <div className="spyResultRow"><span>Made it to</span><strong>Letter {currentLetter}{winner === "all" ? " — Z!" : ""}</strong></div>
+        </div>
+        <div className="bottomButtons">
+          <button className="replayBtn" onClick={() => { playWhoosh(); startGame() }}>Play Again</button>
+          <button className="replayBtn replayBtnSecondary" onClick={() => { playPop(); resetGame() }}>New Players</button>
+        </div>
+      </div>
+      <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back to Menu</button>
+    </div>
+  )
+  return (
+    <div className="gameWrapper">
+      <div className="progressBar"><div className="progressFill" style={{ width: `${(letterIndex / 26) * 100}%` }} /></div>
+      <div className="card tenButCard">
+        <div className="cardLabel">★ Alphabet Game ★</div>
+        <div className="alphabetCategory">{category}</div>
+        <div className="alphabetLetter">{currentLetter}</div>
+        <div className="alphabetPlayer">{currentName}'s turn</div>
+        <p className="howto" style={{marginTop:"8px"}}>Name something starting with <strong>{currentLetter}</strong></p>
+      </div>
+      <div className="tenButButtons">
+        <button className="tenButNo" onClick={handleMissed}>✗ Missed It</button>
+        <button className="tenButYes" onClick={handleGotIt}>✓ Got One!</button>
+      </div>
+      <div className="divider" style={{margin:"16px 0"}}>✦ still in ✦</div>
+      <div className="spyPlayerList">
+        {activePlayers.map((p, i) => (
+          <div key={i} className={`spyPlayerChip${i === currentActiveIndex ? " spyPlayerActive" : ""}`}>
+            {i === currentActiveIndex ? "→ " : ""}{p.name}
+          </div>
+        ))}
+      </div>
+      {eliminated.length > 0 && (
+        <div style={{marginTop:"10px"}}>
+          <div className="divider">✦ eliminated ✦</div>
+          <div className="spyPlayerList">
+            {eliminated.map(idx => (
+              <div key={idx} className="spyPlayerChip" style={{opacity:0.4,textDecoration:"line-through"}}>{validPlayers[idx]}</div>
+            ))}
+          </div>
+        </div>
+      )}
+      <button className="backBtnBottom" onClick={() => { playPop(); resetGame() }}>← Start Over</button>
+    </div>
+  )
+}
+
 // ── SCREENS ──────────────────────────────────────────────────────────────────
-function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia, onSpy }) {
+function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia, onSpy, onAlphabet }) {
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) { document.documentElement.requestFullscreen?.() }
     else { document.exitFullscreen?.() }
     playPop()
   }
-
   const openWeather = () => {
     playWhoosh()
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
     if (isMobile) {
       window.location.href = "weather://"
-      setTimeout(() => {
-        window.open("https://forecast.weather.gov/MapClick.php?CityName=Clearwater&state=FL&site=TBW&textField1=27.9659&textField2=-82.8001", "_blank")
-      }, 500)
+      setTimeout(() => { window.open("https://forecast.weather.gov/MapClick.php?CityName=Clearwater&state=FL&site=TBW&textField1=27.9659&textField2=-82.8001", "_blank") }, 500)
     } else {
       window.open("https://forecast.weather.gov/MapClick.php?CityName=Clearwater&state=FL&site=TBW&textField1=27.9659&textField2=-82.8001", "_blank")
     }
   }
-
+  const games = [
+    {
+      emoji: "🎯",
+      name: "Blind Ratings",
+      desc: "Rank 10 prompts from worst to best — blindly. No take-backs.",
+      action: (
+        <div className="gameCardButtons">
+          <button className="gameCardBtnSub" onClick={() => { playPop(); onCustom() }}>Custom</button>
+          <button className="gameCardBtn" onClick={() => { playWhoosh(); onRandom() }}>Randomize</button>
+        </div>
+      )
+    },
+    { emoji: "💅", name: "They're A 10 But...", desc: "Red flags vs good looks. You be the judge.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onTenBut() }}>Play Now</button> },
+    { emoji: "☁️", name: "Guess The Weather", desc: "Check the Clearwater forecast. Was your gut right?", action: <button className="gameCardBtn" onClick={openWeather}>Open Forecast</button> },
+    { emoji: "🧠", name: "Trivia", desc: "100 questions on animals, history, food and more.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onTrivia() }}>Let's Go</button> },
+    { emoji: "🕵️", name: "Spy", desc: "One person only knows the category. Find them.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onSpy() }}>Find the Spy</button> },
+    { emoji: "🔤", name: "Alphabet Game", desc: "Name something A to Z. Miss your letter and you're out.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onAlphabet() }}>A to Z</button> },
+  ]
   return (
     <div>
       <div className="quoteOfDay">
@@ -908,48 +884,15 @@ function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia, onSpy }) {
         <span className="quoteOfDayText">"{quote.text}"</span>
         <div className="quoteOfDayAuthor">— {quote.author}</div>
       </div>
-
-      <div className="card">
-        <div className="cardLabel">★ Blind Ratings ★</div>
-        <p className="modeIntro">How do you want to play tonight, partner?</p>
-        <div className="modeButtons">
-          <button className="modeBtn" onClick={() => { playPop(); onCustom() }}>
-            Enter Your Own Prompts
-            <span className="btnSub">Type in 10 of your own</span>
-          </button>
-          <button className="modeBtn" onClick={() => { playWhoosh(); onRandom() }}>
-            Randomize
-            <span className="btnSub">Draw from the deck</span>
-          </button>
-        </div>
-      </div>
-
-      <div className="card tenButMenuCard">
-        <div className="cardLabel">★ They're A 10 But... ★</div>
-        <p className="modeIntro">Make your judgement!</p>
-        <p className="comingSoonDesc">They're a 10. But do their red flags cancel it out? You be the judge.</p>
-        <button className="startBtn" onClick={() => { playWhoosh(); onTenBut() }}>Play Now</button>
-      </div>
-
-      <div className="card">
-        <div className="cardLabel">☁ Guess The Weather ☁</div>
-        <p className="modeIntro">Check the forecast!</p>
-        <p className="comingSoonDesc">Open your weather app and see if your gut matches the forecast.</p>
-        <button className="startBtn" onClick={openWeather}>Open Weather App</button>
-      </div>
-
-      <div className="card">
-        <div className="cardLabel">★ Trivia ★</div>
-        <p className="modeIntro">How smart are ya, partner?</p>
-        <p className="comingSoonDesc">100 questions on animals, history, food, countries and more. Read it out loud and mark it yourself.</p>
-        <button className="startBtn" onClick={() => { playWhoosh(); onTrivia() }}>Let's Go</button>
-      </div>
-
-      <div className="card">
-        <div className="cardLabel">★ Spy ★</div>
-        <p className="modeIntro">One of you is the spy.</p>
-        <p className="comingSoonDesc">Everyone gets a secret role from a category — except the spy who only knows the category. Ask questions, find the spy, or be the spy and guess the item.</p>
-        <button className="startBtn" onClick={() => { playWhoosh(); onSpy() }}>Find the Spy</button>
+      <div className="gamesGrid">
+        {games.map((g, i) => (
+          <div key={i} className="gameCard">
+            <div className="gameCardEmoji">{g.emoji}</div>
+            <div className="gameCardName">{g.name}</div>
+            <div className="gameCardDesc">{g.desc}</div>
+            {g.action}
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -957,9 +900,7 @@ function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia, onSpy }) {
 
 function CustomScreen({ onBack, onStart }) {
   const [inputs, setInputs] = useState(Array(10).fill(""))
-  const handleChange = (i, val) => {
-    const next = [...inputs]; next[i] = val; setInputs(next)
-  }
+  const handleChange = (i, val) => { const next = [...inputs]; next[i] = val; setInputs(next) }
   const allFilled = inputs.every(v => v.trim().length > 0)
   return (
     <div className="gameWrapper">
@@ -970,21 +911,12 @@ function CustomScreen({ onBack, onStart }) {
           {inputs.map((val, i) => (
             <div className="promptInputRow" key={i}>
               <span className="promptNumLabel">{i + 1}</span>
-              <input
-                className="promptInput"
-                type="text"
-                maxLength={200}
-                placeholder={`Prompt #${i + 1}...`}
-                value={val}
-                onChange={e => handleChange(i, e.target.value)}
-              />
+              <input className="promptInput" type="text" maxLength={200} placeholder={`Prompt #${i + 1}...`} value={val}
+                onChange={e => handleChange(i, e.target.value)} />
             </div>
           ))}
         </div>
-        <button className="startBtn" disabled={!allFilled}
-          onClick={() => { playWhoosh(); onStart(inputs.map(v => v.trim())) }}>
-          Deal the Cards
-        </button>
+        <button className="startBtn" disabled={!allFilled} onClick={() => { playWhoosh(); onStart(inputs.map(v => v.trim())) }}>Deal the Cards</button>
       </div>
       <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back</button>
     </div>
@@ -996,9 +928,7 @@ function GameScreen({ prompts, slots, currentIndex, onPick, onBack }) {
   const prompt = prompts[currentIndex]
   return (
     <div className="gameWrapper">
-      <div className="progressBar">
-        <div className="progressFill" style={{ width: `${filled * 10}%` }} />
-      </div>
+      <div className="progressBar"><div className="progressFill" style={{ width: `${filled * 10}%` }} /></div>
       <p className="howto">Use the buttons below to place this prompt — no take-backs!</p>
       <div className="card">
         <div className="cardLabel">★ Current Prompt ★</div>
@@ -1009,9 +939,7 @@ function GameScreen({ prompts, slots, currentIndex, onPick, onBack }) {
       <div className="card">
         <div className="ratingSelectLabel">Tap a number to rank this prompt</div>
         <div className="ratingButtons">
-          {slots.map((item, i) => (
-            <button key={i} className="ratingBtn" disabled={item !== null} onClick={() => onPick(i)}>{i + 1}</button>
-          ))}
+          {slots.map((item, i) => <button key={i} className="ratingBtn" disabled={item !== null} onClick={() => onPick(i)}>{i + 1}</button>)}
         </div>
       </div>
       <div className="divider">✦ Your Rankings So Far ✦</div>
@@ -1081,11 +1009,7 @@ export default function IndexPage() {
   }, [slots, prompts, currentIndex])
   const playAgain = useCallback(() => {
     if (mode === "custom" && customPrompts.length > 0) { setPrompts(shuffle(customPrompts)) }
-    else {
-      const good = shuffle(GOOD_PROMPTS).slice(0, 5)
-      const bad = shuffle(BAD_PROMPTS).slice(0, 5)
-      setPrompts(shuffle([...good, ...bad]))
-    }
+    else { const good = shuffle(GOOD_PROMPTS).slice(0, 5); const bad = shuffle(BAD_PROMPTS).slice(0, 5); setPrompts(shuffle([...good, ...bad])) }
     setSlots(Array(10).fill(null)); setCurrentIndex(0); setPhase("playing")
   }, [mode, customPrompts])
   const goMenu = useCallback(() => { setPhase("menu") }, [])
@@ -1111,13 +1035,14 @@ export default function IndexPage() {
             </div>
           </header>
         )}
-        {phase === "menu" && <MenuScreen onRandom={startRandom} onCustom={startCustomEntry} onTenBut={() => setPhase("tenBut")} onTrivia={() => setPhase("trivia")} onSpy={() => setPhase("spy")} />}
+        {phase === "menu" && <MenuScreen onRandom={startRandom} onCustom={startCustomEntry} onTenBut={() => setPhase("tenBut")} onTrivia={() => setPhase("trivia")} onSpy={() => setPhase("spy")} onAlphabet={() => setPhase("alphabet")} />}
         {phase === "custom" && <CustomScreen onBack={goMenu} onStart={launchCustom} />}
         {phase === "playing" && <GameScreen prompts={prompts} slots={slots} currentIndex={currentIndex} onPick={pickSlot} onBack={goMenu} />}
         {phase === "results" && <ResultsScreen slots={slots} onPlayAgain={playAgain} onChangeMode={goMenu} />}
         {phase === "tenBut" && <TenButGame onBack={goMenu} />}
         {phase === "trivia" && <TriviaGame onBack={goMenu} />}
         {phase === "spy" && <SpyGame onBack={goMenu} />}
+        {phase === "alphabet" && <AlphabetGame onBack={goMenu} />}
       </div>
     </>
   )
