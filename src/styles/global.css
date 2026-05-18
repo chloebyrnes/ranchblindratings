@@ -48,7 +48,7 @@ body::before {
   margin-top: 0;
   position: relative;
   overflow: visible;
-  background: var(--cream-light);
+  background: #ffffff;
   border: 2px solid var(--terracotta);
   border-radius: 12px;
   box-shadow: 3px 3px 0 var(--rosewood-dark);
@@ -326,15 +326,6 @@ body::before {
 .alphabetLetter { font-family: var(--font); font-size: clamp(72px, 20vw, 120px); font-weight: 700; color: var(--rosewood); line-height: 1; margin: 8px 0; }
 .alphabetPlayer { font-family: var(--font); font-size: clamp(16px, 4.5vw, 24px); font-weight: 700; color: var(--ink); margin-bottom: 4px; }
 
-/* ── SPARKLES ── */
-.sparklesContainer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  border-radius: 12px;
-  z-index: 1;
-}
 
 .sparkle {
   position: absolute;
@@ -374,3 +365,55 @@ body::before {
   margin: 4px 0 14px;
 }
 
+
+/* ── COMING SOON GAME CARD ── */
+.gameCardComingSoon {
+  width: 100%;
+  padding: 10px 8px;
+  background: var(--cream-light);
+  color: var(--terra-dark);
+  border: 2px dashed var(--terracotta);
+  border-radius: 4px;
+  font-family: var(--font);
+  font-size: clamp(11px, 2.5vw, 13px);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0.6;
+  margin-top: auto;
+  cursor: default;
+}
+
+/* ── RUNNING HORSE FOOTER ── */
+.horseFooter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 36px;
+  pointer-events: none;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.horseTrack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.horseRunner {
+  position: absolute;
+  bottom: 4px;
+  font-size: 22px;
+  animation: horseRun 8s linear infinite;
+  filter: grayscale(100%);
+  transform: scaleX(-1);
+  line-height: 1;
+}
+
+@keyframes horseRun {
+  0%   { left: -60px; }
+  100% { left: calc(100% + 60px); }
+}

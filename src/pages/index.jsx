@@ -245,24 +245,6 @@ const SPY_CATEGORIES = {
   "Fast Food": ["Drive-Thru","Happy Meal","Secret Menu","Dipping Sauce","Meal Deal","Soft Serve","Order Kiosk","Dollar Menu","Grease Trap","Free Refills"],
 }
 
-const ALPHABET_CATEGORIES = [
-  "Things at a Rodeo","Things at a Ranch","Things at a Bar","Things at a Wedding",
-  "Things at a BBQ","Types of Beer","Things in a Pickup Truck","Things You Find at a Gas Station",
-  "Things That Are Spicy","Things at a Football Game","Things at a County Fair","Things in Texas",
-  "Things You'd Find at a Cookout","Things in a Barn","Things on a Menu at a Diner",
-  "Things That Are Cold","Things at a Tailgate","Things in a Swimming Pool",
-  "Things You Do on a Sunday","Things at a Casino","Things You Find on a Beach",
-  "Things That Are Loud","Things in a Tackle Box","Things at a Campsite",
-  "Things That Are Country","Things You'd Find at a State Fair","Things in a Garage",
-  "Things on a Farm","Things That Are Gross","Things That Can Go Wrong on a Road Trip",
-  "Things at a Golf Course","Things That Are Overrated","Things People Do at 2am",
-  "Things in a Man Cave","Things at a High School Reunion","Things That Smell Bad",
-  "Things at a Concert","Things You'd Bring to a Desert Island","Things in a Locker Room",
-  "Things That Are Embarrassing",
-]
-
-const ALPHABET_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
-
 function shuffle(arr) {
   const a = [...arr]
   for (let i = a.length - 1; i > 0; i--) {
@@ -705,176 +687,9 @@ function SpyGame({ onBack }) {
   return null
 }
 
-// ── ALPHABET GAME ─────────────────────────────────────────────────────────────
-function AlphabetGame({ onBack }) {
-  const [phase, setPhase] = useState("setup")
-  const [playerNames, setPlayerNames] = useState(["", "", "", ""])
-  const [category, setCategory] = useState("")
-  const [letterIndex, setLetterIndex] = useState(0)
-  const [eliminated, setEliminated] = useState([])
-  const [currentPlayer, setCurrentPlayer] = useState(0)
-  const [failedPlayer, setFailedPlayer] = useState(null)
-  const [winner, setWinner] = useState(null)
-  const validPlayers = playerNames.filter(n => n.trim().length > 0)
-  const startGame = () => {
-    if (validPlayers.length < 2) return
-    const chosen = ALPHABET_CATEGORIES[Math.floor(Math.random() * ALPHABET_CATEGORIES.length)]
-    setCategory(chosen); setLetterIndex(0); setEliminated([]); setCurrentPlayer(0)
-    setFailedPlayer(null); setWinner(null); setPhase("playing"); playWhoosh()
-  }
-  const activePlayers = validPlayers.map((name, i) => ({ name, originalIndex: i })).filter((_, i) => !eliminated.includes(i))
-  const currentActiveIndex = currentPlayer % activePlayers.length
-  const currentName = activePlayers[currentActiveIndex]?.name || ""
-  const currentLetter = ALPHABET_LETTERS[letterIndex]
-  const handleGotIt = () => {
-    playYes()
-    const nextLetter = letterIndex + 1
-    if (nextLetter >= ALPHABET_LETTERS.length) { setPhase("done"); setWinner("all"); playFinal(); return }
-    setLetterIndex(nextLetter); setCurrentPlayer((currentPlayer + 1) % activePlayers.length)
-  }
-  const handleMissed = () => {
-    playNo()
-    const eliminatedOriginalIndex = activePlayers[currentActiveIndex].originalIndex
-    const newEliminated = [...eliminated, eliminatedOriginalIndex]
-    setFailedPlayer(activePlayers[currentActiveIndex].name)
-    const remaining = validPlayers.filter((_, i) => !newEliminated.includes(i))
-    if (remaining.length <= 1) { setEliminated(newEliminated); setWinner(remaining[0] || "Nobody"); setPhase("done"); playFinal(); return }
-    setEliminated(newEliminated); setPhase("eliminated"); setCurrentPlayer(currentActiveIndex % (activePlayers.length - 1))
-  }
-  const continueAfterElimination = () => { setFailedPlayer(null); setPhase("playing"); playClick() }
-  const resetGame = () => {
-    setPhase("setup"); setCategory(""); setLetterIndex(0); setEliminated([])
-    setCurrentPlayer(0); setFailedPlayer(null); setWinner(null)
-  }
-  if (phase === "setup") return (
-    <div className="gameWrapper">
-      <div className="card">
-        <div className="cardLabel">★ Alphabet Game — Players ★</div>
-        <p className="howto" style={{marginBottom:"16px"}}>Enter players in turn order. A category shows — go A to Z naming things in that category. Miss your letter and you're out!</p>
-        <div className="promptInputs">
-          {playerNames.map((name, i) => (
-            <div className="promptInputRow" key={i}>
-              <span className="promptNumLabel">{i + 1}</span>
-              <input className="promptInput" type="text" maxLength={20} placeholder={`Player ${i + 1}...`} value={name}
-                onChange={e => { const next = [...playerNames]; next[i] = e.target.value; setPlayerNames(next) }} />
-              {playerNames.length > 2 && (
-                <button onClick={() => setPlayerNames(playerNames.filter((_, j) => j !== i))}
-                  style={{background:"none",border:"none",color:"var(--rosewood)",fontSize:"18px",cursor:"pointer",padding:"0 4px"}}>✕</button>
-              )}
-            </div>
-          ))}
-        </div>
-        {playerNames.length < 10 && (
-          <button className="backBtnBottom" style={{marginBottom:"12px"}} onClick={() => setPlayerNames([...playerNames, ""])}>+ Add Player</button>
-        )}
-        <button className="startBtn" disabled={validPlayers.length < 2} onClick={startGame}>Start Game</button>
-      </div>
-      <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back to Menu</button>
-    </div>
-  )
-  if (phase === "eliminated") {
-    const remaining = validPlayers.filter((_, i) => !eliminated.includes(i))
-    return (
-      <div className="gameWrapper">
-        <div className="card tenButCard">
-          <div className="cardLabel">★ Eliminated ★</div>
-          <div className="tenButPrompt" style={{color:"var(--rosewood)",fontSize:"clamp(22px,6vw,38px)"}}>{failedPlayer}</div>
-          <p className="howto" style={{margin:"12px 0"}}>Couldn't name something starting with <strong>{currentLetter}</strong> for <strong>{category}</strong></p>
-          <div className="spyPlayerList" style={{margin:"12px 0"}}>{remaining.map((name, i) => <div key={i} className="spyPlayerChip">{name}</div>)}</div>
-          <p className="howto">{remaining.length} player{remaining.length !== 1 ? "s" : ""} remaining — letter {currentLetter} stays!</p>
-          <button className="startBtn" style={{marginTop:"14px"}} onClick={continueAfterElimination}>Continue →</button>
-        </div>
-      </div>
-    )
-  }
-  if (phase === "done") return (
-    <div className="gameWrapper">
-      <div className="card tenButCard">
-        <div className="resultsTitle">{winner === "all" ? "You Did It!" : "Winner!"}</div>
-        <div className="resultsSubtitle">{winner === "all" ? "★ The whole group survived the alphabet ★" : "★ Last one standing ★"}</div>
-        {winner !== "all" && <div className="tenButPrompt" style={{color:"var(--rosewood)",margin:"12px 0"}}>{winner}</div>}
-        <div className="spyResultDetails">
-          <div className="spyResultRow"><span>Category</span><strong>{category}</strong></div>
-          <div className="spyResultRow"><span>Made it to</span><strong>Letter {currentLetter}{winner === "all" ? " — Z!" : ""}</strong></div>
-        </div>
-        <div className="bottomButtons">
-          <button className="replayBtn" onClick={() => { playWhoosh(); startGame() }}>Play Again</button>
-          <button className="replayBtn replayBtnSecondary" onClick={() => { playPop(); resetGame() }}>New Players</button>
-        </div>
-      </div>
-      <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back to Menu</button>
-    </div>
-  )
-  return (
-    <div className="gameWrapper">
-      <div className="progressBar"><div className="progressFill" style={{ width: `${(letterIndex / 26) * 100}%` }} /></div>
-      <div className="card tenButCard">
-        <div className="cardLabel">★ Alphabet Game ★</div>
-        <div className="alphabetCategory">{category}</div>
-        <div className="alphabetLetter">{currentLetter}</div>
-        <div className="alphabetPlayer">{currentName}'s turn</div>
-        <p className="howto" style={{marginTop:"8px"}}>Name something starting with <strong>{currentLetter}</strong></p>
-      </div>
-      <div className="tenButButtons">
-        <button className="tenButNo" onClick={handleMissed}>✗ Missed It</button>
-        <button className="tenButYes" onClick={handleGotIt}>✓ Got One!</button>
-      </div>
-      <div className="divider" style={{margin:"16px 0"}}>✦ still in ✦</div>
-      <div className="spyPlayerList">
-        {activePlayers.map((p, i) => (
-          <div key={i} className={`spyPlayerChip${i === currentActiveIndex ? " spyPlayerActive" : ""}`}>
-            {i === currentActiveIndex ? "→ " : ""}{p.name}
-          </div>
-        ))}
-      </div>
-      {eliminated.length > 0 && (
-        <div style={{marginTop:"10px"}}>
-          <div className="divider">✦ eliminated ✦</div>
-          <div className="spyPlayerList">
-            {eliminated.map(idx => (
-              <div key={idx} className="spyPlayerChip" style={{opacity:0.4,textDecoration:"line-through"}}>{validPlayers[idx]}</div>
-            ))}
-          </div>
-        </div>
-      )}
-      <button className="backBtnBottom" onClick={() => { playPop(); resetGame() }}>← Start Over</button>
-    </div>
-  )
-}
-
-
-// ── SPARKLES ─────────────────────────────────────────────────────────────────
-function Sparkles() {
-  const stars = Array.from({ length: 18 }, (_, i) => ({
-    id: i,
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    size: 8 + Math.random() * 10,
-    delay: Math.random() * 3,
-    duration: 2 + Math.random() * 2,
-  }))
-  return (
-    <div className="sparklesContainer" aria-hidden="true">
-      {stars.map(s => (
-        <div
-          key={s.id}
-          className="sparkle"
-          style={{
-            left: `${s.left}%`,
-            top: `${s.top}%`,
-            width: s.size,
-            height: s.size,
-            animationDelay: `${s.delay}s`,
-            animationDuration: `${s.duration}s`,
-          }}
-        />
-      ))}
-    </div>
-  )
-}
 
 // ── SCREENS ──────────────────────────────────────────────────────────────────
-function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia, onSpy, onAlphabet }) {
+function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia, onSpy }) {
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) { document.documentElement.requestFullscreen?.() }
     else { document.exitFullscreen?.() }
@@ -905,7 +720,7 @@ function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia, onSpy, onAlphabet 
     { name: "Guess The Weather", desc: "Check the Clearwater forecast. Was your gut right?", action: <button className="gameCardBtn" onClick={openWeather}>Open Forecast</button> },
     { name: "Trivia", desc: "100 questions on animals, history, food and more.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onTrivia() }}>Let's Go</button> },
     { name: "Spy", desc: "One person only knows the category. Find them.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onSpy() }}>Find the Spy</button> },
-    { name: "Alphabet Game", desc: "Name something A to Z. Miss your letter and you're out.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onAlphabet() }}>A to Z</button> },
+    { name: "New Game Coming Soon", desc: "Something fun is on the way. Stay tuned, partner.", action: <div className="gameCardComingSoon">Coming Soon</div> },
   ]
   return (
     <div>
@@ -1054,7 +869,6 @@ export default function IndexPage() {
       <div className="app">
         {phase === "menu" && (
           <header className="header">
-            <Sparkles />
             <img className="decorLeft" src={ranchWater} alt="" aria-hidden="true" />
             <img className="decorRight" src={cigarette} alt="" aria-hidden="true" />
             <img className="decorBottomLeft" src={alpCan} alt="" aria-hidden="true" />
@@ -1066,14 +880,18 @@ export default function IndexPage() {
             </div>
           </header>
         )}
-        {phase === "menu" && <MenuScreen onRandom={startRandom} onCustom={startCustomEntry} onTenBut={() => setPhase("tenBut")} onTrivia={() => setPhase("trivia")} onSpy={() => setPhase("spy")} onAlphabet={() => setPhase("alphabet")} />}
+        {phase === "menu" && <MenuScreen onRandom={startRandom} onCustom={startCustomEntry} onTenBut={() => setPhase("tenBut")} onTrivia={() => setPhase("trivia")} onSpy={() => setPhase("spy")} />}
         {phase === "custom" && <CustomScreen onBack={goMenu} onStart={launchCustom} />}
         {phase === "playing" && <GameScreen prompts={prompts} slots={slots} currentIndex={currentIndex} onPick={pickSlot} onBack={goMenu} />}
         {phase === "results" && <ResultsScreen slots={slots} onPlayAgain={playAgain} onChangeMode={goMenu} />}
         {phase === "tenBut" && <TenButGame onBack={goMenu} />}
         {phase === "trivia" && <TriviaGame onBack={goMenu} />}
         {phase === "spy" && <SpyGame onBack={goMenu} />}
-        {phase === "alphabet" && <AlphabetGame onBack={goMenu} />}
+              </div>
+      <div className="horseFooter" aria-hidden="true">
+        <div className="horseTrack">
+          <div className="horseRunner">🐴</div>
+        </div>
       </div>
     </>
   )
