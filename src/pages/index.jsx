@@ -842,6 +842,37 @@ function AlphabetGame({ onBack }) {
   )
 }
 
+
+// ── SPARKLES ─────────────────────────────────────────────────────────────────
+function Sparkles() {
+  const stars = Array.from({ length: 18 }, (_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    size: 8 + Math.random() * 10,
+    delay: Math.random() * 3,
+    duration: 2 + Math.random() * 2,
+  }))
+  return (
+    <div className="sparklesContainer" aria-hidden="true">
+      {stars.map(s => (
+        <div
+          key={s.id}
+          className="sparkle"
+          style={{
+            left: `${s.left}%`,
+            top: `${s.top}%`,
+            width: s.size,
+            height: s.size,
+            animationDelay: `${s.delay}s`,
+            animationDuration: `${s.duration}s`,
+          }}
+        />
+      ))}
+    </div>
+  )
+}
+
 // ── SCREENS ──────────────────────────────────────────────────────────────────
 function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia, onSpy, onAlphabet }) {
   const toggleFullscreen = () => {
@@ -861,8 +892,7 @@ function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia, onSpy, onAlphabet 
   }
   const games = [
     {
-      emoji: "🎯",
-      name: "Blind Ratings",
+        name: "Blind Ratings",
       desc: "Rank 10 prompts from worst to best — blindly. No take-backs.",
       action: (
         <div className="gameCardButtons">
@@ -871,11 +901,11 @@ function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia, onSpy, onAlphabet 
         </div>
       )
     },
-    { emoji: "💅", name: "They're A 10 But...", desc: "Red flags vs good looks. You be the judge.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onTenBut() }}>Play Now</button> },
-    { emoji: "☁️", name: "Guess The Weather", desc: "Check the Clearwater forecast. Was your gut right?", action: <button className="gameCardBtn" onClick={openWeather}>Open Forecast</button> },
-    { emoji: "🧠", name: "Trivia", desc: "100 questions on animals, history, food and more.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onTrivia() }}>Let's Go</button> },
-    { emoji: "🕵️", name: "Spy", desc: "One person only knows the category. Find them.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onSpy() }}>Find the Spy</button> },
-    { emoji: "🔤", name: "Alphabet Game", desc: "Name something A to Z. Miss your letter and you're out.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onAlphabet() }}>A to Z</button> },
+    { name: "They're A 10 But...", desc: "Red flags vs good looks. You be the judge.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onTenBut() }}>Play Now</button> },
+    { name: "Guess The Weather", desc: "Check the Clearwater forecast. Was your gut right?", action: <button className="gameCardBtn" onClick={openWeather}>Open Forecast</button> },
+    { name: "Trivia", desc: "100 questions on animals, history, food and more.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onTrivia() }}>Let's Go</button> },
+    { name: "Spy", desc: "One person only knows the category. Find them.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onSpy() }}>Find the Spy</button> },
+    { name: "Alphabet Game", desc: "Name something A to Z. Miss your letter and you're out.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onAlphabet() }}>A to Z</button> },
   ]
   return (
     <div>
@@ -884,10 +914,10 @@ function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia, onSpy, onAlphabet 
         <span className="quoteOfDayText">"{quote.text}"</span>
         <div className="quoteOfDayAuthor">— {quote.author}</div>
       </div>
+      <div className="gameSectionLabel">✦ Pick Your Game ✦</div>
       <div className="gamesGrid">
         {games.map((g, i) => (
           <div key={i} className="gameCard">
-            <div className="gameCardEmoji">{g.emoji}</div>
             <div className="gameCardName">{g.name}</div>
             <div className="gameCardDesc">{g.desc}</div>
             {g.action}
@@ -1024,6 +1054,7 @@ export default function IndexPage() {
       <div className="app">
         {phase === "menu" && (
           <header className="header">
+            <Sparkles />
             <img className="decorLeft" src={ranchWater} alt="" aria-hidden="true" />
             <img className="decorRight" src={cigarette} alt="" aria-hidden="true" />
             <img className="decorBottomLeft" src={alpCan} alt="" aria-hidden="true" />

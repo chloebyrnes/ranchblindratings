@@ -105,13 +105,6 @@ body::before {
   opacity: 0.35;
 }
 
-.gameCardEmoji {
-  font-size: 28px;
-  line-height: 1;
-  margin-bottom: 2px;
-  filter: grayscale(100%);
-}
-
 .gameCardName {
   font-family: var(--font);
   font-size: clamp(13px, 3vw, 16px);
@@ -332,3 +325,52 @@ body::before {
 .alphabetCategory { font-family: var(--font); font-size: clamp(13px, 3.5vw, 17px); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--terra-dark); margin-bottom: 10px; }
 .alphabetLetter { font-family: var(--font); font-size: clamp(72px, 20vw, 120px); font-weight: 700; color: var(--rosewood); line-height: 1; margin: 8px 0; }
 .alphabetPlayer { font-family: var(--font); font-size: clamp(16px, 4.5vw, 24px); font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+
+/* ── SPARKLES ── */
+.sparklesContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+.sparkle {
+  position: absolute;
+  background: var(--rosewood);
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkleAnim linear infinite;
+}
+
+.sparkle::before {
+  content: "★";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: inherit;
+  color: var(--rosewood);
+  opacity: 0.6;
+}
+
+@keyframes sparkleAnim {
+  0%   { opacity: 0; transform: scale(0) rotate(0deg); }
+  20%  { opacity: 0.7; transform: scale(1) rotate(45deg); }
+  80%  { opacity: 0.5; transform: scale(0.8) rotate(135deg); }
+  100% { opacity: 0; transform: scale(0) rotate(180deg); }
+}
+
+/* ── GAME GRID SECTION LABEL ── */
+.gameSectionLabel {
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--rosewood);
+  text-align: center;
+  margin: 4px 0 14px;
+}
+
