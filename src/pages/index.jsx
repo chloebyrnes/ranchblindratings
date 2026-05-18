@@ -122,107 +122,170 @@ const TEN_BUT_PROMPTS = [
   "They leave reviews for parking lots","They whistle constantly and have no idea they are doing it",
 ]
 
-const TRIVIA_QUESTIONS = [
-  { q: "What is the capital of Australia?", a: "Canberra" },
-  { q: "How many bones are in the adult human body?", a: "206" },
-  { q: "What is the smallest country in the world?", a: "Vatican City" },
-  { q: "Which animal has the longest lifespan?", a: "Greenland shark" },
-  { q: "What is the most spoken language in the world?", a: "Mandarin Chinese" },
-  { q: "How many hearts does an octopus have?", a: "3" },
-  { q: "What is the chemical symbol for gold?", a: "Au" },
-  { q: "Which country has the most natural lakes?", a: "Canada" },
-  { q: "What is the fastest land animal?", a: "Cheetah" },
-  { q: "How many sides does a heptagon have?", a: "7" },
-  { q: "What is the capital of Canada?", a: "Ottawa" },
-  { q: "Which planet has the most moons?", a: "Saturn" },
-  { q: "What is the largest ocean on Earth?", a: "Pacific Ocean" },
-  { q: "What country invented pizza?", a: "Italy" },
-  { q: "How many teeth does an adult human have?", a: "32" },
-  { q: "What is the longest river in the world?", a: "The Nile" },
-  { q: "Which animal cannot jump?", a: "Elephant" },
-  { q: "What is the hardest natural substance on Earth?", a: "Diamond" },
-  { q: "How many stars are on the American flag?", a: "50" },
-  { q: "What is the capital of Japan?", a: "Tokyo" },
-  { q: "Which fruit has its seeds on the outside?", a: "Strawberry" },
-  { q: "How many legs does a spider have?", a: "8" },
-  { q: "What is the largest continent?", a: "Asia" },
-  { q: "What gas do plants absorb from the atmosphere?", a: "Carbon dioxide" },
-  { q: "How many players are on a soccer team on the field?", a: "11" },
-  { q: "What is the smallest planet in our solar system?", a: "Mercury" },
-  { q: "Which country is home to the kangaroo?", a: "Australia" },
-  { q: "What is the most consumed meat in the world?", a: "Pork" },
-  { q: "How many colors are in a rainbow?", a: "7" },
-  { q: "What is the capital of Brazil?", a: "Brasilia" },
-  { q: "Which ocean is the saltiest?", a: "Atlantic Ocean" },
-  { q: "What is a group of crows called?", a: "A murder" },
-  { q: "How many eyes does a bee have?", a: "5" },
-  { q: "What country has the most pyramids?", a: "Sudan" },
-  { q: "What is the most expensive spice in the world?", a: "Saffron" },
-  { q: "Which mammal can fly?", a: "Bat" },
-  { q: "How long does it take light to travel from the sun to Earth?", a: "About 8 minutes" },
-  { q: "What is the capital of Egypt?", a: "Cairo" },
-  { q: "Which country drinks the most coffee per capita?", a: "Finland" },
-  { q: "What is the largest internal organ in the human body?", a: "Liver" },
-  { q: "How many time zones does Russia span?", a: "11" },
-  { q: "Which bird lays the largest eggs?", a: "Ostrich" },
-  { q: "What is the capital of Argentina?", a: "Buenos Aires" },
-  { q: "How many chambers does a human heart have?", a: "4" },
-  { q: "What is the longest bone in the human body?", a: "Femur (thigh bone)" },
-  { q: "Which country is the largest by land area?", a: "Russia" },
-  { q: "What is the national animal of Scotland?", a: "Unicorn" },
-  { q: "How many official languages does Switzerland have?", a: "4" },
-  { q: "What is the most venomous animal in the world?", a: "Box jellyfish" },
-  { q: "Which country invented paper?", a: "China" },
-  { q: "What is the capital of Kenya?", a: "Nairobi" },
-  { q: "How many tentacles does a squid have?", a: "10" },
-  { q: "Which element has the atomic number 1?", a: "Hydrogen" },
-  { q: "What is the largest desert in the world?", a: "Antarctica" },
-  { q: "Which planet is known as the Red Planet?", a: "Mars" },
-  { q: "How many strings does a standard guitar have?", a: "6" },
-  { q: "What country has the most UNESCO World Heritage Sites?", a: "Italy" },
-  { q: "What is the capital of South Korea?", a: "Seoul" },
-  { q: "How many legs does a lobster have?", a: "10" },
-  { q: "What is the only sea without a land boundary?", a: "Sargasso Sea" },
-  { q: "Which country is known as the Land of the Rising Sun?", a: "Japan" },
-  { q: "How many valves does a trumpet have?", a: "3" },
-  { q: "What is the capital of Morocco?", a: "Rabat" },
-  { q: "Which country has the most volcanoes?", a: "Indonesia" },
-  { q: "How many stomachs does a cow have?", a: "4" },
-  { q: "What is the smallest bone in the human body?", a: "Stirrup (in the ear)" },
-  { q: "Which country is the world's largest producer of coffee?", a: "Brazil" },
-  { q: "What is the capital of Nigeria?", a: "Abuja" },
-  { q: "How fast can a hummingbird flap its wings per second?", a: "About 80 times" },
-  { q: "Which country has the most islands?", a: "Sweden" },
-  { q: "What is the rarest blood type?", a: "AB negative" },
-  { q: "How many bones does a shark have?", a: "Zero — they have cartilage" },
-  { q: "What is the capital of Portugal?", a: "Lisbon" },
-  { q: "Which vegetable was once considered poisonous in Europe?", a: "Tomato" },
-  { q: "How many moons does Mars have?", a: "2" },
-  { q: "Which insect has the shortest lifespan?", a: "Mayfly (about 24 hours)" },
-  { q: "What is the capital of Thailand?", a: "Bangkok" },
-  { q: "How many keys does a standard piano have?", a: "88" },
-  { q: "Which country invented the printing press?", a: "Germany" },
-  { q: "What percentage of the Earth is covered by water?", a: "About 71%" },
-  { q: "How many eyes does a horseshoe crab have?", a: "10" },
-  { q: "What is the capital of Colombia?", a: "Bogota" },
-  { q: "Which food is known as the king of fruits?", a: "Durian" },
-  { q: "What is the longest wall in the world?", a: "Great Wall of China" },
-  { q: "Which animal sleeps standing up?", a: "Horse" },
-  { q: "What is the capital of New Zealand?", a: "Wellington" },
-  { q: "How many bones does a baby have at birth?", a: "About 270" },
-  { q: "What is the world's oldest religion?", a: "Hinduism" },
-  { q: "How many teeth does a snail have?", a: "Thousands (up to 14,000)" },
-  { q: "What is the capital of Saudi Arabia?", a: "Riyadh" },
-  { q: "Which planet rotates on its side?", a: "Uranus" },
-  { q: "How many muscles does the human body have?", a: "Over 600" },
-  { q: "Which country has the longest coastline in the world?", a: "Canada" },
-  { q: "What is the capital of Vietnam?", a: "Hanoi" },
-  { q: "How many hours are in a week?", a: "168" },
-  { q: "Which animal has the biggest eyes of any land creature?", a: "Ostrich" },
-  { q: "What is the capital of Ghana?", a: "Accra" },
-  { q: "How many liters are in a gallon?", a: "About 3.785" },
-  { q: "Which country is both an island and a continent?", a: "Australia" },
-]
+const TRIVIA_CATEGORIES = {
+  "Geography": [
+    { q: "What is the capital of Australia?", a: "Canberra" },
+    { q: "What is the capital of Canada?", a: "Ottawa" },
+    { q: "What is the capital of Brazil?", a: "Brasilia" },
+    { q: "What is the capital of Egypt?", a: "Cairo" },
+    { q: "What is the capital of Japan?", a: "Tokyo" },
+    { q: "What is the capital of Argentina?", a: "Buenos Aires" },
+    { q: "What is the capital of Morocco?", a: "Rabat" },
+    { q: "What is the capital of Nigeria?", a: "Abuja" },
+    { q: "What is the capital of Portugal?", a: "Lisbon" },
+    { q: "What is the capital of South Korea?", a: "Seoul" },
+    { q: "What is the capital of New Zealand?", a: "Wellington" },
+    { q: "What is the capital of Saudi Arabia?", a: "Riyadh" },
+    { q: "What is the capital of Vietnam?", a: "Hanoi" },
+    { q: "What is the capital of Ghana?", a: "Accra" },
+    { q: "What is the capital of Colombia?", a: "Bogota" },
+    { q: "What is the capital of Kenya?", a: "Nairobi" },
+    { q: "What is the capital of Thailand?", a: "Bangkok" },
+    { q: "Which country has the most natural lakes?", a: "Canada" },
+    { q: "Which country has the longest coastline?", a: "Canada" },
+    { q: "Which country is the largest by land area?", a: "Russia" },
+    { q: "What is the largest ocean on Earth?", a: "Pacific Ocean" },
+    { q: "What is the longest river in the world?", a: "The Nile" },
+    { q: "What is the largest continent?", a: "Asia" },
+    { q: "What is the largest desert in the world?", a: "Antarctica" },
+    { q: "Which country has the most islands?", a: "Sweden" },
+    { q: "Which ocean is the saltiest?", a: "Atlantic Ocean" },
+    { q: "What is the only sea without a land boundary?", a: "Sargasso Sea" },
+    { q: "Which country has the most volcanoes?", a: "Indonesia" },
+    { q: "Which country is both an island and a continent?", a: "Australia" },
+    { q: "How many time zones does Russia span?", a: "11" },
+  ],
+  "Animals": [
+    { q: "Which animal has the longest lifespan?", a: "Greenland shark" },
+    { q: "What is the fastest land animal?", a: "Cheetah" },
+    { q: "Which animal cannot jump?", a: "Elephant" },
+    { q: "How many hearts does an octopus have?", a: "3" },
+    { q: "Which mammal can fly?", a: "Bat" },
+    { q: "Which bird lays the largest eggs?", a: "Ostrich" },
+    { q: "What is a group of crows called?", a: "A murder" },
+    { q: "How many eyes does a bee have?", a: "5" },
+    { q: "How many tentacles does a squid have?", a: "10" },
+    { q: "Which animal sleeps standing up?", a: "Horse" },
+    { q: "How many bones does a shark have?", a: "Zero — they have cartilage" },
+    { q: "Which insect has the shortest lifespan?", a: "Mayfly (about 24 hours)" },
+    { q: "How many stomachs does a cow have?", a: "4" },
+    { q: "How many eyes does a horseshoe crab have?", a: "10" },
+    { q: "Which animal has the biggest eyes of any land creature?", a: "Ostrich" },
+    { q: "How many legs does a spider have?", a: "8" },
+    { q: "How many legs does a lobster have?", a: "10" },
+    { q: "Which country is home to the kangaroo?", a: "Australia" },
+    { q: "How fast can a hummingbird flap its wings per second?", a: "About 80 times" },
+    { q: "How many teeth does a snail have?", a: "Thousands (up to 14,000)" },
+    { q: "What is the most venomous animal in the world?", a: "Box jellyfish" },
+    { q: "How many eyes does a bee have?", a: "5" },
+    { q: "Which animal cannot jump?", a: "Elephant" },
+    { q: "Which bird cannot fly?", a: "Ostrich" },
+    { q: "What do you call a group of flamingos?", a: "A flamboyance" },
+    { q: "How many noses does a slug have?", a: "4" },
+    { q: "What is the only mammal with scales?", a: "Pangolin" },
+    { q: "Which animal has the highest blood pressure?", a: "Giraffe" },
+    { q: "A group of lions is called what?", a: "A pride" },
+    { q: "What animal has fingerprints most similar to humans?", a: "Koala" },
+  ],
+  "Science": [
+    { q: "What is the chemical symbol for gold?", a: "Au" },
+    { q: "Which element has the atomic number 1?", a: "Hydrogen" },
+    { q: "What gas do plants absorb from the atmosphere?", a: "Carbon dioxide" },
+    { q: "What is the hardest natural substance on Earth?", a: "Diamond" },
+    { q: "How long does it take light to travel from the sun to Earth?", a: "About 8 minutes" },
+    { q: "Which planet has the most moons?", a: "Saturn" },
+    { q: "Which planet is known as the Red Planet?", a: "Mars" },
+    { q: "What is the smallest planet in our solar system?", a: "Mercury" },
+    { q: "Which planet rotates on its side?", a: "Uranus" },
+    { q: "How many bones are in the adult human body?", a: "206" },
+    { q: "How many teeth does an adult human have?", a: "32" },
+    { q: "What is the largest internal organ in the human body?", a: "Liver" },
+    { q: "How many chambers does a human heart have?", a: "4" },
+    { q: "What is the longest bone in the human body?", a: "Femur (thigh bone)" },
+    { q: "What is the smallest bone in the human body?", a: "Stirrup (in the ear)" },
+    { q: "How many muscles does the human body have?", a: "Over 600" },
+    { q: "How many bones does a baby have at birth?", a: "About 270" },
+    { q: "What percentage of the Earth is covered by water?", a: "About 71%" },
+    { q: "How many liters are in a gallon?", a: "About 3.785" },
+    { q: "How many strings does a standard guitar have?", a: "6" },
+    { q: "How many keys does a standard piano have?", a: "88" },
+    { q: "How many valves does a trumpet have?", a: "3" },
+    { q: "How many hours are in a week?", a: "168" },
+    { q: "How many sides does a heptagon have?", a: "7" },
+    { q: "What is the most spoken language in the world?", a: "Mandarin Chinese" },
+    { q: "What is the rarest blood type?", a: "AB negative" },
+    { q: "What is the most expensive spice in the world?", a: "Saffron" },
+    { q: "Which country invented paper?", a: "China" },
+    { q: "Which country invented the printing press?", a: "Germany" },
+    { q: "What is the national animal of Scotland?", a: "Unicorn" },
+  ],
+  "Food & Drink": [
+    { q: "What country invented pizza?", a: "Italy" },
+    { q: "Which country is the world's largest producer of coffee?", a: "Brazil" },
+    { q: "Which country drinks the most coffee per capita?", a: "Finland" },
+    { q: "What is the most consumed meat in the world?", a: "Pork" },
+    { q: "Which fruit has its seeds on the outside?", a: "Strawberry" },
+    { q: "Which vegetable was once considered poisonous in Europe?", a: "Tomato" },
+    { q: "Which food is known as the king of fruits?", a: "Durian" },
+    { q: "How many colors are in a rainbow?", a: "7" },
+    { q: "What country has the most UNESCO World Heritage Sites?", a: "Italy" },
+    { q: "How many official languages does Switzerland have?", a: "4" },
+    { q: "What is the world's oldest religion?", a: "Hinduism" },
+    { q: "How many stars are on the American flag?", a: "50" },
+    { q: "What country has the most pyramids?", a: "Sudan" },
+    { q: "Which country invented pizza?", a: "Italy" },
+    { q: "What is sushi traditionally wrapped in?", a: "Nori (seaweed)" },
+    { q: "What grain is used to make bourbon?", a: "Corn" },
+    { q: "What country does Gouda cheese come from?", a: "Netherlands" },
+    { q: "What is the main ingredient in guacamole?", a: "Avocado" },
+    { q: "What type of pastry is a croissant?", a: "Laminated/puff pastry" },
+    { q: "What is the base of a traditional Hollandaise sauce?", a: "Egg yolks and butter" },
+    { q: "What spirit is used in a Margarita?", a: "Tequila" },
+    { q: "What country does Champagne legally have to come from?", a: "France" },
+    { q: "What is the most popular pizza topping in America?", a: "Pepperoni" },
+    { q: "What nut is used to make marzipan?", a: "Almonds" },
+    { q: "What fish is used in a traditional Caesar salad dressing?", a: "Anchovies" },
+    { q: "What is the Japanese word for raw fish over rice?", a: "Nigiri" },
+    { q: "What gives red wine its color?", a: "Grape skins" },
+    { q: "How many fluid ounces are in a standard shot?", a: "1.5 oz" },
+    { q: "What country produces the most olive oil?", a: "Spain" },
+    { q: "What is the French term for a pastry chef?", a: "Pâtissier" },
+  ],
+  "Pop Culture & History": [
+    { q: "Who painted the Mona Lisa?", a: "Leonardo da Vinci" },
+    { q: "What year did the Titanic sink?", a: "1912" },
+    { q: "Who was the first man to walk on the moon?", a: "Neil Armstrong" },
+    { q: "In what year did World War II end?", a: "1945" },
+    { q: "What is the longest wall in the world?", a: "Great Wall of China" },
+    { q: "Who wrote Romeo and Juliet?", a: "William Shakespeare" },
+    { q: "What year did the Berlin Wall fall?", a: "1989" },
+    { q: "What country did the Renaissance begin in?", a: "Italy" },
+    { q: "Who was the first US president?", a: "George Washington" },
+    { q: "What empire built the Colosseum?", a: "Roman Empire" },
+    { q: "In what decade was the internet invented?", a: "1980s" },
+    { q: "What year did Apple release the first iPhone?", a: "2007" },
+    { q: "Who directed Jurassic Park?", a: "Steven Spielberg" },
+    { q: "What band was Freddie Mercury the lead singer of?", a: "Queen" },
+    { q: "Which TV show features the Iron Throne?", a: "Game of Thrones" },
+    { q: "What is the best-selling video game of all time?", a: "Minecraft" },
+    { q: "Who wrote the Harry Potter series?", a: "J.K. Rowling" },
+    { q: "What country invented the Olympics?", a: "Greece" },
+    { q: "What sport is played at Wimbledon?", a: "Tennis" },
+    { q: "How many rings are on the Olympic flag?", a: "5" },
+    { q: "What is the fastest sport in the world?", a: "Badminton" },
+    { q: "Who holds the record for most Olympic gold medals?", a: "Michael Phelps" },
+    { q: "What year did the first Super Bowl take place?", a: "1967" },
+    { q: "How many players are on a basketball team on the court?", a: "5" },
+    { q: "What team has won the most Super Bowls?", a: "New England Patriots / Kansas City Chiefs (tied at 6)" },
+    { q: "What country won the 2018 FIFA World Cup?", a: "France" },
+    { q: "Who was known as 'The Greatest' in boxing?", a: "Muhammad Ali" },
+    { q: "What sport uses a puck?", a: "Ice hockey" },
+    { q: "How many points is a touchdown worth in football?", a: "6" },
+    { q: "What is the diameter of a basketball hoop in inches?", a: "18 inches" },
+  ],
+}
+
+const ALL_TRIVIA = Object.values(TRIVIA_CATEGORIES).flat()
 
 const SPY_CATEGORIES = {
   "Christmas": ["Santa Claus","Christmas Tree","Candy Cane","Rudolph","Mistletoe","Eggnog","Christmas Stocking","Ugly Sweater","Wreath","Gingerbread Man"],
@@ -243,6 +306,10 @@ const SPY_CATEGORIES = {
   "Camping": ["Tent","S'mores","Bear Spray","Sleeping Bag","Campfire","Headlamp","Trail Mix","Bug Spray","Canoe","Outhouse"],
   "New Year's Eve": ["Champagne","Countdown","Ball Drop","Party Hat","Midnight Kiss","Fireworks","Dick Clark","Designated Driver","Noisemaker","Resolution"],
   "Fast Food": ["Drive-Thru","Happy Meal","Secret Menu","Dipping Sauce","Meal Deal","Soft Serve","Order Kiosk","Dollar Menu","Grease Trap","Free Refills"],
+  "Boating": ["Life Jacket","Anchor","Fishing Rod","Boat Horn","Wake Board","Cooler","Dock","Sunscreen","Captain's Hat","Boat Engine"],
+  "Lake House Trip": ["Boat","Cigar","Alps","Hammock","Lake","Bonfire","Kayak","Fishing","Sunrise","Porch"],
+  "Rodeo": ["Bull Rider","Clown","Lasso","Buckle","Chaps","Wrangler","Bronco","Gate","Arena","Rosin"],
+  "Tailgate": ["Cornhole","Koozie","Grill","Tailgate","Folding Chair","Team Jersey","Parking Lot","Generator","Megaphone","Face Paint"],
 }
 
 function shuffle(arr) {
@@ -369,12 +436,47 @@ function playRideAgain() {
 
 // ── TRIVIA GAME ───────────────────────────────────────────────────────────────
 function TriviaGame({ onBack }) {
-  const [questions] = useState(() => shuffle(TRIVIA_QUESTIONS))
+  const [categoryChoice, setCategoryChoice] = useState("all")
+  const [questions, setQuestions] = useState(null)
   const [index, setIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
   const [score, setScore] = useState({ correct: 0, wrong: 0 })
   const [history, setHistory] = useState([])
-  const [phase, setPhase] = useState("playing")
+  const [phase, setPhase] = useState("setup")
+
+  const startTrivia = () => {
+    const pool = categoryChoice === "all"
+      ? shuffle(ALL_TRIVIA)
+      : shuffle(TRIVIA_CATEGORIES[categoryChoice] || ALL_TRIVIA)
+    setQuestions(pool)
+    setIndex(0); setRevealed(false)
+    setScore({ correct: 0, wrong: 0 }); setHistory([])
+    setPhase("playing"); playWhoosh()
+  }
+
+  if (phase === "setup") return (
+    <div className="gameWrapper">
+      <div className="card tenButCard">
+        <div className="cardLabel">★ Trivia ★</div>
+        <div className="tenButSetup" style={{marginBottom:"16px"}}>Pick a category</div>
+        <div className="triviaCategoryGrid">
+          {["all", ...Object.keys(TRIVIA_CATEGORIES)].map(cat => (
+            <button
+              key={cat}
+              className={`triviaCategoryBtn${categoryChoice === cat ? " triviaCategoryActive" : ""}`}
+              onClick={() => { playClick(); setCategoryChoice(cat) }}
+            >
+              {cat === "all" ? "🎲 All Categories" : cat}
+            </button>
+          ))}
+        </div>
+        <button className="startBtn" style={{marginTop:"16px"}} onClick={startTrivia}>Start Trivia</button>
+      </div>
+      <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back to Menu</button>
+    </div>
+  )
+
+  if (!questions) return null
   const current = questions[index]
   const markAnswer = (correct) => {
     const newScore = { ...score, [correct ? "correct" : "wrong"]: score[correct ? "correct" : "wrong"] + 1 }
@@ -383,6 +485,7 @@ function TriviaGame({ onBack }) {
     if (index + 1 >= questions.length) { playFinal(); setPhase("results") }
     else { correct ? playYes() : playNo(); setIndex(index + 1); setRevealed(false) }
   }
+  if (phase === "setup") return null // handled above
   if (phase === "results") return (
     <div className="gameWrapper">
       <div className="card">
@@ -527,6 +630,7 @@ function SpyGame({ onBack }) {
   const [phase, setPhase] = useState("setup")
   const [playerNames, setPlayerNames] = useState(["", "", "", "", ""])
   const [category, setCategory] = useState("")
+  const [chosenCategory, setChosenCategory] = useState("random")
   const [item, setItem] = useState("")
   const [spyIndex, setSpyIndex] = useState(null)
   const [revealIndex, setRevealIndex] = useState(0)
@@ -538,7 +642,9 @@ function SpyGame({ onBack }) {
   const startGame = () => {
     if (validPlayers.length < 3) return
     const cats = Object.keys(SPY_CATEGORIES)
-    const chosenCat = cats[Math.floor(Math.random() * cats.length)]
+    const chosenCat = chosenCategory === "random"
+      ? cats[Math.floor(Math.random() * cats.length)]
+      : chosenCategory
     const items = SPY_CATEGORIES[chosenCat]
     const chosenItem = items[Math.floor(Math.random() * items.length)]
     const spy = Math.floor(Math.random() * validPlayers.length)
@@ -566,7 +672,7 @@ function SpyGame({ onBack }) {
   }
   const resetGame = () => {
     setPhase("setup"); setPlayerNames(["", "", "", "", ""]); setCategory(""); setItem("")
-    setSpyIndex(null); setRevealIndex(0); setCurrentReveal(null); setSpyGuess(""); setGameResult(null); setVotedSpy(null)
+    setChosenCategory("random"); setSpyIndex(null); setRevealIndex(0); setCurrentReveal(null); setSpyGuess(""); setGameResult(null); setVotedSpy(null)
   }
   if (phase === "setup") return (
     <div className="gameWrapper">
@@ -589,6 +695,15 @@ function SpyGame({ onBack }) {
         {playerNames.length < 10 && (
           <button className="backBtnBottom" style={{marginBottom:"12px"}} onClick={() => setPlayerNames([...playerNames, ""])}>+ Add Player</button>
         )}
+        <div style={{marginBottom:"14px"}}>
+          <div className="cardLabel" style={{marginBottom:"8px"}}>★ Choose Category ★</div>
+          <select className="spyCategorySelect" value={chosenCategory} onChange={e => setChosenCategory(e.target.value)}>
+            <option value="random">🎲 Random Category</option>
+            {Object.keys(SPY_CATEGORIES).sort().map(cat => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
+        </div>
         <button className="startBtn" disabled={validPlayers.length < 3} onClick={startGame}>Deal Roles</button>
       </div>
       <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back to Menu</button>
@@ -888,11 +1003,6 @@ export default function IndexPage() {
         {phase === "trivia" && <TriviaGame onBack={goMenu} />}
         {phase === "spy" && <SpyGame onBack={goMenu} />}
               </div>
-      <div className="horseFooter" aria-hidden="true">
-        <div className="horseTrack">
-          <div className="horseRunner">🐴</div>
-        </div>
-      </div>
     </>
   )
 }
