@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react"
+import React, { useState, useCallback, useRef } from "react"
 import ranchLogo from "../../static/ranchgameslogo.png"
 import ranchWater from "../../static/ranch_water3.png"
 import cigarette from "../../static/cigarette2.png"
@@ -6,7 +6,7 @@ import alpCan from "../../static/alp2.png"
 import luca from "../../static/luca.png"
 
 const GOOD_PROMPTS = [
-  "Getting a day off work","A hot shower after a long day","Winning a board game",
+  "Getting a day off work","A hot shower after a long day","Winning a board game","A really good corndog",
   "Watching a great sunset","Getting a compliment from a stranger","Finishing a really good book",
   "Finding the perfect parking spot","Waking up before your alarm naturally","A dog greeting you at the door",
   "Getting the window seat on a flight","Fresh bedsheets after a shower",
@@ -27,9 +27,8 @@ const GOOD_PROMPTS = [
   "Telling a joke and your buddy laughs so hard he snorts","A ripping fire pit with the gang",
   "When you're driving back late and everyone else in the car falls asleep and you've got the music to yourself",
   "Getting the whole aisle to yourself on a plane","Nailing a perfect medium rare on a steak",
-  "When a dog does a big stretch","Getting a reservation for Rocca on the day of",
   "A rainy Sunday with nothing to do","A sick ass tree house",
-  "When the bill comes out way cheaper than you expected","An ice cold beer",
+  "When the bill comes out way cheaper than you expected",
   "Ranching in Italy with the whole Ranch","Thrifting a sick band tee shirt","Ripping a dart",
   "When you go to a boring work meeting but your boss who you just met offers you an alp",
   "When the waiter brings extra bread without you asking",
@@ -40,7 +39,7 @@ const GOOD_PROMPTS = [
   "When a stranger's dog comes and sits on your foot",
   "Getting to the airport and breezing through security in under 5 minutes",
   "When your food comes out looking exactly like the picture",
-  "A roadtrip with with friends",
+  "A roadtrip with friends",
   "A perfectly timed high five that makes a sound",
   "Finding out the group chat already handled it",
   "Remembering you have leftovers in the fridge right when you're hungry",
@@ -60,6 +59,18 @@ const GOOD_PROMPTS = [
   "When the group agrees on a restaurant immediately with zero debate",
   "When your bags come out first on the baggage carousel",
   "A long lunch that turns into a long afternoon and nobody has anywhere to be",
+  "When the bartender just starts making your usual without you saying anything",
+  "Getting a parking spot right up front like you own the place",
+  "When the dog you just met won't leave your side the whole night",
+  "When someone you respect says your name while giving a compliment",
+  "The moment a new pair of boots finally breaks in",
+  "Getting a table immediately at a place with a long wait",
+  "When the fire catches on the first try in front of people",
+  "When someone brings exactly the right snack at exactly the right time",
+  "When the group agrees on a restaurant immediately with zero debate",
+  "A fan that hits exactly right on a hot night",
+  "When you're the one who remembered to bring the thing everyone needed",
+  "Finishing something hard and not telling anyone about it",
 ]
 
 const BAD_PROMPTS = [
@@ -106,16 +117,14 @@ const BAD_PROMPTS = [
   "Confidently walking to the wrong car in a parking lot and opening the door to realize that it's a stranger's car and they're sitting in the driver's seat",
   "Opening the front camera by accident and just looking at yourself for a second",
   "Shaking someone's hand right after they sneezed",
-  "Getting a wedgie",
-  "Cracking your phone screen",
+  "Getting a wedgie","Cracking your phone screen",
   "Misjudging the depth of a step and falling down it in front of a group of people",
   "Getting sun poisoning on day one of a five day trip",
   "Ripping your pants at an event and having to walk around with your underwear showing",
   "Burning the roof of your mouth on the first bite and then doing it again immediately",
   "Dropping your sunglasses into the toilet mid-pee",
   "Walking into a glass door at a restaurant while people are eating inside",
-  "Getting stung by a bee",
-  "Missing your flight",
+  "Getting stung by a bee","Missing your flight",
   "Trying to casually lean on something at a party and knocking it over",
   "Getting hit by a sprinkler on the way to something important",
   "Mispronouncing a word you've only ever read and getting corrected in a group",
@@ -127,6 +136,27 @@ const BAD_PROMPTS = [
   "Pushing a door that you're supposed to pull",
   "Sitting on a wet chair and getting a wet butt",
   "Swallowing your drink down the wrong pipe and you can't stop coughing at a restaurant dinner",
+  "Getting a paper cut from something that has no business giving paper cuts",
+  "Sitting on your own sunglasses and hearing the crunch before you know what it was",
+  "Biting your cheek so hard you bite it again in the exact same spot for the next four days",
+  "Walking out of a bathroom with your shirt tucked into your underwear at a nice dinner",
+  "Trying to look casual on a wakeboard and immediately eating it in front of the whole boat",
+  "Getting your flip flop sucked off in the mud in front of everyone and having to hop",
+  "Getting bug sprayed by someone who didn't warn you and it goes directly into your mouth",
+  "Slipping on a boat ladder in front of the whole marina",
+  "Calling someone by the wrong name after being introduced three times",
+  "Stepping on a hidden sprinkler head barefoot in the dark",
+  "Getting to the front of a long line and not knowing what you want",
+  "Finding out the reservation was for last night",
+  "Getting your fishing line tangled beyond what any person should have to deal with",
+  "Sitting in something wet and not knowing what it is for the rest of the day",
+  "Offering to drive and then immediately getting lost",
+  "Getting the hiccups during a quiet moment that goes on way longer than anyone is comfortable with",
+  "Stepping off a boat onto a dock and the boat drifts at the exact wrong moment",
+  "Biting into what you think is a chocolate chip cookie and it's raisins",
+  "Losing your hat off the back of a boat and watching it get smaller in the wake",
+  "Ordering confidently at a restaurant and the waiter saying that item is actually not available",
+  "Getting bug sprayed by someone who didn't warn you and it goes directly into your mouth",
 ]
 
 const TEN_BUT_PROMPTS = [
@@ -134,14 +164,14 @@ const TEN_BUT_PROMPTS = [
   "They audibly burp very loudly and think it's cool and quirky",
   "They say 'type shit' and 'bruh' after most sentences",
   "They carry a gallon water bottle everywhere they go, including walking around the house and they bring it inside restaurants",
-  "They confidentally pronounce certain words wrong",
-  "They're birthday is the most important day of the year and they always find a reason to cry about something on that day",
+  "They confidently pronounce certain words wrong",
+  "Their birthday is the most important day of the year and they always find a reason to cry about something on that day",
   "They get mysterious letters from a stalker and act like it's a gift",
   "They call you really obnoxious pet names and will address you as such",
   "They believe in rain dances and will do this once a week to help the environment",
   "They don't drink water because they don't like the taste of it",
   "They constantly clear their throat while talking and they don't notice it",
-  "They want your to call them Mr or Miss before their name and will get upset if you don't",
+  "They want you to call them Mr or Miss before their name and will get upset if you don't",
   "They need you to hold their hand when they use the toilet because they're scared they're going to fall in",
   "They have a bunker under their house stocked with canned food and bottled water for the apocalypse",
   "They believe they have a sixth sense and bring it up constantly",
@@ -149,37 +179,77 @@ const TEN_BUT_PROMPTS = [
   "They quote movies in everyday conversation and expect you to know the movie and the quote",
   "They don't believe in using maps or GPS and navigate solely by the sun and stars. You constantly get lost with them",
   "They are always on live on instagram and will narrate everything they're doing in real time to their followers",
-  "They like to pants you whenever you see them and they will not stop until they succeed at least once",
+  "They like to pants you whenever they see you and they will not stop until they succeed at least once",
   "They introduce themselves as Dr. or Professor and they don't have a doctorate or professorship but they just like the title",
-  "They've count sheep out loud to fall asleep",
-  "They're extrememly sensitive to light and have to wear giant sunglasses even indoors and at night",
-  "They talk to their animals and he has them respond back and forth in a full conversation. It's not a joke they makes serious life decisions this way",
+  "They count sheep out loud to fall asleep",
+  "They're extremely sensitive to light and have to wear giant sunglasses even indoors and at night",
+  "They talk to their animals and have them respond back and forth in a full conversation. It's not a joke — they make serious life decisions this way",
   "They need you to tuck them in at night and sing them a lullaby before they can fall asleep",
   "They're embarrassingly horrible at telling jokes but they tell them all the time and get very upset when no one laughs",
   "They have a handshake they invented and try to use it on everyone they meet",
   "They collect human teeth and have a display case for them in their house",
-  "They like to to go on cruises once a month and you have to go with them",
+  "They like to go on cruises once a month and you have to go with them",
   "They have a severe lisp",
   "They love true crime and have a wall of the house dedicated to it with timelines, photos, and newspaper clippings",
   "They have a really ugly crying face and they cry often, about everything, and they don't care who sees it",
   "They have a YouTube channel reviewing toys and they take it very seriously",
   "They have weird friends and invite them to every event and they always make things awkward but they don't care",
-  "They send very long winded texts that are just one giant run on sentence with no punctuation and they expect you to read the whole thing and respond to every point they made in it",
+  "They send very long winded texts that are just one giant run on sentence with no punctuation and they expect you to read the whole thing and respond to every point",
   "They absolutely love to sing and sing loudly and off key in public places",
   "They can't read or write but somehow they're still very smart",
-  "They talk to themselves out loud. They only do it when they're alone or with you but they have full conversations with themselves and they don't even realize they're doing it",
+  "They talk to themselves out loud and have full conversations with themselves and they don't even realize they're doing it",
   "They are extremely superstitious and have a different superstition for every occasion and they follow them all to a T",
   "They sound like Kermit the Frog",
   "They finish other people's sentences, incorrectly, confidently, and without remorse",
   "They're the person who shows up to a bonfire with a guitar no one asked for",
-  "They carry a samari sword around with them and will not put it down for any reason",
+  "They carry a samurai sword around with them and will not put it down for any reason",
   "They're vegan and push it on everyone they meet and they get really upset if you eat meat around them",
   "They're a soundcloud rapper",
   "They never wear shoes and they think it's a lifestyle choice and not a health code violation",
   "They always think you could lose a few pounds and they bring it up often",
-  "They have a very specific way they like their coffee and they will get very upset if you make it for them wrong or if you order it wrong at a coffee shop",
-  "They have a pet rat that they treat like a dog and they bring it everywhere with them and they have a little rat stroller for it",
+  "They have a very specific way they like their coffee and they will get very upset if you make it wrong",
+  "They have a pet rat that they treat like a dog and they bring it everywhere with them in a little rat stroller",
   "They believe they're from the future and they have a time machine in their basement that they won't let anyone see",
+  "They have a full skincare routine they describe as 'a whole thing' and it takes 45 minutes",
+  "They've never once eaten a meal without rating it out loud",
+  "They call everyone 'boss' including their actual boss",
+  "They have an emotional support water bottle they've named Gerald",
+  "They run into someone they know everywhere they go and seem unbothered by this",
+  "They own a taxidermied animal that sits in the living room with a name and a backstory",
+  "They have beef with a local weatherman that goes back three years",
+  "They do a little bow before sitting down at the dinner table",
+  "They hum constantly — not a song, just a frequency",
+  "They refer to their houseplants as their children and have a babysitter for them when they travel",
+  "They wear a cowboy hat indoors and get offended if you mention it",
+  "They've cried at a car commercial, a dog food commercial, and once at a UPS commercial",
+  "They keep every receipt they've ever received in a shoebox organized by month",
+  "They've never once asked for directions and have been lost in a Walmart for 40 minutes",
+  "They own a metal detector and use it every weekend",
+  "They introduce their dog before they introduce themselves",
+  "They've had the same lucky pen since 2009 and will not explain why it's lucky",
+  "They know every employee at their local Chick-fil-A by name and vice versa",
+  "They do voices for all their pets and maintain them consistently",
+  "They've sent a formal letter of complaint to a restaurant and framed the response",
+  "They treat parallel parking like a competitive sport and expect applause",
+  "They make eye contact for slightly too long and smile slightly too wide",
+  "They refer to napping as 'going into power mode'",
+  "They have a nemesis at the gym and the gym does not know about this",
+  "They've memorized every line from Tombstone and deploy them at random",
+  "They rate gas stations like restaurants and have strong opinions about Flying J",
+  "They write thank you cards by hand for every gift, meal, and minor favor",
+  "They've never been on time to anything but always arrive with a very good story",
+  "They believe strongly in signs from the universe and the universe apparently has a lot to say",
+  "They narrate their own cooking like they're filming a YouTube video no one asked for",
+  "They have a specific chair that is theirs and get visibly unsettled when someone sits in it",
+  "They've been voluntarily sober at a tailgate, not because they had to, just to see if they could",
+  "They're the person who shows up to a bonfire with a guitar no one asked for",
+  "They have a theory about the moon that they'll share if you give them any opening at all",
+  "They've given a full toast at someone else's dinner party that wasn't a special occasion",
+  "They describe every trip they take in real time via a 47 photo album on Facebook",
+  "They know the exact caloric content of everything on the menu and tell you",
+  "They've been in a fantasy football league for 12 years, never won, and are more committed than ever",
+  "They have a rating system for hugs and they will tell you your score",
+  "They ask the waiter what their favorite item is and then order something completely different",
 ]
 
 const TRIVIA_CATEGORIES = {
@@ -237,8 +307,6 @@ const TRIVIA_CATEGORIES = {
     { q: "How fast can a hummingbird flap its wings per second?", a: "About 80 times" },
     { q: "How many teeth does a snail have?", a: "Thousands (up to 14,000)" },
     { q: "What is the most venomous animal in the world?", a: "Box jellyfish" },
-    { q: "How many eyes does a bee have?", a: "5" },
-    { q: "Which animal cannot jump?", a: "Elephant" },
     { q: "Which bird cannot fly?", a: "Ostrich" },
     { q: "What do you call a group of flamingos?", a: "A flamboyance" },
     { q: "How many noses does a slug have?", a: "4" },
@@ -246,6 +314,8 @@ const TRIVIA_CATEGORIES = {
     { q: "Which animal has the highest blood pressure?", a: "Giraffe" },
     { q: "A group of lions is called what?", a: "A pride" },
     { q: "What animal has fingerprints most similar to humans?", a: "Koala" },
+    { q: "What is the largest land animal?", a: "African elephant" },
+    { q: "How many legs does a crab have?", a: "10" },
   ],
   "Science": [
     { q: "What is the chemical symbol for gold?", a: "Au" },
@@ -266,7 +336,6 @@ const TRIVIA_CATEGORIES = {
     { q: "How many muscles does the human body have?", a: "Over 600" },
     { q: "How many bones does a baby have at birth?", a: "About 270" },
     { q: "What percentage of the Earth is covered by water?", a: "About 71%" },
-    { q: "How many liters are in a gallon?", a: "About 3.785" },
     { q: "How many strings does a standard guitar have?", a: "6" },
     { q: "How many keys does a standard piano have?", a: "88" },
     { q: "How many valves does a trumpet have?", a: "3" },
@@ -278,6 +347,7 @@ const TRIVIA_CATEGORIES = {
     { q: "Which country invented paper?", a: "China" },
     { q: "Which country invented the printing press?", a: "Germany" },
     { q: "What is the national animal of Scotland?", a: "Unicorn" },
+    { q: "How many liters are in a gallon?", a: "About 3.785" },
   ],
   "Food & Drink": [
     { q: "What country invented pizza?", a: "Italy" },
@@ -287,19 +357,10 @@ const TRIVIA_CATEGORIES = {
     { q: "Which fruit has its seeds on the outside?", a: "Strawberry" },
     { q: "Which vegetable was once considered poisonous in Europe?", a: "Tomato" },
     { q: "Which food is known as the king of fruits?", a: "Durian" },
-    { q: "How many colors are in a rainbow?", a: "7" },
-    { q: "What country has the most UNESCO World Heritage Sites?", a: "Italy" },
-    { q: "How many official languages does Switzerland have?", a: "4" },
-    { q: "What is the world's oldest religion?", a: "Hinduism" },
-    { q: "How many stars are on the American flag?", a: "50" },
-    { q: "What country has the most pyramids?", a: "Sudan" },
-    { q: "Which country invented pizza?", a: "Italy" },
     { q: "What is sushi traditionally wrapped in?", a: "Nori (seaweed)" },
     { q: "What grain is used to make bourbon?", a: "Corn" },
     { q: "What country does Gouda cheese come from?", a: "Netherlands" },
     { q: "What is the main ingredient in guacamole?", a: "Avocado" },
-    { q: "What type of pastry is a croissant?", a: "Laminated/puff pastry" },
-    { q: "What is the base of a traditional Hollandaise sauce?", a: "Egg yolks and butter" },
     { q: "What spirit is used in a Margarita?", a: "Tequila" },
     { q: "What country does Champagne legally have to come from?", a: "France" },
     { q: "What is the most popular pizza topping in America?", a: "Pepperoni" },
@@ -310,6 +371,15 @@ const TRIVIA_CATEGORIES = {
     { q: "How many fluid ounces are in a standard shot?", a: "1.5 oz" },
     { q: "What country produces the most olive oil?", a: "Spain" },
     { q: "What is the French term for a pastry chef?", a: "Pâtissier" },
+    { q: "What is the base of a traditional Hollandaise sauce?", a: "Egg yolks and butter" },
+    { q: "What type of pastry is a croissant?", a: "Laminated/puff pastry" },
+    { q: "What country has the most UNESCO World Heritage Sites?", a: "Italy" },
+    { q: "What country has the most pyramids?", a: "Sudan" },
+    { q: "What is the world's oldest fermented drink?", a: "Mead" },
+    { q: "What is the most stolen food in the world?", a: "Cheese" },
+    { q: "What fruit is used to make Calvados?", a: "Apple" },
+    { q: "What is the main ingredient in a traditional paella?", a: "Saffron rice" },
+    { q: "Which country invented nachos?", a: "Mexico" },
   ],
   "Pop Culture & History": [
     { q: "Who painted the Mona Lisa?", a: "Leonardo da Vinci" },
@@ -322,7 +392,6 @@ const TRIVIA_CATEGORIES = {
     { q: "What country did the Renaissance begin in?", a: "Italy" },
     { q: "Who was the first US president?", a: "George Washington" },
     { q: "What empire built the Colosseum?", a: "Roman Empire" },
-    { q: "In what decade was the internet invented?", a: "1980s" },
     { q: "What year did Apple release the first iPhone?", a: "2007" },
     { q: "Who directed Jurassic Park?", a: "Steven Spielberg" },
     { q: "What band was Freddie Mercury the lead singer of?", a: "Queen" },
@@ -332,16 +401,17 @@ const TRIVIA_CATEGORIES = {
     { q: "What country invented the Olympics?", a: "Greece" },
     { q: "What sport is played at Wimbledon?", a: "Tennis" },
     { q: "How many rings are on the Olympic flag?", a: "5" },
-    { q: "What is the fastest sport in the world?", a: "Badminton" },
     { q: "Who holds the record for most Olympic gold medals?", a: "Michael Phelps" },
     { q: "What year did the first Super Bowl take place?", a: "1967" },
     { q: "How many players are on a basketball team on the court?", a: "5" },
-    { q: "What team has won the most Super Bowls?", a: "New England Patriots / Kansas City Chiefs (tied at 6)" },
     { q: "What country won the 2018 FIFA World Cup?", a: "France" },
     { q: "Who was known as 'The Greatest' in boxing?", a: "Muhammad Ali" },
     { q: "What sport uses a puck?", a: "Ice hockey" },
     { q: "How many points is a touchdown worth in football?", a: "6" },
     { q: "What is the diameter of a basketball hoop in inches?", a: "18 inches" },
+    { q: "What team has won the most Super Bowls?", a: "New England Patriots / Kansas City Chiefs (tied at 6)" },
+    { q: "What is the fastest sport in the world?", a: "Badminton" },
+    { q: "Who was the first American to orbit Earth?", a: "John Glenn" },
   ],
 }
 
@@ -353,9 +423,9 @@ const SPY_CATEGORIES = {
   "Jobs": ["Surgeon","Air Traffic Controller","Bomb Disposal Expert","Submarine Captain","Astronaut","Rodeo Clown","Ventriloquist","Zookeeper","Football Coach","Private Investigator"],
   "At the Beach": ["Lifeguard","Sunscreen","Sandcastle","Seagull","Beach Umbrella","Jellyfish","Crab","Surf Instructor"],
   "At a Wedding": ["Best Man","Flower Girl","Open Bar","Bouquet Toss","Father-Daughter Dance","Wedding Cake","Ring Bearer","Photobooth","DJ"],
-  "Wild West": ["Sheriff","Saloon","Tumbleweed","Wanted Poster","Lasso","Campfire", "Revolver","Cactus"],
+  "Wild West": ["Sheriff","Saloon","Tumbleweed","Wanted Poster","Lasso","Campfire","Revolver","Cactus"],
   "Halloween": ["Vampire","Witch","Jack-o-Lantern","Candy Corn","Haunted House","Zombie","Black Cat","Cauldron","Skeleton","Full Moon"],
-  "Airport": ["TSA Agent","Carry-On Bag","Boarding Pass","Middle Seat","Delayed Flight","Lost Luggage","Customs", "Airport Lounge","Jet Lag","Security Line"],
+  "Airport": ["TSA Agent","Carry-On Bag","Boarding Pass","Middle Seat","Delayed Flight","Lost Luggage","Customs","Airport Lounge","Jet Lag","Security Line"],
   "Thanksgiving": ["Turkey","Gravy Boat","Cranberry Sauce","Stuffing","Pumpkin Pie","Green Bean Casserole","Drunk Uncle","Folding Table","Nap","Leftovers"],
   "At a Bar": ["Bartender","Happy Hour","Jukebox","Pool Table","Last Call","Tab","Bouncer","Trivia Night","Bar Fight","Karaoke"],
   "Space": ["Black Hole","Space Shuttle","Astronaut Ice Cream","Meteorite","Space Suit","Moon Rover","Nebula","Satellite","Gravity Boot","Tang"],
@@ -379,6 +449,19 @@ function shuffle(arr) {
     ;[a[i], a[j]] = [a[j], a[i]]
   }
   return a
+}
+
+// Smart picker: avoids recently used prompts using a ref-based history
+function pickFresh(pool, usedRef, count) {
+  // Filter out recently used (up to half the pool)
+  const maxHistory = Math.floor(pool.length / 2)
+  const used = usedRef.current || []
+  const fresh = pool.filter(p => !used.includes(p))
+  const source = fresh.length >= count ? fresh : pool
+  const picked = shuffle(source).slice(0, count)
+  // Update history
+  usedRef.current = [...used, ...picked].slice(-maxHistory)
+  return picked
 }
 
 const quotes = [
@@ -514,8 +597,7 @@ function TriviaGame({ onBack }) {
     const pool = categoryChoice === "all"
       ? shuffle(ALL_TRIVIA)
       : shuffle(TRIVIA_CATEGORIES[categoryChoice] || ALL_TRIVIA)
-    setQuestions(pool)
-    setIndex(0); setRevealed(false)
+    setQuestions(pool); setIndex(0); setRevealed(false)
     setScore({ correct: 0, wrong: 0 }); setHistory([])
     setPhase("playing"); playWhoosh()
   }
@@ -527,12 +609,10 @@ function TriviaGame({ onBack }) {
         <div className="tenButSetup" style={{marginBottom:"16px"}}>Pick a category</div>
         <div className="triviaCategoryGrid">
           {["all", ...Object.keys(TRIVIA_CATEGORIES)].map(cat => (
-            <button
-              key={cat}
+            <button key={cat}
               className={`triviaCategoryBtn${categoryChoice === cat ? " triviaCategoryActive" : ""}`}
-              onClick={() => { playClick(); setCategoryChoice(cat) }}
-            >
-              {cat === "all" ? "🎲 All Categories" : cat}
+              onClick={() => { playClick(); setCategoryChoice(cat) }}>
+              {cat === "all" ? "All Categories" : cat}
             </button>
           ))}
         </div>
@@ -551,7 +631,7 @@ function TriviaGame({ onBack }) {
     if (index + 1 >= questions.length) { playFinal(); setPhase("results") }
     else { correct ? playYes() : playNo(); setIndex(index + 1); setRevealed(false) }
   }
-  if (phase === "setup") return null // handled above
+
   if (phase === "results") return (
     <div className="gameWrapper">
       <div className="card">
@@ -568,12 +648,13 @@ function TriviaGame({ onBack }) {
           </div>
         ))}
         <div className="bottomButtons">
-          <button className="replayBtn" onClick={() => { playRideAgain(); window.location.reload() }}>Play Again</button>
+          <button className="replayBtn" onClick={() => { playRideAgain(); setPhase("setup"); setQuestions(null) }}>Play Again</button>
           <button className="replayBtn replayBtnSecondary" onClick={() => { playPop(); onBack() }}>Back</button>
         </div>
       </div>
     </div>
   )
+
   return (
     <div className="gameWrapper">
       <div className="progressBar"><div className="progressFill" style={{ width: `${(index / questions.length) * 100}%` }} /></div>
@@ -708,9 +789,7 @@ function SpyGame({ onBack }) {
   const startGame = () => {
     if (validPlayers.length < 3) return
     const cats = Object.keys(SPY_CATEGORIES)
-    const chosenCat = chosenCategory === "random"
-      ? cats[Math.floor(Math.random() * cats.length)]
-      : chosenCategory
+    const chosenCat = chosenCategory === "random" ? cats[Math.floor(Math.random() * cats.length)] : chosenCategory
     const items = SPY_CATEGORIES[chosenCat]
     const chosenItem = items[Math.floor(Math.random() * items.length)]
     const spy = Math.floor(Math.random() * validPlayers.length)
@@ -738,7 +817,8 @@ function SpyGame({ onBack }) {
   }
   const resetGame = () => {
     setPhase("setup"); setPlayerNames(["", "", "", "", ""]); setCategory(""); setItem("")
-    setChosenCategory("random"); setSpyIndex(null); setRevealIndex(0); setCurrentReveal(null); setSpyGuess(""); setGameResult(null); setVotedSpy(null)
+    setChosenCategory("random"); setSpyIndex(null); setRevealIndex(0); setCurrentReveal(null)
+    setSpyGuess(""); setGameResult(null); setVotedSpy(null)
   }
   if (phase === "setup") return (
     <div className="gameWrapper">
@@ -764,10 +844,8 @@ function SpyGame({ onBack }) {
         <div style={{marginBottom:"14px"}}>
           <div className="cardLabel" style={{marginBottom:"8px"}}>★ Choose Category ★</div>
           <select className="spyCategorySelect" value={chosenCategory} onChange={e => setChosenCategory(e.target.value)}>
-            <option value="random">🎲 Random Category</option>
-            {Object.keys(SPY_CATEGORIES).sort().map(cat => (
-              <option key={cat} value={cat}>{cat}</option>
-            ))}
+            <option value="random">Random Category</option>
+            {Object.keys(SPY_CATEGORIES).sort().map(cat => <option key={cat} value={cat}>{cat}</option>)}
           </select>
         </div>
         <button className="startBtn" disabled={validPlayers.length < 3} onClick={startGame}>Deal Roles</button>
@@ -868,14 +946,8 @@ function SpyGame({ onBack }) {
   return null
 }
 
-
 // ── SCREENS ──────────────────────────────────────────────────────────────────
 function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia, onSpy }) {
-  const toggleFullscreen = () => {
-    if (!document.fullscreenElement) { document.documentElement.requestFullscreen?.() }
-    else { document.exitFullscreen?.() }
-    playPop()
-  }
   const openWeather = () => {
     playWhoosh()
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
@@ -888,7 +960,7 @@ function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia, onSpy }) {
   }
   const games = [
     {
-        name: "Blind Ratings",
+      name: "Blind Ratings",
       desc: "Rank 10 prompts from worst to best — blindly. No take-backs.",
       action: (
         <div className="gameCardButtons">
@@ -897,10 +969,10 @@ function MenuScreen({ onRandom, onCustom, onTenBut, onTrivia, onSpy }) {
         </div>
       )
     },
+    { name: "Spy", desc: "One person only knows the category. Find them before they escape.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onSpy() }}>Find the Spy</button> },
     { name: "They're A 10 But...", desc: "Red flags vs good looks. You be the judge.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onTenBut() }}>Play Now</button> },
+    { name: "Trivia", desc: "Choose a category and test your knowledge out loud.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onTrivia() }}>Let's Go</button> },
     { name: "Guess The Weather", desc: "Check the Clearwater forecast. Was your gut right?", action: <button className="gameCardBtn" onClick={openWeather}>Open Forecast</button> },
-    { name: "Trivia", desc: "100 questions on animals, history, food and more.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onTrivia() }}>Let's Go</button> },
-    { name: "Spy", desc: "One person only knows the category. Find them.", action: <button className="gameCardBtn" onClick={() => { playWhoosh(); onSpy() }}>Find the Spy</button> },
     { name: "New Game Coming Soon", desc: "Something fun is on the way. Stay tuned, partner.", action: <div className="gameCardComingSoon">Coming Soon</div> },
   ]
   return (
@@ -1015,9 +1087,13 @@ export default function IndexPage() {
   const [customPrompts, setCustomPrompts] = useState([])
   const [fsLabel, setFsLabel] = useState("⛶ TV Mode")
 
+  // Anti-repeat history refs — persist across rounds within the same session
+  const usedGoodRef = useRef([])
+  const usedBadRef = useRef([])
+
   const startRandom = useCallback(() => {
-    const good = shuffle(GOOD_PROMPTS).slice(0, 5)
-    const bad = shuffle(BAD_PROMPTS).slice(0, 5)
+    const good = pickFresh(GOOD_PROMPTS, usedGoodRef, 5)
+    const bad = pickFresh(BAD_PROMPTS, usedBadRef, 5)
     setPrompts(shuffle([...good, ...bad]))
     setSlots(Array(10).fill(null)); setCurrentIndex(0); setMode("random"); setPhase("playing")
   }, [])
@@ -1034,8 +1110,13 @@ export default function IndexPage() {
     else { playClick(); setCurrentIndex(nextIndex) }
   }, [slots, prompts, currentIndex])
   const playAgain = useCallback(() => {
-    if (mode === "custom" && customPrompts.length > 0) { setPrompts(shuffle(customPrompts)) }
-    else { const good = shuffle(GOOD_PROMPTS).slice(0, 5); const bad = shuffle(BAD_PROMPTS).slice(0, 5); setPrompts(shuffle([...good, ...bad])) }
+    if (mode === "custom" && customPrompts.length > 0) {
+      setPrompts(shuffle(customPrompts))
+    } else {
+      const good = pickFresh(GOOD_PROMPTS, usedGoodRef, 5)
+      const bad = pickFresh(BAD_PROMPTS, usedBadRef, 5)
+      setPrompts(shuffle([...good, ...bad]))
+    }
     setSlots(Array(10).fill(null)); setCurrentIndex(0); setPhase("playing")
   }, [mode, customPrompts])
   const goMenu = useCallback(() => { setPhase("menu") }, [])
@@ -1068,7 +1149,7 @@ export default function IndexPage() {
         {phase === "tenBut" && <TenButGame onBack={goMenu} />}
         {phase === "trivia" && <TriviaGame onBack={goMenu} />}
         {phase === "spy" && <SpyGame onBack={goMenu} />}
-              </div>
+      </div>
     </>
   )
 }
