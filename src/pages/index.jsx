@@ -31,23 +31,19 @@ const GOOD_PROMPTS = [
   "When the bill comes out way cheaper than you expected",
   "Ranching in Italy with the whole Ranch","Thrifting a sick band tee shirt","Ripping a dart",
   "When you go to a boring work meeting but your boss who you just met offers you an alp",
-  "When the waiter brings extra bread without you asking",
-  "A cold drink when you really need it",
+  "When the waiter brings extra bread without you asking","A cold drink when you really need it",
   "Getting upgraded to first class for no reason",
   "When you nail the joke in a room full of people who weren't sure about you yet",
   "Waking up thinking it's Monday and it's Saturday",
   "When a stranger's dog comes and sits on your foot",
   "Getting to the airport and breezing through security in under 5 minutes",
-  "When your food comes out looking exactly like the picture",
-  "A roadtrip with friends",
-  "A perfectly timed high five that makes a sound",
-  "Finding out the group chat already handled it",
+  "When your food comes out looking exactly like the picture","A roadtrip with friends",
+  "A perfectly timed high five that makes a sound","Finding out the group chat already handled it",
   "Remembering you have leftovers in the fridge right when you're hungry",
   "When someone you respect laughs really hard at something you said",
   "The first cold one after moving furniture or doing something physical",
   "When the check comes and someone just grabs it without a word",
-  "When plans come together with zero effort",
-  "When the fire catches on the first try in front of people",
+  "When plans come together with zero effort","When the fire catches on the first try in front of people",
   "A full tank, a clean truck, and somewhere worth going",
   "When someone says exactly what you were thinking before you could say it",
   "When the song you forgot about comes on and it's somehow better than you remembered",
@@ -62,12 +58,9 @@ const GOOD_PROMPTS = [
   "When the bartender just starts making your usual without you saying anything",
   "Getting a parking spot right up front like you own the place",
   "When the dog you just met won't leave your side the whole night",
-  "When someone you respect says your name while giving a compliment",
   "The moment a new pair of boots finally breaks in",
   "Getting a table immediately at a place with a long wait",
-  "When the fire catches on the first try in front of people",
   "When someone brings exactly the right snack at exactly the right time",
-  "When the group agrees on a restaurant immediately with zero debate",
   "A fan that hits exactly right on a hot night",
   "When you're the one who remembered to bring the thing everyone needed",
   "Finishing something hard and not telling anyone about it",
@@ -116,8 +109,7 @@ const BAD_PROMPTS = [
   "Waving back at someone who wasn't waving at you in front of a large crowd",
   "Confidently walking to the wrong car in a parking lot and opening the door to realize that it's a stranger's car and they're sitting in the driver's seat",
   "Opening the front camera by accident and just looking at yourself for a second",
-  "Shaking someone's hand right after they sneezed",
-  "Getting a wedgie","Cracking your phone screen",
+  "Shaking someone's hand right after they sneezed","Getting a wedgie","Cracking your phone screen",
   "Misjudging the depth of a step and falling down it in front of a group of people",
   "Getting sun poisoning on day one of a five day trip",
   "Ripping your pants at an event and having to walk around with your underwear showing",
@@ -133,8 +125,7 @@ const BAD_PROMPTS = [
   "When your card declines at the gas pump so you go inside, you wait in a long line and it declines again",
   "Waking up with your neck out and the pain will last for days",
   "Spilling something on yourself in the car with no napkins and 45 minutes left",
-  "Pushing a door that you're supposed to pull",
-  "Sitting on a wet chair and getting a wet butt",
+  "Pushing a door that you're supposed to pull","Sitting on a wet chair and getting a wet butt",
   "Swallowing your drink down the wrong pipe and you can't stop coughing at a restaurant dinner",
   "Getting a paper cut from something that has no business giving paper cuts",
   "Sitting on your own sunglasses and hearing the crunch before you know what it was",
@@ -156,7 +147,6 @@ const BAD_PROMPTS = [
   "Biting into what you think is a chocolate chip cookie and it's raisins",
   "Losing your hat off the back of a boat and watching it get smaller in the wake",
   "Ordering confidently at a restaurant and the waiter saying that item is actually not available",
-  "Getting bug sprayed by someone who didn't warn you and it goes directly into your mouth",
 ]
 
 const TEN_BUT_PROMPTS = [
@@ -242,7 +232,6 @@ const TEN_BUT_PROMPTS = [
   "They narrate their own cooking like they're filming a YouTube video no one asked for",
   "They have a specific chair that is theirs and get visibly unsettled when someone sits in it",
   "They've been voluntarily sober at a tailgate, not because they had to, just to see if they could",
-  "They're the person who shows up to a bonfire with a guitar no one asked for",
   "They have a theory about the moon that they'll share if you give them any opening at all",
   "They've given a full toast at someone else's dinner party that wasn't a special occasion",
   "They describe every trip they take in real time via a 47 photo album on Facebook",
@@ -451,15 +440,12 @@ function shuffle(arr) {
   return a
 }
 
-// Smart picker: avoids recently used prompts using a ref-based history
 function pickFresh(pool, usedRef, count) {
-  // Filter out recently used (up to half the pool)
   const maxHistory = Math.floor(pool.length / 2)
   const used = usedRef.current || []
   const fresh = pool.filter(p => !used.includes(p))
   const source = fresh.length >= count ? fresh : pool
   const picked = shuffle(source).slice(0, count)
-  // Update history
   usedRef.current = [...used, ...picked].slice(-maxHistory)
   return picked
 }
@@ -594,9 +580,7 @@ function TriviaGame({ onBack }) {
   const [phase, setPhase] = useState("setup")
 
   const startTrivia = () => {
-    const pool = categoryChoice === "all"
-      ? shuffle(ALL_TRIVIA)
-      : shuffle(TRIVIA_CATEGORIES[categoryChoice] || ALL_TRIVIA)
+    const pool = categoryChoice === "all" ? shuffle(ALL_TRIVIA) : shuffle(TRIVIA_CATEGORIES[categoryChoice] || ALL_TRIVIA)
     setQuestions(pool); setIndex(0); setRevealed(false)
     setScore({ correct: 0, wrong: 0 }); setHistory([])
     setPhase("playing"); playWhoosh()
@@ -609,8 +593,7 @@ function TriviaGame({ onBack }) {
         <div className="tenButSetup" style={{marginBottom:"16px"}}>Pick a category</div>
         <div className="triviaCategoryGrid">
           {["all", ...Object.keys(TRIVIA_CATEGORIES)].map(cat => (
-            <button key={cat}
-              className={`triviaCategoryBtn${categoryChoice === cat ? " triviaCategoryActive" : ""}`}
+            <button key={cat} className={`triviaCategoryBtn${categoryChoice === cat ? " triviaCategoryActive" : ""}`}
               onClick={() => { playClick(); setCategoryChoice(cat) }}>
               {cat === "all" ? "All Categories" : cat}
             </button>
@@ -775,6 +758,7 @@ function TenButGame({ onBack }) {
 // ── SPY GAME ──────────────────────────────────────────────────────────────────
 function SpyGame({ onBack }) {
   const [phase, setPhase] = useState("setup")
+  const [chaosMode, setChaosMode] = useState(false)
   const [playerNames, setPlayerNames] = useState(["", "", "", "", ""])
   const [category, setCategory] = useState("")
   const [chosenCategory, setChosenCategory] = useState("random")
@@ -785,45 +769,101 @@ function SpyGame({ onBack }) {
   const [spyGuess, setSpyGuess] = useState("")
   const [gameResult, setGameResult] = useState(null)
   const [votedSpy, setVotedSpy] = useState(null)
+  const [hatClicks, setHatClicks] = useState(0)
+
   const validPlayers = playerNames.filter(n => n.trim().length > 0)
+
+  const handleHatClick = () => {
+    // Secret hat click — activate chaos mode silently
+    playClick()
+    const next = hatClicks + 1
+    setHatClicks(next)
+    if (next >= 1) {
+      setChaosMode(true)
+      setHatClicks(0)
+    }
+  }
+
   const startGame = () => {
     if (validPlayers.length < 3) return
     const cats = Object.keys(SPY_CATEGORIES)
     const chosenCat = chosenCategory === "random" ? cats[Math.floor(Math.random() * cats.length)] : chosenCategory
     const items = SPY_CATEGORIES[chosenCat]
     const chosenItem = items[Math.floor(Math.random() * items.length)]
-    const spy = Math.floor(Math.random() * validPlayers.length)
-    setCategory(chosenCat); setItem(chosenItem); setSpyIndex(spy)
+    setCategory(chosenCat); setItem(chosenItem)
+    // In chaos mode nobody is the spy — everyone gets "spy" card
+    setSpyIndex(chaosMode ? -1 : Math.floor(Math.random() * validPlayers.length))
     setRevealIndex(0); setCurrentReveal(null); setPhase("reveal"); playWhoosh()
   }
+
   const handleRevealTap = () => {
-    if (currentReveal === null) { setCurrentReveal(revealIndex === spyIndex ? "spy" : "player"); playClick() }
-    else {
+    if (currentReveal === null) {
+      // In chaos mode everyone is the spy
+      setCurrentReveal(chaosMode ? "spy" : (revealIndex === spyIndex ? "spy" : "player"))
+      playClick()
+    } else {
       setCurrentReveal(null)
-      if (revealIndex + 1 >= validPlayers.length) { setPhase("playing"); playFinal() }
-      else { setRevealIndex(revealIndex + 1) }
+      if (revealIndex + 1 >= validPlayers.length) {
+        setPhase(chaosMode ? "chaosPlaying" : "playing")
+        playFinal()
+      } else {
+        setRevealIndex(revealIndex + 1)
+      }
     }
   }
+
   const handleVote = (idx) => {
     setVotedSpy(idx)
-    if (idx === spyIndex) { setPhase("spyGuess"); playYes() }
-    else { setGameResult("spyEscaped"); setPhase("results"); playNo() }
+    if (chaosMode) {
+      setPhase("chaosReveal")
+      playFinal()
+    } else if (idx === spyIndex) {
+      setPhase("spyGuess"); playYes()
+    } else {
+      setGameResult("spyEscaped"); setPhase("results"); playNo()
+    }
   }
+
   const handleSpyGuess = () => {
     const guess = spyGuess.trim().toLowerCase()
     const correct = item.toLowerCase()
     setGameResult(guess === correct || correct.includes(guess) || guess.includes(correct.split(" ")[0].toLowerCase()) ? "spyGuessedRight" : "spyCaught")
     setPhase("results"); playFinal()
   }
+
   const resetGame = () => {
     setPhase("setup"); setPlayerNames(["", "", "", "", ""]); setCategory(""); setItem("")
     setChosenCategory("random"); setSpyIndex(null); setRevealIndex(0); setCurrentReveal(null)
-    setSpyGuess(""); setGameResult(null); setVotedSpy(null)
+    setSpyGuess(""); setGameResult(null); setVotedSpy(null); setChaosMode(false); setHatClicks(0)
   }
+
+  // ── SETUP ──
   if (phase === "setup") return (
     <div className="gameWrapper">
-      <div className="card">
+      <div className="card" style={{position:"relative"}}>
+        {/* Secret cowboy hat button — blends into top right corner */}
+        <button
+          onClick={handleHatClick}
+          style={{
+            position:"absolute", top:"10px", right:"12px",
+            background:"none", border:"none", cursor:"pointer",
+            fontSize:"20px", opacity: chaosMode ? 1 : 0.25,
+            padding:"4px", lineHeight:1,
+            transition:"opacity 0.2s",
+          }}
+          title=" "
+          aria-label=" "
+        >🤠</button>
+
         <div className="cardLabel">★ Spy — Enter Players ★</div>
+        {chaosMode && (
+          <div style={{
+            background:"var(--rosewood-dark)", color:"#fff",
+            borderRadius:"4px", padding:"8px 12px", marginBottom:"12px",
+            fontSize:"11px", letterSpacing:"2px", textTransform:"uppercase",
+            textAlign:"center", fontFamily:"var(--font)", fontWeight:700
+          }}>🤠 chaos mode active</div>
+        )}
         <p className="howto" style={{marginBottom:"16px"}}>Add the names of everyone playing (3–10 players). Pass the phone around to reveal roles.</p>
         <div className="promptInputs">
           {playerNames.map((name, i) => (
@@ -853,6 +893,8 @@ function SpyGame({ onBack }) {
       <button className="backBtnBottom" onClick={() => { playPop(); onBack() }}>← Back to Menu</button>
     </div>
   )
+
+  // ── REVEAL (shared for normal + chaos) ──
   if (phase === "reveal") {
     const playerName = validPlayers[revealIndex]
     return (
@@ -888,6 +930,49 @@ function SpyGame({ onBack }) {
       </div>
     )
   }
+
+  // ── CHAOS PLAYING ──
+  if (phase === "chaosPlaying") return (
+    <div className="gameWrapper">
+      <div className="card">
+        <div className="cardLabel">★ Spy — In Progress ★</div>
+        <div className="spyPlayingCategory">Category: <strong>{category}</strong></div>
+        <p className="howto" style={{margin:"14px 0"}}>Go around asking each other questions. Everyone suspects someone. Vote when you're ready.</p>
+        <div className="spyPlayerList">{validPlayers.map((name, i) => <div key={i} className="spyPlayerChip">{name}</div>)}</div>
+        <div className="divider" style={{margin:"18px 0"}}>✦ ready to vote? ✦</div>
+        <p className="howto" style={{marginBottom:"12px"}}>Who do you think is the spy?</p>
+        <div className="spyVoteButtons">{validPlayers.map((name, i) => <button key={i} className="spyVoteBtn" onClick={() => handleVote(i)}>{name}</button>)}</div>
+      </div>
+      <button className="backBtnBottom" onClick={() => { playPop(); resetGame() }}>← Start Over</button>
+    </div>
+  )
+
+  // ── CHAOS REVEAL ──
+  if (phase === "chaosReveal") return (
+    <div className="gameWrapper">
+      <div className="card tenButCard" style={{textAlign:"center"}}>
+        <div style={{fontSize:"48px", marginBottom:"12px"}}>🤠</div>
+        <div className="resultsTitle" style={{color:"var(--rosewood)"}}>Everyone Was The Spy.</div>
+        <div className="resultsSubtitle">★ The real spy was friendship all along ★</div>
+        <p className="howto" style={{margin:"16px 0 8px"}}>
+          You voted for <strong>{validPlayers[votedSpy]}</strong>.<br />
+          But there was no spy. Everyone got the same card.<br />
+          You've been had, partner. 🤠
+        </p>
+        <div className="spyResultDetails" style={{marginTop:"16px"}}>
+          <div className="spyResultRow"><span>Category</span><strong>{category}</strong></div>
+          <div className="spyResultRow"><span>The Trick</span><strong>Everyone was the spy</strong></div>
+          <div className="spyResultRow"><span>You voted for</span><strong>{validPlayers[votedSpy]}</strong></div>
+        </div>
+        <div className="bottomButtons">
+          <button className="replayBtn" onClick={() => { playRideAgain(); resetGame() }}>Play Again</button>
+          <button className="replayBtn replayBtnSecondary" onClick={() => { playPop(); onBack() }}>Back</button>
+        </div>
+      </div>
+    </div>
+  )
+
+  // ── NORMAL PLAYING ──
   if (phase === "playing") return (
     <div className="gameWrapper">
       <div className="card">
@@ -902,6 +987,7 @@ function SpyGame({ onBack }) {
       <button className="backBtnBottom" onClick={() => { playPop(); resetGame() }}>← Start Over</button>
     </div>
   )
+
   if (phase === "spyGuess") return (
     <div className="gameWrapper">
       <div className="card tenButCard">
@@ -916,6 +1002,7 @@ function SpyGame({ onBack }) {
       </div>
     </div>
   )
+
   if (phase === "results") {
     const messages = {
       spyCaught: { title: "Spy Caught!", sub: "The group wins!", color: "var(--rosewood)" },
@@ -1087,7 +1174,6 @@ export default function IndexPage() {
   const [customPrompts, setCustomPrompts] = useState([])
   const [fsLabel, setFsLabel] = useState("⛶ TV Mode")
 
-  // Anti-repeat history refs — persist across rounds within the same session
   const usedGoodRef = useRef([])
   const usedBadRef = useRef([])
 
@@ -1110,9 +1196,8 @@ export default function IndexPage() {
     else { playClick(); setCurrentIndex(nextIndex) }
   }, [slots, prompts, currentIndex])
   const playAgain = useCallback(() => {
-    if (mode === "custom" && customPrompts.length > 0) {
-      setPrompts(shuffle(customPrompts))
-    } else {
+    if (mode === "custom" && customPrompts.length > 0) { setPrompts(shuffle(customPrompts)) }
+    else {
       const good = pickFresh(GOOD_PROMPTS, usedGoodRef, 5)
       const bad = pickFresh(BAD_PROMPTS, usedBadRef, 5)
       setPrompts(shuffle([...good, ...bad]))
